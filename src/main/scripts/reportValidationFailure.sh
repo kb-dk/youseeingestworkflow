@@ -1,0 +1,4 @@
+#!/bin/bash
+
+CONFIGFILE=$1
+LOCALFILE=$2

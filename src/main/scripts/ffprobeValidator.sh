@@ -1,0 +1,7 @@
+#!/bin/bash
+
+CONFIGFILE=$1
+PROFILE=$2
+
+echo $PROFILE
+cat $PROFILE

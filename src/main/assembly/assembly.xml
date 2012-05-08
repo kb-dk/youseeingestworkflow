@@ -1,0 +1,38 @@
+<assembly>
+
+
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <fileSets>
+
+        <fileSet>
+            <outputDirectory>bin</outputDirectory>
+            <directory>src/main/bin</directory>
+            <fileMode>0755</fileMode>
+        </fileSet>
+
+        <fileSet>
+            <outputDirectory>scripts</outputDirectory>
+            <directory>src/main/scripts</directory>
+            <fileMode>0755</fileMode>
+        </fileSet>
+
+        <fileSet>
+            <outputDirectory>taverna</outputDirectory>
+            <directory>src/main/taverna</directory>
+        </fileSet>
+
+        <fileSet>
+            <outputDirectory>config</outputDirectory>
+            <directory>src/main/config</directory>
+        </fileSet>
+
+
+    </fileSets>
+
+
+
+</assembly>
+
