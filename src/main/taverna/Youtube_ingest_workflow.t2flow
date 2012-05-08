@@ -1,0 +1,999 @@
+<workflow xmlns="http://taverna.sf.net/2008/xml/t2flow" version="1" producedBy="taverna-2.4.0"><dataflow id="3a0f4359-6852-48e3-91fa-0f49af2dc915" role="top"><name>Workflow1</name><inputPorts><port><name>Download_initiator_input</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port><port><name>ffprobe_validator_profileLocation</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port><port><name>crossChecker_validator_profileLocation</name><depth>0</depth><granularDepth>0</granularDepth><annotations /></port></inputPorts><outputPorts><port><name>markSuccesfulCompletion_STDOUT</name><annotations /></port></outputPorts><processors><processor><name>Download_initiator</name><inputPorts><port><name>input</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="input" to="input" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>94ab3476-8802-49be-a183-718e59f3c27c</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%input%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>input</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>input</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>input</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="input" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>splitOutputToList</name><inputPorts><port><name>downloadInitiatorOutput</name><depth>0</depth></port></inputPorts><outputPorts><port><name>downloadList</name><depth>1</depth><granularDepth>1</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>beanshell-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.beanshell.BeanshellActivity</class><inputMap><map from="downloadInitiatorOutput" to="downloadInitiatorOutput" /></inputMap><outputMap><map from="downloadList" to="downloadList" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns="">
+  <inputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>downloadInitiatorOutput</name>
+      <depth>0</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+  </inputs>
+  <outputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>downloadList</name>
+      <depth>1</depth>
+      <mimeTypes />
+      <granularDepth>1</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+  </outputs>
+  <classLoaderSharing>workflow</classLoaderSharing>
+  <localDependencies />
+  <artifactDependencies />
+  <script />
+  <dependencies />
+</net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="downloadInitiatorOutput" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>Yousee_Downloader</name><inputPorts><port><name>yousee_resource</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="yousee_resource" to="yousee_resource" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>6b1a0234-5647-4566-9612-2aa468a477dd</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%yousee_resource%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>yousee_resource</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>yousee_resource</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>yousee_resource</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="yousee_resource" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>GetLocalInfo</name><inputPorts><port><name>downloaderOutput</name><depth>0</depth></port></inputPorts><outputPorts><port><name>localFileUrl</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>localFileChecksum</name><depth>0</depth><granularDepth>0</granularDepth></port><port><name>localFileMetadata</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>beanshell-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.beanshell.BeanshellActivity</class><inputMap><map from="downloaderOutput" to="downloaderOutput" /></inputMap><outputMap><map from="localFileMetadata" to="localFileMetadata" /><map from="localFileUrl" to="localFileUrl" /><map from="localFileChecksum" to="localFileChecksum" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns="">
+  <inputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>downloaderOutput</name>
+      <depth>0</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+  </inputs>
+  <outputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>localFileUrl</name>
+      <depth>0</depth>
+      <mimeTypes />
+      <granularDepth>0</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>localFileChecksum</name>
+      <depth>0</depth>
+      <mimeTypes />
+      <granularDepth>0</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>localFileMetadata</name>
+      <depth>0</depth>
+      <mimeTypes />
+      <granularDepth>0</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+  </outputs>
+  <classLoaderSharing>workflow</classLoaderSharing>
+  <localDependencies />
+  <artifactDependencies />
+  <script />
+  <dependencies />
+</net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="downloaderOutput" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>ffprobe</name><inputPorts><port><name>file</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="file" to="file" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>f9d107d5-f805-4ac5-a5cc-601969c854d5</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%file%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>file</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>file</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>file</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="file" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>crossCheck</name><inputPorts><port><name>file</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="file" to="file" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>f9d107d5-f805-4ac5-a5cc-601969c854d5</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%file%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>file</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>file</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>file</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="file" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>ffprobe_validator</name><inputPorts><port><name>STDIN</name><depth>0</depth></port><port><name>profileLocation</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="profileLocation" to="profileLocation" /><map from="STDIN" to="STDIN" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>2e9f4c79-dee8-41a6-8324-291cde47c61e</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%profileLocation%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>profileLocation</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>profileLocation</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>profileLocation</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>true</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="STDIN" depth="0" /><port name="profileLocation" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>crossChecker_validator</name><inputPorts><port><name>STDIN</name><depth>0</depth></port><port><name>profileLocation</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="profileLocation" to="profileLocation" /><map from="STDIN" to="STDIN" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>2e9f4c79-dee8-41a6-8324-291cde47c61e</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%profileLocation%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>profileLocation</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>profileLocation</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>profileLocation</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>true</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="STDIN" depth="0" /><port name="profileLocation" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>combineValidation</name><inputPorts><port><name>ffprobeValidator</name><depth>0</depth></port><port><name>crossCheckValidator</name><depth>0</depth></port></inputPorts><outputPorts><port><name>notValid</name><depth>1</depth><granularDepth>1</granularDepth></port><port><name>valid</name><depth>1</depth><granularDepth>1</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>beanshell-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.beanshell.BeanshellActivity</class><inputMap><map from="ffprobeValidator" to="ffprobeValidator" /><map from="crossCheckValidator" to="crossCheckValidator" /></inputMap><outputMap><map from="valid" to="valid" /><map from="notValid" to="notValid" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns="">
+  <inputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>ffprobeValidator</name>
+      <depth>0</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>crossCheckValidator</name>
+      <depth>0</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+  </inputs>
+  <outputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>valid</name>
+      <depth>1</depth>
+      <mimeTypes />
+      <granularDepth>1</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>notValid</name>
+      <depth>1</depth>
+      <mimeTypes />
+      <granularDepth>1</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+  </outputs>
+  <classLoaderSharing>workflow</classLoaderSharing>
+  <localDependencies />
+  <artifactDependencies />
+  <script />
+  <dependencies />
+</net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><dot><port name="ffprobeValidator" depth="0" /><port name="crossCheckValidator" depth="0" /></dot></strategy></iteration></iterationStrategyStack></processor><processor><name>ReportValidationFailure</name><inputPorts><port><name>localFileUrl</name><depth>0</depth></port></inputPorts><outputPorts /><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="localFileUrl" to="localFileUrl" /></inputMap><outputMap /><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>a21c55cb-ec61-4e7a-869b-f03f29b2c7bb</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%localFileUrl%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>localFileUrl</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>localFileUrl</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>localFileUrl</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="localFileUrl" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>BitRepository_upload</name><inputPorts><port><name>localFile</name><depth>0</depth></port><port><name>checksum</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="checksum" to="checksum" /><map from="localFile" to="localFile" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>23cbb605-474c-425e-bb55-bb776917baf3</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%localFile%%
+echo %%checksum%%
+</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>checksum</string>
+      <string>localFile</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>localFile</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>localFile</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+      <entry>
+        <string>checksum</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>checksum</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><dot><port name="localFile" depth="0" /><port name="checksum" depth="0" /></dot></strategy></iteration></iterationStrategyStack></processor><processor><name>parseBitRepoOutput</name><inputPorts><port><name>bitRepoOutput</name><depth>0</depth></port></inputPorts><outputPorts><port><name>remoteURL</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>beanshell-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.beanshell.BeanshellActivity</class><inputMap><map from="bitRepoOutput" to="bitRepoOutput" /></inputMap><outputMap><map from="remoteURL" to="remoteURL" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns="">
+  <inputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>bitRepoOutput</name>
+      <depth>0</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+  </inputs>
+  <outputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>remoteURL</name>
+      <depth>0</depth>
+      <mimeTypes />
+      <granularDepth>0</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+  </outputs>
+  <classLoaderSharing>workflow</classLoaderSharing>
+  <localDependencies />
+  <artifactDependencies />
+  <script />
+  <dependencies />
+</net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="bitRepoOutput" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>waitOnList</name><inputPorts><port><name>passThru</name><depth>0</depth></port><port><name>waiter</name><depth>1</depth></port></inputPorts><outputPorts><port><name>passed</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>beanshell-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.beanshell.BeanshellActivity</class><inputMap><map from="passThru" to="passThru" /><map from="waiter" to="waiter" /></inputMap><outputMap><map from="passed" to="passed" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns="">
+  <inputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>waiter</name>
+      <depth>1</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>passThru</name>
+      <depth>0</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+  </inputs>
+  <outputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>passed</name>
+      <depth>0</depth>
+      <mimeTypes />
+      <granularDepth>0</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+  </outputs>
+  <classLoaderSharing>workflow</classLoaderSharing>
+  <localDependencies />
+  <artifactDependencies />
+  <script />
+  <dependencies />
+</net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><dot><port name="passThru" depth="0" /><port name="waiter" depth="1" /></dot></strategy></iteration></iterationStrategyStack></processor><processor><name>DomsIngester</name><inputPorts><port><name>remoteURL</name><depth>0</depth></port><port><name>checksum</name><depth>0</depth></port><port><name>ffprobeProfile</name><depth>0</depth></port><port><name>crossCheckProfile</name><depth>0</depth></port><port><name>youseeMetadata</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="remoteURL" to="remoteURL" /><map from="ffprobeProfile" to="ffprobeProfile" /><map from="crossCheckProfile" to="crossCheckProfile" /><map from="checksum" to="checksum" /><map from="youseeMetadata" to="youseeMetadata" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>7f003658-1836-40bf-a9f9-16f96b4dab9b</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%remoteURL%%
+echo %%checksum%%
+echo %%ffprobeProfile%%
+echo %%crossCheckProfile%%
+echo %%youseeMetadata%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>checksum</string>
+      <string>crossCheckProfile</string>
+      <string>ffprobeProfile</string>
+      <string>remoteURL</string>
+      <string>youseeMetadata</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>remoteURL</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>remoteURL</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+      <entry>
+        <string>ffprobeProfile</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>ffprobeProfile</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+      <entry>
+        <string>crossCheckProfile</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>crossCheckProfile</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+      <entry>
+        <string>checksum</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>checksum</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+      <entry>
+        <string>youseeMetadata</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>youseeMetadata</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><dot><port name="remoteURL" depth="0" /><port name="checksum" depth="0" /><port name="ffprobeProfile" depth="0" /><port name="crossCheckProfile" depth="0" /><port name="youseeMetadata" depth="0" /></dot></strategy></iteration></iterationStrategyStack></processor><processor><name>parseDomsOutput</name><inputPorts><port><name>domsOutput</name><depth>0</depth></port></inputPorts><outputPorts><port><name>domsPid</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>beanshell-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.beanshell.BeanshellActivity</class><inputMap><map from="domsOutput" to="domsOutput" /></inputMap><outputMap><map from="domsPid" to="domsPid" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns="">
+  <inputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>domsOutput</name>
+      <depth>0</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+  </inputs>
+  <outputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>domsPid</name>
+      <depth>0</depth>
+      <mimeTypes />
+      <granularDepth>0</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+  </outputs>
+  <classLoaderSharing>workflow</classLoaderSharing>
+  <localDependencies />
+  <artifactDependencies />
+  <script />
+  <dependencies />
+</net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="domsOutput" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>digiTVIngester</name><inputPorts><port><name>remoteUrl</name><depth>0</depth></port><port><name>youseeMetadata</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="remoteUrl" to="remoteUrl" /><map from="youseeMetadata" to="youseeMetadata" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>066ea393-ff1c-4851-8b1d-09a60e00dd31</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%remoteUrl%%
+echo %%youseeMetadata%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>remoteUrl</string>
+      <string>youseeMetadata</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>remoteUrl</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>remoteUrl</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+      <entry>
+        <string>youseeMetadata</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>youseeMetadata</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><dot><port name="remoteUrl" depth="0" /><port name="youseeMetadata" depth="0" /></dot></strategy></iteration></iterationStrategyStack></processor><processor><name>Beanshell</name><inputPorts><port><name>digiTVoutput</name><depth>0</depth></port></inputPorts><outputPorts><port><name>digiTVIdentifier</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>beanshell-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.beanshell.BeanshellActivity</class><inputMap><map from="digiTVoutput" to="digiTVoutput" /></inputMap><outputMap><map from="digiTVIdentifier" to="digiTVIdentifier" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean xmlns="">
+  <inputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+      <name>digiTVoutput</name>
+      <depth>0</depth>
+      <mimeTypes>
+        <string>text/plain</string>
+      </mimeTypes>
+      <handledReferenceSchemes />
+      <translatedElementType>java.lang.String</translatedElementType>
+      <allowsLiteralValues>true</allowsLiteralValues>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityInputPortDefinitionBean>
+  </inputs>
+  <outputs>
+    <net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+      <name>digiTVIdentifier</name>
+      <depth>0</depth>
+      <mimeTypes />
+      <granularDepth>0</granularDepth>
+    </net.sf.taverna.t2.workflowmodel.processor.activity.config.ActivityOutputPortDefinitionBean>
+  </outputs>
+  <classLoaderSharing>workflow</classLoaderSharing>
+  <localDependencies />
+  <artifactDependencies />
+  <script />
+  <dependencies />
+</net.sf.taverna.t2.activities.beanshell.BeanshellActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><cross><port name="digiTVoutput" depth="0" /></cross></strategy></iteration></iterationStrategyStack></processor><processor><name>markSuccesfulCompletion</name><inputPorts><port><name>digiTVPid</name><depth>0</depth></port><port><name>domsPid</name><depth>0</depth></port></inputPorts><outputPorts><port><name>STDOUT</name><depth>0</depth><granularDepth>0</granularDepth></port></outputPorts><annotations /><activities><activity><raven><group>net.sf.taverna.t2.activities</group><artifact>external-tool-activity</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.activities.externaltool.ExternalToolActivity</class><inputMap><map from="digiTVPid" to="digiTVPid" /><map from="domsPid" to="domsPid" /></inputMap><outputMap><map from="STDOUT" to="STDOUT" /></outputMap><configBean encoding="xstream"><net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean xmlns="">
+  <mechanismType>789663B8-DA91-428A-9F7D-B3F3DA185FD4</mechanismType>
+  <mechanismName>default local</mechanismName>
+  <mechanismXML>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xD;
+&lt;localInvocation&gt;&lt;shellPrefix&gt;/bin/sh -c&lt;/shellPrefix&gt;&lt;linkCommand&gt;/bin/ln -s %%PATH_TO_ORIGINAL%% %%TARGET_NAME%%&lt;/linkCommand&gt;&lt;/localInvocation&gt;&#xD;
+</mechanismXML>
+  <externaltoolid>27f0b6e4-4a40-452c-917b-6e47debfbabe</externaltoolid>
+  <useCaseDescription>
+    <usecaseid />
+    <description />
+    <command>echo %%domsPid%%
+echo %%digiTVPid%%</command>
+    <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
+    <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
+    <tags>
+      <string>digiTVPid</string>
+      <string>domsPid</string>
+    </tags>
+    <REs />
+    <queue__preferred />
+    <queue__deny />
+    <static__inputs />
+    <inputs>
+      <entry>
+        <string>digiTVPid</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>digiTVPid</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+      <entry>
+        <string>domsPid</string>
+        <de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+          <tag>domsPid</tag>
+          <file>false</file>
+          <tempFile>false</tempFile>
+          <binary>false</binary>
+          <charsetName>UTF-8</charsetName>
+          <forceCopy>false</forceCopy>
+          <list>false</list>
+          <concatenate>false</concatenate>
+          <mime />
+        </de.uni__luebeck.inb.knowarc.usecases.ScriptInputUser>
+      </entry>
+    </inputs>
+    <outputs />
+    <includeStdIn>false</includeStdIn>
+    <includeStdOut>true</includeStdOut>
+    <includeStdErr>false</includeStdErr>
+    <validReturnCodes>
+      <int>0</int>
+    </validReturnCodes>
+  </useCaseDescription>
+  <edited>false</edited>
+</net.sf.taverna.t2.activities.externaltool.ExternalToolActivityConfigurationBean></configBean><annotations /></activity></activities><dispatchStack><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Parallelize</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig xmlns="">
+  <maxJobs>1</maxJobs>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ParallelizeConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.ErrorBounce</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Failover</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Retry</class><configBean encoding="xstream"><net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig xmlns="">
+  <backoffFactor>1.0</backoffFactor>
+  <initialDelay>1000</initialDelay>
+  <maxDelay>5000</maxDelay>
+  <maxRetries>0</maxRetries>
+</net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.RetryConfig></configBean></dispatchLayer><dispatchLayer><raven><group>net.sf.taverna.t2.core</group><artifact>workflowmodel-impl</artifact><version>1.4</version></raven><class>net.sf.taverna.t2.workflowmodel.processor.dispatch.layers.Invoke</class><configBean encoding="xstream"><null xmlns="" /></configBean></dispatchLayer></dispatchStack><iterationStrategyStack><iteration><strategy><dot><port name="digiTVPid" depth="0" /><port name="domsPid" depth="0" /></dot></strategy></iteration></iterationStrategyStack></processor></processors><conditions /><datalinks><datalink><sink type="processor"><processor>Download_initiator</processor><port>input</port></sink><source type="dataflow"><port>Download_initiator_input</port></source></datalink><datalink><sink type="processor"><processor>splitOutputToList</processor><port>downloadInitiatorOutput</port></sink><source type="processor"><processor>Download_initiator</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>Yousee_Downloader</processor><port>yousee_resource</port></sink><source type="processor"><processor>splitOutputToList</processor><port>downloadList</port></source></datalink><datalink><sink type="processor"><processor>GetLocalInfo</processor><port>downloaderOutput</port></sink><source type="processor"><processor>Yousee_Downloader</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>ffprobe</processor><port>file</port></sink><source type="processor"><processor>GetLocalInfo</processor><port>localFileUrl</port></source></datalink><datalink><sink type="processor"><processor>crossCheck</processor><port>file</port></sink><source type="processor"><processor>GetLocalInfo</processor><port>localFileUrl</port></source></datalink><datalink><sink type="processor"><processor>ffprobe_validator</processor><port>STDIN</port></sink><source type="processor"><processor>ffprobe</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>ffprobe_validator</processor><port>profileLocation</port></sink><source type="dataflow"><port>ffprobe_validator_profileLocation</port></source></datalink><datalink><sink type="processor"><processor>crossChecker_validator</processor><port>STDIN</port></sink><source type="processor"><processor>crossCheck</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>crossChecker_validator</processor><port>profileLocation</port></sink><source type="dataflow"><port>crossChecker_validator_profileLocation</port></source></datalink><datalink><sink type="processor"><processor>combineValidation</processor><port>ffprobeValidator</port></sink><source type="processor"><processor>ffprobe_validator</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>combineValidation</processor><port>crossCheckValidator</port></sink><source type="processor"><processor>crossChecker_validator</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>ReportValidationFailure</processor><port>localFileUrl</port></sink><source type="processor"><processor>combineValidation</processor><port>notValid</port></source></datalink><datalink><sink type="processor"><processor>BitRepository_upload</processor><port>localFile</port></sink><source type="processor"><processor>waitOnList</processor><port>passed</port></source></datalink><datalink><sink type="processor"><processor>BitRepository_upload</processor><port>checksum</port></sink><source type="processor"><processor>GetLocalInfo</processor><port>localFileChecksum</port></source></datalink><datalink><sink type="processor"><processor>parseBitRepoOutput</processor><port>bitRepoOutput</port></sink><source type="processor"><processor>BitRepository_upload</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>waitOnList</processor><port>passThru</port></sink><source type="processor"><processor>GetLocalInfo</processor><port>localFileUrl</port></source></datalink><datalink><sink type="processor"><processor>waitOnList</processor><port>waiter</port></sink><source type="processor"><processor>combineValidation</processor><port>valid</port></source></datalink><datalink><sink type="processor"><processor>DomsIngester</processor><port>remoteURL</port></sink><source type="processor"><processor>parseBitRepoOutput</processor><port>remoteURL</port></source></datalink><datalink><sink type="processor"><processor>DomsIngester</processor><port>checksum</port></sink><source type="processor"><processor>GetLocalInfo</processor><port>localFileChecksum</port></source></datalink><datalink><sink type="processor"><processor>DomsIngester</processor><port>ffprobeProfile</port></sink><source type="processor"><processor>ffprobe_validator</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>DomsIngester</processor><port>crossCheckProfile</port></sink><source type="processor"><processor>crossChecker_validator</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>DomsIngester</processor><port>youseeMetadata</port></sink><source type="processor"><processor>GetLocalInfo</processor><port>localFileMetadata</port></source></datalink><datalink><sink type="processor"><processor>parseDomsOutput</processor><port>domsOutput</port></sink><source type="processor"><processor>DomsIngester</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>digiTVIngester</processor><port>remoteUrl</port></sink><source type="processor"><processor>parseBitRepoOutput</processor><port>remoteURL</port></source></datalink><datalink><sink type="processor"><processor>digiTVIngester</processor><port>youseeMetadata</port></sink><source type="processor"><processor>GetLocalInfo</processor><port>localFileMetadata</port></source></datalink><datalink><sink type="processor"><processor>Beanshell</processor><port>digiTVoutput</port></sink><source type="processor"><processor>digiTVIngester</processor><port>STDOUT</port></source></datalink><datalink><sink type="processor"><processor>markSuccesfulCompletion</processor><port>digiTVPid</port></sink><source type="processor"><processor>Beanshell</processor><port>digiTVIdentifier</port></source></datalink><datalink><sink type="processor"><processor>markSuccesfulCompletion</processor><port>domsPid</port></sink><source type="processor"><processor>parseDomsOutput</processor><port>domsPid</port></source></datalink><datalink><sink type="dataflow"><port>markSuccesfulCompletion_STDOUT</port></sink><source type="processor"><processor>markSuccesfulCompletion</processor><port>STDOUT</port></source></datalink></datalinks><annotations><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>bae862e6-3e3e-4f2c-ba34-b0f64f9957c5</identification>
+      </annotationBean>
+      <date>2012-05-07 13:10:31.321 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>678f2ee1-017f-4e54-af87-27cf729501c3</identification>
+      </annotationBean>
+      <date>2012-05-07 13:03:17.262 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>9ad954d3-67f5-415e-8538-d89fc822b6b5</identification>
+      </annotationBean>
+      <date>2012-05-07 14:43:10.752 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2><annotation_chain_2_2 encoding="xstream"><net.sf.taverna.t2.annotation.AnnotationChainImpl xmlns="">
+  <annotationAssertions>
+    <net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+      <annotationBean class="net.sf.taverna.t2.annotation.annotationbeans.IdentificationAssertion">
+        <identification>3a0f4359-6852-48e3-91fa-0f49af2dc915</identification>
+      </annotationBean>
+      <date>2012-05-07 14:48:28.454 UTC</date>
+      <creators />
+      <curationEventList />
+    </net.sf.taverna.t2.annotation.AnnotationAssertionImpl>
+  </annotationAssertions>
+</net.sf.taverna.t2.annotation.AnnotationChainImpl></annotation_chain_2_2></annotations></dataflow></workflow>
