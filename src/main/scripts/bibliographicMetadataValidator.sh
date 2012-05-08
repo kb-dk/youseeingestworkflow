@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 CONFIGFILE=$1
 LOCALFILEURL=$2
 CHANNELID=$3
