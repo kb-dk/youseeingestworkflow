@@ -1,7 +1,9 @@
 #!/bin/bash
 
 CONFIGFILE=$1
-LOCALFILE=$2
+LOCALFILEURL=$2
 CHECKSUM=$3
+REMOTEFILEID=$4
+FILESIZE=$5
 
 cat $YOUSEE_HOME/examples/bitrepo_output.json
