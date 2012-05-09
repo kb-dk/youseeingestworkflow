@@ -5,6 +5,15 @@
         <format>zip</format>
     </formats>
 
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>workflowDependencies</outputDirectory>
+            <includes>
+                <include>com.googlecode.json-simple:json-simple</include>
+            </includes>
+        </dependencySet>
+    </dependencySets>
+
     <fileSets>
 
         <fileSet>

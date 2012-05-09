@@ -17,6 +17,11 @@ fi
 
 export YOUSEE_HOME=$SCRIPT_PATH/..
 
+
+VERSION=`head -1 $TAVERNA_HOME/release-notes.txt | sed 's/.$//' | cut -d' ' -f4`
+LIB="$HOME/.taverna-$VERSION/lib/"
+cp -u $YOUSEE_HOME/workflowDependencies/* $LIB
+
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
 -inputvalue configFile "$YOUSEE_HOME/config/combinedProperties.properties" \
