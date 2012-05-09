@@ -29,6 +29,10 @@
             <directory>src/main/config</directory>
         </fileSet>
 
+        <fileSet>
+            <outputDirectory>examples</outputDirectory>
+            <directory>src/main/examples</directory>
+        </fileSet>
 
     </fileSets>
 

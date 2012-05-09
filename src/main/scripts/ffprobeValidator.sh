@@ -3,5 +3,4 @@
 CONFIGFILE=$1
 PROFILE=$2
 
-echo $PROFILE
-cat $PROFILE
+cat $YOUSEE_HOME/examples/ffprobe_validator_output.json

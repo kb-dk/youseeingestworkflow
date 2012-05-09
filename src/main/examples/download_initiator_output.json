@@ -1,0 +1,18 @@
+{
+    "downloads":[
+        {
+            "fileID" : "DR HD_20120915_100000_20120915_110000.mux",
+            "startTime" : "20120915100000",
+            "endTime" : "20120915110000",
+            "youseeChannelID" : "DR HD",
+            "sbChannelID" : "drhd"
+        },
+        {
+            "fileID" : "DR HD_20120915_110000_20120915_120000.mux",
+            "startTime" : "20120915100000",
+            "endTime" : "20120915110000",
+            "youseeChannelID" : "DR HD",
+            "sbChannelID" : "drhd"
+        }
+    ]
+}

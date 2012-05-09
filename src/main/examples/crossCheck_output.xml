@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Manzanita CrossCheck -->
+<tsa-report
+        version="1.0.0"
+        license-serno="CC0844"
+        license-username="Statsbiblioteket"
+        date="Tue Mar 27 11:24:55 2012"
+        file="DR1_20111123_212500_20111123_214500.mux">
+    <configuration>
+        <analysis-mode value="Auto (MPEG)"/>
+        tsa-config 2
+        Packet-Interval: 188
+        Record-Limit: 1
+        Abort-Limit: 0
+        end-config
+    </configuration>
+    <stream-information>
+        <average-transport-rate value="5493584.3"/>
+        <minimum-transport-rate value="1085702.1"/>
+        <maximum-transport-rate value="5759931.9"/>
+        <duration value="00:20:00.000"/>
+        <file-size value="824037652"/>
+        <transport-packet-interval value="188 (specified)"/>
+        <packets-analyzed value="4383179"/>
+        <total-errors value="48009"/>
+        <total-warnings value="1"/>
+    </stream-information>
+
+    <multiplex-summary>
+        <pat version="0" pid="0">
+            <program program_number="2" pid="0x0020">
+                <pmt version="5" pcr-pid="0x0021">
+                    <stream pid="0x0021" type="MPEG-2 Video">
+                        <descriptor tag="0x02" name="video_stream_descriptor"/>
+                    </stream>
+                    <stream pid="0x0024" type="MPEG-1 Audio">
+                        <descriptor tag="0x0A" name="ISO_639_language_descriptor"/>
+                    </stream>
+                    <stream pid="0x0026" type="Private PES (DVB Teletext)">
+                        <descriptor tag="0x56"/>
+                    </stream>
+                    <stream pid="0x003C" type="MPEG-1 Audio">
+                        <descriptor tag="0x0A" name="ISO_639_language_descriptor"/>
+                    </stream>
+                </pmt>
+            </program>
+        </pat>
+    </multiplex-summary>
+
+    <pid-summary>
+        <pid-info pid="0x0000" content="PAT"
+                  npkt="5891" pkt-rate="7383" payld-rate="7226"/>
+        <pid-info pid="0x0020" content="PMT" programs="2"
+                  npkt="5891" pkt-rate="7383" payld-rate="7226"/>
+        <pid-info pid="0x0021" content="MPEG-2 Video, PCR" programs="2"
+                  npkt="3892670" pkt-rate="4878810" payld-rate="4768721"
+                  errors="48001" warnings="1"/>
+        <pid-info pid="0x0024" content="MPEG-1 Audio" programs="2"
+                  npkt="212490" pkt-rate="266321" payld-rate="255989"
+                  errors="3" warnings="0"/>
+        <pid-info pid="0x0026" content="Private PES (DVB Teletext)" programs="2"
+                  npkt="209990" pkt-rate="263188" payld-rate="248588"
+                  errors="2" warnings="0"/>
+        <pid-info pid="0x003C" content="MPEG-1 Audio" programs="2"
+                  npkt="56247" pkt-rate="70496" payld-rate="63997"
+                  errors="3" warnings="0"/>
+    </pid-summary>
+
+    <pid-properties>
+        <pid value="0x0000 (0)"/>
+        <content value="PAT"/>
+        <total-errors value="0"/>
+        <total-warnings value="0"/>
+        <program-association-table-information>
+            <table_id value="0x00"/>
+            <version_number value="0"/>
+            <transport_stream_id value="0x0001 (1)"/>
+        </program-association-table-information>
+        <packet-statistics>
+            <number-of-packets value="5891"/>
+            <first-seen-in-packet-number value="714" time="00:00:00.194"/>
+            <last-seen-in-packet-number value="4382712" time="00:19:59.872"/>
+            <average-transport-packet-rate value="7383"/>
+            <average-payload-rate value="7226"/>
+            <average-packet-spacing value="203.6805"/>
+            <minimum-packet-spacing value="194.5548"/>
+            <packet-number-at-minimum-spacing value="1456371" time="00:06:38.681"/>
+            <maximum-packet-spacing value="407.8375"/>
+            <packet-number-at-maximum-spacing value="3355615" time="00:15:18.670"/>
+            <minimum-packet-spacing-ends-inclusive value="127.8019"/>
+            <maximum-packet-spacing-ends-inclusive value="407.8375"/>
+        </packet-statistics>
+        <transport-header-information>
+            <number-of-packets-transport_error_indicator-is-1 value="0"/>
+            <number-of-packets-transport_priority-is-1 value="0"/>
+            <number-of-packets-transport_scrambling_control-is-00 value="5891"/>
+            <number-of-duplicate-packets-seen value="0"/>
+            <number-of-continuity-counter-errors-seen value="0"/>
+        </transport-header-information>
+        <adaptation-field-information>
+            <number-of-packets-discontinuity_indicator-is-1 value="0"/>
+            <number-of-packets-random_access_indicator-is-1 value="0"/>
+            <splice_countdown-fields-seen value="No"/>
+        </adaptation-field-information>
+    </pid-properties>
+
+    <pid-properties>
+        <pid value="0x0020 (32)"/>
+        <content value="PMT"/>
+        <total-errors value="0"/>
+        <total-warnings value="0"/>
+        <program-information>
+            <pmt-pid-for-program_number value="2"/>
+            <listed-in-pat-version_number value="0"/>
+        </program-information>
+        <program-map-table-information>
+            <table_id value="0x02"/>
+            <program_number value="2"/>
+            <version_number value="5"/>
+            <pcr-pid value="0x0021 (33)"/>
+            <section_length value="57"/>
+        </program-map-table-information>
+        <packet-statistics>
+            <number-of-packets value="5891"/>
+            <first-seen-in-packet-number value="715" time="00:00:00.194"/>
+            <last-seen-in-packet-number value="4382713" time="00:19:59.872"/>
+            <average-transport-packet-rate value="7383"/>
+            <average-payload-rate value="7226"/>
+            <average-packet-spacing value="203.6805"/>
+            <minimum-packet-spacing value="194.9011"/>
+            <packet-number-at-minimum-spacing value="3936541" time="00:17:57.696"/>
+            <maximum-packet-spacing value="407.5576"/>
+            <packet-number-at-maximum-spacing value="3355616" time="00:15:18.670"/>
+            <minimum-packet-spacing-ends-inclusive value="127.5327"/>
+            <maximum-packet-spacing-ends-inclusive value="407.5576"/>
+        </packet-statistics>
+        <transport-header-information>
+            <number-of-packets-transport_error_indicator-is-1 value="0"/>
+            <number-of-packets-transport_priority-is-1 value="0"/>
+            <number-of-packets-transport_scrambling_control-is-00 value="5891"/>
+            <number-of-duplicate-packets-seen value="0"/>
+            <number-of-continuity-counter-errors-seen value="0"/>
+        </transport-header-information>
+        <adaptation-field-information>
+            <number-of-packets-discontinuity_indicator-is-1 value="0"/>
+            <number-of-packets-random_access_indicator-is-1 value="0"/>
+            <splice_countdown-fields-seen value="No"/>
+        </adaptation-field-information>
+    </pid-properties>
+
+    <pid-properties>
+        <pid value="0x0021 (33)"/>
+        <content value="MPEG-2 Video, PCR"/>
+        <total-errors value="48001"/>
+        <total-warnings value="1"/>
+        <program-information>
+            <member-of-program_number value="2"/>
+            <listed-in-pmt-version_number value="5"/>
+            <stream_type value="0x02 (H.262 | 13818-2 Video | 11172-2 Constrained Video)"/>
+            <listed-as-pcr-pid value="Yes"/>
+            <video_stream_descriptor>
+                <tag value="0x02"/>
+                <length value="3"/>
+                <multiple_frame_rate_flag value="1"/>
+                <frame_rate_code value="3 (25 fps)"/>
+                <mpeg_1_only_flag value="0"/>
+                <constrained_parameter_flag value="1"/>
+                <still_picture_flag value="0"/>
+                <profile_and_level_indication value="72"/>
+                <chroma_format value="1"/>
+                <frame_rate_extension_flag value="0"/>
+                <reserved value="31"/>
+            </video_stream_descriptor>
+        </program-information>
+        <pcr-statistics>
+            <number-of-pcrs-seen value="47990"/>
+            <average-pcr-interval value="25.0016"/>
+            <minimum-pcr-interval value="22.8110"/>
+            <packet-number-at-minimum-pcr-interval value="3110267" time="00:14:11.422"/>
+            <maximum-pcr-interval value="100.2679"/>
+            <packet-number-at-maximum-pcr-interval value="3354987" time="00:15:18.499"/>
+            <pcr-jitter-magnitude value="0"/>
+        </pcr-statistics>
+        <packet-statistics>
+            <number-of-packets value="3892670"/>
+            <first-seen-in-packet-number value="1" time="00:00:00.000"/>
+            <last-seen-in-packet-number value="4383179" time="00:20:00.000"/>
+            <average-transport-packet-rate value="4878810"/>
+            <average-payload-rate value="4768721"/>
+            <average-packet-spacing value="0.3083"/>
+            <minimum-packet-spacing value="0.2611"/>
+            <packet-number-at-minimum-spacing value="2035027" time="00:09:17.124"/>
+            <maximum-packet-spacing value="5.7540"/>
+            <packet-number-at-maximum-spacing value="4120247" time="00:18:48.012"/>
+            <minimum-packet-spacing-ends-inclusive value="0.2611"/>
+            <maximum-packet-spacing-ends-inclusive value="5.7540"/>
+        </packet-statistics>
+        <transport-header-information>
+            <number-of-packets-transport_error_indicator-is-1 value="0"/>
+            <number-of-packets-transport_priority-is-1 value="0"/>
+            <number-of-packets-transport_scrambling_control-is-00 value="3892670"/>
+            <number-of-duplicate-packets-seen value="0"/>
+            <number-of-continuity-counter-errors-seen value="1"/>
+        </transport-header-information>
+        <adaptation-field-information>
+            <number-of-packets-discontinuity_indicator-is-1 value="0"/>
+            <number-of-packets-random_access_indicator-is-1 value="0"/>
+            <splice_countdown-fields-seen value="No"/>
+            <noemptyaf value="Yes"/>
+        </adaptation-field-information>
+        <pes-information>
+            <number-of-pes-headers-seen value="30001"/>
+            <pes-stream_id value="0xE0 (224, MPEG Video)"/>
+            <number-of-packets-pes_scrambling_control-is-00 value="30001"/>
+            <pes-copyright-set value="No"/>
+            <number-of-packets-pes_priority-is-1 value="0"/>
+            <number-of-ptss-seen value="30001"/>
+            <average-pts-interval value="39.9988"/>
+            <average-es-buffer-level value="153462"/>
+            <minimum-es-buffer-level value="8412"/>
+            <packet-number-at-minimum-es-buffer-level value="957798" time="00:04:22.219"/>
+            <maximum-es-buffer-level value="229376"/>
+            <packet-number-at-maximum-es-buffer-level value="106167" time="00:00:28.979"/>
+            <pesalign value="Yes"/>
+        </pes-information>
+        <video-elementary-stream-information>
+            <mpeg-2-video-profile value="Main"/>
+            <mpeg-2-video-level value="Main"/>
+            <mpeg-chroma-format value="4:2:0"/>
+            <closed-caption-types-detected value="None"/>
+            <number-of-video-access-units-seen value="29992"/>
+            <minimum-number-of-non-i-pictures-between-two-i-pictures value="5"/>
+            <maximum-number-of-non-i-pictures-between-two-i-pictures value="17"/>
+            <average-number-of-non-i-pictures-between-two-i-pictures value="11"/>
+            <percent-of-all-pictures-that-are-p-pictures value="24"/>
+            <percent-of-all-pictures-that-are-b-pictures value="66"/>
+            <maximum-number-of-b-frames-between-i-or-p-frames value="3"/>
+            <video-bit-rate value="4750000"/>
+            <vbv-method value="Off"/>
+            <vbv-size value="1835008"/>
+            <video-multiplexing-buffer-size value="10000"/>
+            <video-es-buffer-size value="229376"/>
+            <minimum-decode-delay value="0.0541"/>
+            <maximum-decode-delay value="0.3888"/>
+            <mb-to-eb-transfer-method value="Leak"/>
+            <video-frame-rate value="25.0000"/>
+            <video-in-film-mode value="No"/>
+            <progressive-sequence value="No"/>
+            <horizontal-size value="720"/>
+            <vertical-size value="576"/>
+            <aspect-ratio value="16:9"/>
+            <sample-aspect-ratio value="0.7031"/>
+            <quadbyte value="No"/>
+            <initial-timecode value="17:16:51:09"/>
+            <timecode-discontinuity value="17:32:09:15"/>
+            <final-timecode value="17:36:50:24"/>
+        </video-elementary-stream-information>
+        <errors>
+            <error pid="0x0021" packet="88" time="00:00:00.023" code="0-46e" msg="The 6 reserved bits between the PCR base and extension were not '1'.
+This error was detected 47996 more times in this PID after packet 88"/>
+            <error pid="0x0021" packet="3354762" time="00:15:18.381" code="4-16e" msg="The PTS is in error by -10800 90 kHz periods."/>
+            <error pid="0x0021" packet="3354919" time="00:15:18.456" code="0-35e" msg="The continuity_counter was '3', but '11' was expected."/>
+            <error pid="0x0021" packet="3354987" time="00:15:18.499" code="3-2e" msg="The interval between successive PCRs was 100.27 ms, exceeding 100.00 ms."/>
+            <error pid="0x0021" packet="3355028" time="00:15:18.510" code="4-1e" msg="The coded video PTS or DTS was incorrect by 7200 90 kHz periods."/>
+            <error pid="0x0021" packet="3355853" time="00:15:18.735" code="4-96w" msg="Timecode was discontinuous, saw 17:32:09:15, expected 17:32:09:13."/>
+        </errors>
+    </pid-properties>
+
+    <pid-properties>
+        <pid value="0x0024 (36)"/>
+        <content value="MPEG-1 Audio"/>
+        <total-errors value="3"/>
+        <total-warnings value="0"/>
+        <program-information>
+            <member-of-program_number value="2"/>
+            <listed-in-pmt-version_number value="5"/>
+            <stream_type value="0x03 (11172 Audio)"/>
+            <associated-pcr-pid value="0x0021 (33)"/>
+            <iso_639_language_descriptor>
+                <tag value="0x0A (10)"/>
+                <length value="4"/>
+                <iso_639_language_code value="0x64616E (dan)"/>
+                <audio_type value="1 (Clean effects)"/>
+            </iso_639_language_descriptor>
+        </program-information>
+        <packet-statistics>
+            <number-of-packets value="212490"/>
+            <first-seen-in-packet-number value="11" time="00:00:00.002"/>
+            <last-seen-in-packet-number value="4383167" time="00:19:59.996"/>
+            <average-transport-packet-rate value="266321"/>
+            <average-payload-rate value="255989"/>
+            <average-packet-spacing value="5.6473"/>
+            <minimum-packet-spacing value="0.4192"/>
+            <packet-number-at-minimum-spacing value="700586" time="00:03:11.776"/>
+            <maximum-packet-spacing value="14.3240"/>
+            <packet-number-at-maximum-spacing value="3354958" time="00:15:18.481"/>
+            <minimum-packet-spacing-ends-inclusive value="0.4192"/>
+            <maximum-packet-spacing-ends-inclusive value="14.3240"/>
+        </packet-statistics>
+        <transport-header-information>
+            <number-of-packets-transport_error_indicator-is-1 value="0"/>
+            <number-of-packets-transport_priority-is-1 value="0"/>
+            <number-of-packets-transport_scrambling_control-is-00 value="212490"/>
+            <number-of-duplicate-packets-seen value="0"/>
+            <number-of-continuity-counter-errors-seen value="1"/>
+        </transport-header-information>
+        <adaptation-field-information>
+            <number-of-packets-discontinuity_indicator-is-1 value="0"/>
+            <number-of-packets-random_access_indicator-is-1 value="0"/>
+            <splice_countdown-fields-seen value="No"/>
+        </adaptation-field-information>
+        <pes-information>
+            <number-of-pes-headers-seen value="6249"/>
+            <pes-stream_id value="0xC0 (192, MPEG Audio)"/>
+            <number-of-packets-pes_scrambling_control-is-00 value="6249"/>
+            <pes-copyright-set value="No"/>
+            <number-of-packets-pes_priority-is-1 value="0"/>
+            <number-of-ptss-seen value="6249"/>
+            <average-pts-interval value="192.0306"/>
+            <average-es-buffer-level value="1842"/>
+            <minimum-es-buffer-level value="496"/>
+            <packet-number-at-minimum-es-buffer-level value="3354915" time="00:15:18.454"/>
+            <maximum-es-buffer-level value="2496"/>
+            <packet-number-at-maximum-es-buffer-level value="3496729" time="00:15:57.339"/>
+        </pes-information>
+        <audio-elementary-stream-information>
+            <audio-type value="MPEG Layer 2"/>
+            <number-of-audio-access-units-seen value="49981"/>
+            <average-number-of-audio-frames-per-pes-packet value="8"/>
+            <layer value="2"/>
+            <sample-rate value="48000"/>
+            <bit-rate value="256000"/>
+            <number-and-location-of-channels value="Stereo channels: L, R: 2/0"/>
+            <nominal-frame-size value="768"/>
+            <main-audio-buffer-size value="3584"/>
+        </audio-elementary-stream-information>
+        <errors>
+            <error pid="0x0024" packet="3354935" time="00:15:18.466" code="0-35e" msg="The continuity_counter was '5', but '11' was expected."/>
+            <error pid="0x0024" packet="3354935" time="00:15:18.466" code="5-13e" msg="An audio sync word was not seen at the beginning of audio frame 38257."/>
+            <error pid="0x0024" packet="3355455" time="00:15:18.627" code="3-12e" msg="The PES_packet_length was 6154, the actual payload was 10570."/>
+        </errors>
+    </pid-properties>
+
+    <pid-properties>
+        <pid value="0x0026 (38)"/>
+        <content value="Private PES (DVB Teletext)"/>
+        <total-errors value="2"/>
+        <total-warnings value="0"/>
+        <program-information>
+            <member-of-program_number value="2"/>
+            <listed-in-pmt-version_number value="5"/>
+            <stream_type value="0x06 (H.222.0 | 13818-1 Private PES Packets)"/>
+            <associated-pcr-pid value="0x0021 (33)"/>
+            <private-descriptor>
+                <tag value="0x56 (86)"/>
+                <length value="5"/>
+                <data value="64 61 6E 09 00 "/>
+            </private-descriptor>
+        </program-information>
+        <packet-statistics>
+            <number-of-packets value="209990"/>
+            <first-seen-in-packet-number value="18" time="00:00:00.004"/>
+            <last-seen-in-packet-number value="4383176" time="00:19:59.999"/>
+            <average-transport-packet-rate value="263188"/>
+            <average-payload-rate value="248588"/>
+            <average-packet-spacing value="5.7146"/>
+            <minimum-packet-spacing value="0.5459"/>
+            <packet-number-at-minimum-spacing value="1321351" time="00:06:01.700"/>
+            <maximum-packet-spacing value="13.7012"/>
+            <packet-number-at-maximum-spacing value="3354870" time="00:15:18.426"/>
+            <minimum-packet-spacing-ends-inclusive value="0.5459"/>
+            <maximum-packet-spacing-ends-inclusive value="13.7012"/>
+        </packet-statistics>
+        <transport-header-information>
+            <number-of-packets-transport_error_indicator-is-1 value="0"/>
+            <number-of-packets-transport_priority-is-1 value="0"/>
+            <number-of-packets-transport_scrambling_control-is-00 value="209990"/>
+            <number-of-duplicate-packets-seen value="0"/>
+            <number-of-continuity-counter-errors-seen value="1"/>
+        </transport-header-information>
+        <adaptation-field-information>
+            <number-of-packets-discontinuity_indicator-is-1 value="0"/>
+            <number-of-packets-random_access_indicator-is-1 value="0"/>
+            <splice_countdown-fields-seen value="No"/>
+        </adaptation-field-information>
+        <pes-information>
+            <number-of-pes-headers-seen value="29999"/>
+            <pes-stream_id value="0xBD (189, Private stream 1)"/>
+            <number-of-packets-pes_scrambling_control-is-00 value="29999"/>
+            <pes-copyright-set value="No"/>
+            <number-of-packets-pes_priority-is-1 value="0"/>
+            <number-of-ptss-seen value="29999"/>
+            <average-pts-interval value="40.0013"/>
+        </pes-information>
+        <errors>
+            <error pid="0x0026" packet="3354933" time="00:15:18.465" code="0-35e" msg="The continuity_counter was '0', but '6' was expected."/>
+            <error pid="0x0026" packet="3354997" time="00:15:18.501" code="3-12e" msg="The PES_packet_length was 1282, the actual payload was 730."/>
+        </errors>
+    </pid-properties>
+
+    <pid-properties>
+        <pid value="0x003C (60)"/>
+        <content value="MPEG-1 Audio"/>
+        <total-errors value="3"/>
+        <total-warnings value="0"/>
+        <program-information>
+            <member-of-program_number value="2"/>
+            <listed-in-pmt-version_number value="5"/>
+            <stream_type value="0x03 (11172 Audio)"/>
+            <associated-pcr-pid value="0x0021 (33)"/>
+            <iso_639_language_descriptor>
+                <tag value="0x0A (10)"/>
+                <length value="4"/>
+                <iso_639_language_code value="0x53796E (Syn)"/>
+                <audio_type value="3 (Visual impaired commentary)"/>
+            </iso_639_language_descriptor>
+        </program-information>
+        <packet-statistics>
+            <number-of-packets value="56247"/>
+            <first-seen-in-packet-number value="20" time="00:00:00.005"/>
+            <last-seen-in-packet-number value="4383117" time="00:19:59.982"/>
+            <average-transport-packet-rate value="70496"/>
+            <average-payload-rate value="63997"/>
+            <average-packet-spacing value="21.3345"/>
+            <minimum-packet-spacing value="9.4976"/>
+            <packet-number-at-minimum-spacing value="1321353" time="00:06:01.702"/>
+            <maximum-packet-spacing value="64.1465"/>
+            <packet-number-at-maximum-spacing value="3354953" time="00:15:18.478"/>
+            <minimum-packet-spacing-ends-inclusive value="5.2236"/>
+            <maximum-packet-spacing-ends-inclusive value="64.1465"/>
+        </packet-statistics>
+        <transport-header-information>
+            <number-of-packets-transport_error_indicator-is-1 value="0"/>
+            <number-of-packets-transport_priority-is-1 value="0"/>
+            <number-of-packets-transport_scrambling_control-is-00 value="56247"/>
+            <number-of-duplicate-packets-seen value="0"/>
+            <number-of-continuity-counter-errors-seen value="1"/>
+        </transport-header-information>
+        <adaptation-field-information>
+            <number-of-packets-discontinuity_indicator-is-1 value="0"/>
+            <number-of-packets-random_access_indicator-is-1 value="0"/>
+            <splice_countdown-fields-seen value="No"/>
+        </adaptation-field-information>
+        <pes-information>
+            <number-of-pes-headers-seen value="6249"/>
+            <pes-stream_id value="0xC2 (194, MPEG Audio)"/>
+            <number-of-packets-pes_scrambling_control-is-00 value="6249"/>
+            <pes-copyright-set value="Yes"/>
+            <number-of-packets-pes_priority-is-1 value="0"/>
+            <number-of-ptss-seen value="6249"/>
+            <average-pts-interval value="192.0306"/>
+            <average-es-buffer-level value="1630"/>
+            <minimum-es-buffer-level value="1080"/>
+            <packet-number-at-minimum-es-buffer-level value="3354953" time="00:15:18.478"/>
+            <maximum-es-buffer-level value="1872"/>
+            <packet-number-at-maximum-es-buffer-level value="139112" time="00:00:38.084"/>
+        </pes-information>
+        <audio-elementary-stream-information>
+            <audio-type value="MPEG Layer 2"/>
+            <number-of-audio-access-units-seen value="49978"/>
+            <average-number-of-audio-frames-per-pes-packet value="8"/>
+            <layer value="2"/>
+            <sample-rate value="48000"/>
+            <bit-rate value="64000"/>
+            <number-and-location-of-channels value="Stereo channels: L, R: 2/0"/>
+            <nominal-frame-size value="192"/>
+            <main-audio-buffer-size value="3584"/>
+        </audio-elementary-stream-information>
+        <errors>
+            <error pid="0x003C" packet="3354953" time="00:15:18.478" code="0-35e" msg="The continuity_counter was '4', but '1' was expected."/>
+            <error pid="0x003C" packet="3354953" time="00:15:18.478" code="5-13e" msg="An audio sync word was not seen at the beginning of audio frame 38256."/>
+            <error pid="0x003C" packet="3355580" time="00:15:18.661" code="3-12e" msg="The PES_packet_length was 1546, the actual payload was 2650."/>
+        </errors>
+    </pid-properties>
+
+    <errors>
+        <error pid="0x0021" packet="88" time="00:00:00.023" code="0-46e" msg="The 6 reserved bits between the PCR base and extension were not '1'.
+This error was detected 47996 more times in this PID after packet 88"/>
+        <error pid="0x0021" packet="3354762" time="00:15:18.381" code="4-16e" msg="The PTS is in error by -10800 90 kHz periods."/>
+        <error pid="0x0021" packet="3354919" time="00:15:18.456" code="0-35e" msg="The continuity_counter was '3', but '11' was expected."/>
+        <error pid="0x0026" packet="3354933" time="00:15:18.465" code="0-35e" msg="The continuity_counter was '0', but '6' was expected."/>
+        <error pid="0x0024" packet="3354935" time="00:15:18.466" code="0-35e" msg="The continuity_counter was '5', but '11' was expected."/>
+        <error pid="0x0024" packet="3354935" time="00:15:18.466" code="5-13e" msg="An audio sync word was not seen at the beginning of audio frame 38257."/>
+        <error pid="0x003C" packet="3354953" time="00:15:18.478" code="0-35e" msg="The continuity_counter was '4', but '1' was expected."/>
+        <error pid="0x003C" packet="3354953" time="00:15:18.478" code="5-13e" msg="An audio sync word was not seen at the beginning of audio frame 38256."/>
+        <error pid="0x0021" packet="3354987" time="00:15:18.499" code="3-2e" msg="The interval between successive PCRs was 100.27 ms, exceeding 100.00 ms."/>
+        <error pid="0x0026" packet="3354997" time="00:15:18.501" code="3-12e" msg="The PES_packet_length was 1282, the actual payload was 730."/>
+        <error pid="0x0021" packet="3355028" time="00:15:18.510" code="4-1e" msg="The coded video PTS or DTS was incorrect by 7200 90 kHz periods."/>
+        <error pid="0x0024" packet="3355455" time="00:15:18.627" code="3-12e" msg="The PES_packet_length was 6154, the actual payload was 10570."/>
+        <error pid="0x003C" packet="3355580" time="00:15:18.661" code="3-12e" msg="The PES_packet_length was 1546, the actual payload was 2650."/>
+        <error pid="0x0021" packet="3355853" time="00:15:18.735" code="4-96w" msg="Timecode was discontinuous, saw 17:32:09:15, expected 17:32:09:13."/>
+    </errors>
+</tsa-report>

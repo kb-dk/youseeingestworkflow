@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ffprobe:ffprobe xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:ffprobe='http://www.ffmpeg.org/schema/ffprobe' xsi:schemaLocation='http://www.ffmpeg.org/schema/ffprobe ffprobe.xsd'>
+    <streams>
+        <stream index="0" codec_name="mpeg2video" codec_long_name="MPEG-2 video" codec_type="video" codec_time_base="1/50" codec_tag_string="[2][0][0][0]" codec_tag="0x0002" width="704" height="576" has_b_frames="1" sample_aspect_ratio="16:11" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="8" timecode="10:53:18:18" id="0x6f" r_frame_rate="25/1" avg_frame_rate="1350/47" time_base="1/90000" start_time="18552.047011" duration="3599.640000"/>
+        <stream index="1" codec_name="mp2" codec_long_name="MP2 (MPEG audio layer 2)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[3][0][0][0]" codec_tag="0x0003" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x79" r_frame_rate="0/0" avg_frame_rate="125/3" time_base="1/90000" start_time="18551.746511" duration="3599.808000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="2" codec_type="subtitle" codec_time_base="1/90000" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x83" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="18551.607011" duration="3599.960000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="3" codec_name="mpeg2video" codec_long_name="MPEG-2 video" codec_type="video" codec_time_base="1/50" codec_tag_string="[2][0][0][0]" codec_tag="0x0002" width="704" height="576" has_b_frames="1" sample_aspect_ratio="16:11" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="8" timecode="22:59:57:12" id="0x19b" r_frame_rate="25/1" avg_frame_rate="25/1" time_base="1/90000" start_time="84783.566489"/>
+        <stream index="4" codec_name="mp2" codec_long_name="MP2 (MPEG audio layer 2)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[3][0][0][0]" codec_tag="0x0003" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x1a5" r_frame_rate="0/0" avg_frame_rate="125/3" time_base="1/90000" start_time="84783.061689">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="5" codec_name="mp1" codec_long_name="MP1 (MPEG audio layer 1)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" sample_fmt="s16" sample_rate="0" channels="0" bits_per_sample="0" id="0x853" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="40662.529133" duration="3599.960000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="6" codec_name="mp1" codec_long_name="MP1 (MPEG audio layer 1)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" sample_fmt="s16" sample_rate="0" channels="0" bits_per_sample="0" id="0x1af" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="84783.086489" duration="3599.960000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="7" codec_name="mp1" codec_long_name="MP1 (MPEG audio layer 1)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" sample_fmt="s16" sample_rate="0" channels="0" bits_per_sample="0" id="0xe7" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="17498.685933" duration="3599.960000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="8" codec_name="mpeg2video" codec_long_name="MPEG-2 video" codec_type="video" codec_time_base="1/50" codec_tag_string="[2][0][0][0]" codec_tag="0x0002" width="704" height="576" has_b_frames="1" sample_aspect_ratio="16:11" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="8" timecode="09:49:50:10" id="0x83f" r_frame_rate="25/1" avg_frame_rate="1400/47" time_base="1/90000" start_time="40662.689133" duration="3600.320000"/>
+        <stream index="9" codec_name="mpeg2video" codec_long_name="MPEG-2 video" codec_type="video" codec_time_base="1/50" codec_tag_string="[2][0][0][0]" codec_tag="0x0002" width="704" height="576" has_b_frames="1" sample_aspect_ratio="16:11" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="8" timecode="23:30:13:23" id="0xd3" r_frame_rate="25/1" avg_frame_rate="1375/46" time_base="1/90000" start_time="17498.765933" duration="3600.200000"/>
+        <stream index="10" codec_name="mp2" codec_long_name="MP2 (MPEG audio layer 2)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[3][0][0][0]" codec_tag="0x0003" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x849" r_frame_rate="0/0" avg_frame_rate="125/3" time_base="1/90000" start_time="40662.678489" duration="3599.808000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="11" codec_name="mp2" codec_long_name="MP2 (MPEG audio layer 2)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[3][0][0][0]" codec_tag="0x0003" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0xdd" r_frame_rate="0/0" avg_frame_rate="125/3" time_base="1/90000" start_time="17498.794244" duration="3599.808000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="12" codec_name="mp2" codec_long_name="MP2 (MPEG audio layer 2)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[3][0][0][0]" codec_tag="0x0003" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x7a" r_frame_rate="0/0" avg_frame_rate="125/3" time_base="1/90000" start_time="18551.722533" duration="3599.808000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="13" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x857" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="17498.685933" duration="70884.360556">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="14" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x858" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="40664.732711">
+            <tag key="language" value="dan"/>
+        </stream>
+    </streams>
+
+    <format filename="mux1.1305226800-2011-05-12-21.00.00_1305230400-2011-05-12-22.00.00_dvb1-2.ts" nb_streams="15" format_name="mpegts" format_long_name="MPEG-2 transport stream format" start_time="17498.685933" duration="70884.360556" size="8957654800" bit_rate="1010959"/>
+</ffprobe:ffprobe>
