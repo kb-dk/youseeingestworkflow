@@ -1,0 +1,14 @@
+{
+    "initiatorConfig":"config.xml",
+    "downloaderConfig":"config.xml",
+    "crosscheckConfig":"config.xml",
+    "metadataValidatorConfig":"config.xml",
+    "ffprobeConfig":"config.xml",
+    "crosscheckValidatorConfig":"config.xml",
+    "ffprobeValidatorConfig":"config.xml",
+    "reportFailureConfig":"config.xml",
+    "bitRepoConfig":"config.xml",
+    "digiTVConfig":"config.xml",
+    "domsIngesterConfig":"config.xml",
+    "reportSuccesConfig":"config.xml"
+}
