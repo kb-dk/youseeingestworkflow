@@ -15,9 +15,9 @@
     <version>0.1-SNAPSHOT</version>
 
     <scm>
-        <connection>scm:git:git@github.com:blekinge/SB-yousee-workflow.git</connection>
-        <url>scm:git:git@github.com:blekinge/SB-yousee-workflow.git</url>
-        <developerConnection>scm:git:git@github.com:blekinge/SB-yousee-workflow.git</developerConnection>
+        <connection>scm:git:git://github.com/blekinge/SB-yousee-workflow.git</connection>
+        <url>scm:git:git://github.com/blekinge:SB-yousee-workflow.git</url>
+        <developerConnection>scm:git:git://github.com/blekinge/SB-yousee-workflow.git</developerConnection>
     </scm>
     <dependencies>
         <dependency>
