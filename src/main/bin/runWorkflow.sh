@@ -9,6 +9,8 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
+
+
 if [ -z "$TAVERNA_HOME" ]; then
    echo "TAVERNA_HOME is not set. Must be set before execution. Exiting"
    exit 1
@@ -24,7 +26,7 @@ cp -u $YOUSEE_HOME/workflowDependencies/* $LIB
 
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
--inputvalue configFile "$YOUSEE_HOME/config/combinedProperties.properties" \
+-inputvalue configFile "$YOUSEE_HOME/config/combinedProperties.json" \
 -inputvalue Download_initiator_input "$1"  \
 "$YOUSEE_HOME/taverna/Yousee_ingest_workflow.t2flow"
 
