@@ -6,7 +6,7 @@
     "ffprobeConfig":"config.xml",
     "crosscheckValidatorConfig":"config.xml",
     "ffprobeValidatorConfig":"config.xml",
-    "reportFailureConfig":"config.xml",
+    "reportValidationConfig":"config.xml",
     "bitRepoConfig":"config.xml",
     "digiTVConfig":"config.xml",
     "domsIngesterConfig":"config.xml",

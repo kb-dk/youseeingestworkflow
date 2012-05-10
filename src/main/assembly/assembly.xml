@@ -24,6 +24,15 @@
                 <include>dk.statsbiblioteket.mediaplatform.ingest:ingest_initiator_media_files</include>
             </includes>
         </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>bitrepoLibs</outputDirectory>
+            <useTransitiveDependencies>true</useTransitiveDependencies>
+            <useTransitiveFiltering>true</useTransitiveFiltering>
+            <includes>
+                <include>dk.statsbiblioteket.mediaplatform:bitrepository-url-client</include>
+            </includes>
+        </dependencySet>
     </dependencySets>
 
     <fileSets>

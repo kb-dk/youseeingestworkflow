@@ -2,8 +2,11 @@
 
 CONFIGFILE=$1
 LOCALFILEURL=$2
-CHECKSUM=$3
-REMOTEFILEID=$4
+REMOTEFILEID=$3
+CHECKSUM=$4
 FILESIZE=$5
 
-cat $YOUSEE_HOME/examples/bitrepo_output.json
+
+java -cp $YOUSEE_HOME/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/bitrepoLibs/* \
+dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.TheClient \
+"$CONFIGFILE" "$LOCALFILEURL" "$REMOTEFILEID" "$CHECKSUM" "$FILESIZE"
