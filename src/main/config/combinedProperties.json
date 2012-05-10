@@ -1,5 +1,5 @@
 {
-    "initiatorConfig":"config.xml",
+    "initiatorConfig":"$YOUSEE_HOME/config/ingest_initiator_media_files.properties",
     "downloaderConfig":"config.xml",
     "crosscheckConfig":"config.xml",
     "metadataValidatorConfig":"config.xml",
