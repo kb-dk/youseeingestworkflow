@@ -1,6 +1,6 @@
 #!/bin/bash
 
 CONFIGFILE=$1
-PROFILE=$2
+XML=$2
 
-cat $YOUSEE_HOME/examples/ffprobe_validator_output.json
+$YOUSEE_HOME/profileValidator/validateXmlWithProfile.sh $XML $CONFIGFILE
