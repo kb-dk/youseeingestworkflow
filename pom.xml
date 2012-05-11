@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
     <parent>
         <groupId>dk.statsbiblioteket.sbprojects</groupId>
         <artifactId>sbprojects-parent</artifactId>
         <version>3</version>
     </parent>
+
     <groupId>dk.statsbiblioteket.mediespring</groupId>
     <artifactId>yousee-workflow</artifactId>
     <version>0.2-SNAPSHOT</version>
@@ -20,11 +20,25 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/blekinge/SB-yousee-workflow.git</connection>
-        <url>scm:git:git://github.com/blekinge:SB-yousee-workflow.git</url>
-        <developerConnection>scm:git:git://github.com/blekinge/SB-yousee-workflow.git</developerConnection>
+        <connection>scm:git:git://github.com/statsbiblioteket/SB-yousee-workflow.git</connection>
+        <url>scm:git:git://github.com/statsbiblioteket:SB-yousee-workflow.git</url>
+        <developerConnection>scm:git:git://github.com/statsbiblioteket/SB-yousee-workflow.git</developerConnection>
     </scm>
-    <dependencies>
+
+  <repositories>
+    <repository>
+      <id>sbprojects-nexus</id>
+      <url>https://sbprojects.statsbiblioteket.dk/nexus/content/groups/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <dependencies>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
@@ -95,8 +109,6 @@
                                     <skipIfEmpty>true</skipIfEmpty>
                                 </configuration>
                 -->
-
-
             </plugin>
         </plugins>
     </build>
