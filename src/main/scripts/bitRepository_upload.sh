@@ -7,6 +7,6 @@ CHECKSUM=$4
 FILESIZE=$5
 
 
-java -cp $YOUSEE_HOME/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/bitrepoLibs/* \
+java -cp $YOUSEE_HOME/components/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/components/bitrepoLibs/* \
 dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.TheClient \
 "$CONFIGFILE" "$LOCALFILEURL" "$REMOTEFILEID" "$CHECKSUM" "$FILESIZE"
