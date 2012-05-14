@@ -22,6 +22,7 @@ export YOUSEE_HOME=$SCRIPT_PATH/..
 
 VERSION=`head -1 $TAVERNA_HOME/release-notes.txt | sed 's/.$//' | cut -d' ' -f4`
 LIB="$HOME/.taverna-$VERSION/lib/"
+mkdir -p $LIB
 cp -u $YOUSEE_HOME/workflowDependencies/* $LIB
 
 $TAVERNA_HOME/executeworkflow.sh \

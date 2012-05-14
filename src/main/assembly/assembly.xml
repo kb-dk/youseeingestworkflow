@@ -17,7 +17,7 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>downloadInitiatorLibs</outputDirectory>
+            <outputDirectory>components/downloadInitiatorLibs</outputDirectory>
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <includes>
@@ -26,7 +26,7 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>bitrepoLibs</outputDirectory>
+            <outputDirectory>components/bitrepoLibs</outputDirectory>
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <includes>
@@ -63,6 +63,23 @@
             <outputDirectory>examples</outputDirectory>
             <directory>src/main/examples</directory>
         </fileSet>
+
+        <fileSet>
+            <outputDirectory>components/validationProfiles</outputDirectory>
+            <directory>src/main/validationProfiles</directory>
+        </fileSet>
+
+        <fileSet>
+            <outputDirectory>components/profileValidator</outputDirectory>
+            <directory>src/main/profileValidator</directory>
+        </fileSet>
+
+        <fileSet>
+            <outputDirectory>components/youseeDownloader</outputDirectory>
+            <directory>${project.build.directory}/YouseeDownloader</directory>
+            <fileMode>755</fileMode>
+        </fileSet>
+
 
     </fileSets>
 
