@@ -14,8 +14,8 @@
 
 
     <properties>
-        <youseeDownloader.version>master</youseeDownloader.version>
-        <downloadInitiator.version>0.0.1-SNAPSHOT</downloadInitiator.version>
+        <youseeDownloader.version>1.0</youseeDownloader.version>
+        <downloadInitiator.version>0.1.0-SNAPSHOT</downloadInitiator.version>
         <bitrepoClient.version>0.2</bitrepoClient.version>
     </properties>
 
@@ -73,7 +73,7 @@
                         </goals>
                         <configuration>
                             <serverId>github</serverId>
-                            <url>https://raw.github.com/jrgatsb/yousee-file-downloader/${youseeDownloader.version}/</url>
+                            <url>https://raw.github.com/statsbiblioteket/yousee-file-downloader/${youseeDownloader.version}/</url>
                             <fromFile>yousee-downloader.sh</fromFile>
                             <toDir>${project.build.directory}/YouseeDownloader</toDir>
                         </configuration>
