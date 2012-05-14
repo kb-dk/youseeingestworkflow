@@ -1,6 +1,6 @@
 #!/bin/bash
 
-STATEMONTITORSERVER="http://localhost:9998/workflowstatemonitor"
+source $YOUSEE_HOME/config/statemonitorClientConfig.sh
 
 function report(){
     COMPONENT=$1
