@@ -88,7 +88,6 @@
                         <descriptor>src/main/assembly/assembly.xml</descriptor>
                     </descriptors>
                     <attach>true</attach>
-
                 </configuration>
                 <executions>
                     <execution>
@@ -112,5 +111,79 @@
             </plugin>
         </plugins>
     </build>
+  <profiles>
 
+  <profile>
+    <id>deploy2test</id>
+    <build>
+      <plugins>
+        <plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.7</version>
+          <executions>
+            <execution>
+              <phase>pre-integration-test</phase>
+              <configuration>
+                <target>
+                  <!-- Requires that a private/public key login has been enabled for this account -->
+                  <scp file="target/yousee-workflow-${project.version}.zip"
+                       toDir="yousee@canopus:~/ci/sb-yousee-workflow"
+                       keyfile="${user.home}/.ssh/id_rsa" />
+                  <sshexec host="canopus"
+                           username="yousee"
+                           keyfile="${user.home}/.ssh/id_rsa"
+                           command="unzip ~/ci/sb-yousee-workflow/yousee-workflow-${project.version}.zip"/>
+                </target>
+              </configuration>
+              <goals>
+                <goal>run</goal>
+              </goals>
+            </execution>
+          </executions>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.ant</groupId>
+              <artifactId>ant-jsch</artifactId>
+              <version>1.8.3</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </build>
+  </profile>
+    <profile>
+      <id>runIntegrationTest</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.7</version>
+            <executions>
+              <execution>
+                <phase>integration-test</phase>
+                <configuration>
+                  <target>
+                    <sshexec host="canopus"
+                             username="yousee"
+                             keyfile="${user.home}/.ssh/id_rsa"
+                             commandResource="target/test-classes/scripts/runIntegrationTest.sh" />
+                  </target>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+            <dependencies>
+              <dependency>
+                <groupId>org.apache.ant</groupId>
+                <artifactId>ant-jsch</artifactId>
+                <version>1.8.3</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
