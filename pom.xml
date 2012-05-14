@@ -73,7 +73,7 @@
                         </goals>
                         <configuration>
                             <serverId>github</serverId>
-                            <url>https://raw.github.com/jrgatsb/yousee-file-downloader/${youseeDownloader.version}/</url>
+                            <url>https://raw.github.com/statsbiblioteket/yousee-file-downloader/${youseeDownloader.version}/</url>
                             <fromFile>yousee-downloader.sh</fromFile>
                             <toDir>${project.build.directory}/YouseeDownloader</toDir>
                         </configuration>
