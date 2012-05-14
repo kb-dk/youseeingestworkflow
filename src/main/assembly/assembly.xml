@@ -4,6 +4,7 @@
     <formats>
         <format>zip</format>
     </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
 
     <dependencySets>
         <dependencySet>
@@ -31,6 +32,16 @@
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <includes>
                 <include>dk.statsbiblioteket.mediaplatform:bitrepository-url-client</include>
+            </includes>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>components/profileValidator</outputDirectory>
+            <useTransitiveDependencies>true</useTransitiveDependencies>
+            <useTransitiveFiltering>true</useTransitiveFiltering>
+            <unpack>true</unpack>
+            <includes>
+                <include>dk.statsbiblioteket.mediespring:SB-yousee-profile-validation</include>
             </includes>
         </dependencySet>
     </dependencySets>
@@ -63,16 +74,18 @@
             <outputDirectory>examples</outputDirectory>
             <directory>src/main/examples</directory>
         </fileSet>
+        <!--
 
-        <fileSet>
-            <outputDirectory>components/validationProfiles</outputDirectory>
-            <directory>src/main/validationProfiles</directory>
-        </fileSet>
+                <fileSet>
+                    <outputDirectory>components/validationProfiles</outputDirectory>
+                    <directory>src/main/validationProfiles</directory>
+                </fileSet>
 
-        <fileSet>
-            <outputDirectory>components/profileValidator</outputDirectory>
-            <directory>src/main/profileValidator</directory>
-        </fileSet>
+                <fileSet>
+                    <outputDirectory>components/profileValidator</outputDirectory>
+                    <directory>src/main/profileValidator</directory>
+                </fileSet>
+        -->
 
         <fileSet>
             <outputDirectory>components/youseeDownloader</outputDirectory>

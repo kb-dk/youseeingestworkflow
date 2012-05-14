@@ -1,3 +1,0 @@
-Open Source (OSI compliant zlib/libpng license or Apache License)
-
-http://www.schematron.com/implementation.html
