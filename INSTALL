@@ -7,7 +7,7 @@ We have a number of system dependencies
 2. Taverna. Taverna can be downloaded from  http://www.taverna.org.uk/download/workbench/2-4/
 3. Xsltproc. This package or something like it http://packages.ubuntu.com/quantal/xsltproc
 
-Before the workflow can be startet, one needs to set the Environment Variable to the Taverna install folder
+Before the workflow can be startet, one needs to set the Environment Variable TAVERNA_HOME to the Taverna install folder
 
 Then you need to get the component configs. This is done by cloning the git repo
 https://sbprojects.statsbiblioteket.dk/fisheye/git/Medieplatform-config.git
@@ -18,7 +18,7 @@ export YOUSEE_CONFIG=<clone dir of the above git project>
 
 
 When all these things have been done, you can run the workflow by doing
-bin/runWorkflow.sh sldkfjsdlfkj
+bin/runWorkflow.sh 2007-12-01
 
 If taverna does not crash, it should return the exit code 0
 
