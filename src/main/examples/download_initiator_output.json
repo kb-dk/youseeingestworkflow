@@ -8,11 +8,18 @@
             "sbChannelID" : "drhd"
         },
         {
-            "fileID" : "DR HD_20120915_110000_20120915_120000.mux",
+            "fileID" : "TV2_20120915_110000_20120915_120000.mux",
             "startTime" : "20120915100000",
             "endTime" : "20120915110000",
-            "youseeChannelID" : "DR HD",
-            "sbChannelID" : "drhd"
+            "youseeChannelID" : "TV2",
+            "sbChannelID" : "tv2"
+        },
+        {
+            "fileID" : "TV3_20120915_110000_20120915_120000.mux",
+            "startTime" : "20120915100000",
+            "endTime" : "20120915110000",
+            "youseeChannelID" : "TV3",
+            "sbChannelID" : "tv3"
         }
     ]
 }
