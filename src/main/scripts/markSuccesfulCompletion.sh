@@ -11,3 +11,5 @@ echo $DOMSPID
 echo $DIGITVPID
 echo $REMOTEURL
 echo $LOCALURL
+
+#TODO rm the downloaded file

@@ -1,6 +1,7 @@
 {
     "initiatorConfig":"$YOUSEE_HOME/config/ingest_initiator_media_files.properties",
     "downloaderConfig":"$YOUSEE_HOME/config/youseeDownloaderConfig.sh",
+    "downloaderQueuedReporterConfig":"$YOUSEE_HOME/config/youseeDownloaderConfig.sh",
     "crosscheckConfig":"config.xml",
     "metadataValidatorConfig":"config.xml",
     "ffprobeConfig":"config.xml",
