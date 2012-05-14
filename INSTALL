@@ -1,0 +1,28 @@
+To install the system, follow these steps
+
+Extract the downloaded zip file
+
+We have a number of system dependencies
+1. Java 1.6
+2. Taverna. Taverna can be downloaded from  http://www.taverna.org.uk/download/workbench/2-4/
+3. Xsltproc. This package or something like it http://packages.ubuntu.com/quantal/xsltproc
+
+Before the workflow can be startet, one needs to set the Environment Variable to the Taverna install folder
+
+Then you need to get the component configs. This is done by cloning the git repo
+https://sbprojects.statsbiblioteket.dk/fisheye/git/Medieplatform-config.git
+which require login information
+
+You should then export the variable YOUSEE_CONFIG
+export YOUSEE_CONFIG=<clone dir of the above git project>
+
+
+When all these things have been done, you can run the workflow by doing
+bin/runWorkflow.sh sldkfjsdlfkj
+
+If taverna does not crash, it should return the exit code 0
+
+The results will be found in "Yousee_Ingest_Workfl_output" and is a list of files, without extension. If any failed,
+they will have the extension ".error"
+
+
