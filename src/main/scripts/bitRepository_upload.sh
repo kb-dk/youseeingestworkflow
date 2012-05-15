@@ -10,20 +10,18 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/reporterInclude.sh
+source $SCRIPT_PATH/env.sh
 
-
-CONFIGFILE=$1
+ENTITY=$1
 LOCALFILEURL=$2
 REMOTEFILEID=$3
 CHECKSUM=$4
 FILESIZE=$5
 
-LOCALNAME=`basename $LOCALFILEURL`
-report "Bitrepository upload" "Starting" "Message" "$LOCALNAME"
+report "Bitrepository upload" "Starting" "Message" "$ENTITY"
 
 java -cp $YOUSEE_HOME/components/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/components/bitrepoLibs/* \
 dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.TheClient \
 "$CONFIGFILE" "$LOCALFILEURL" "$REMOTEFILEID" "$CHECKSUM" "$FILESIZE"
 
-report "Bitrepository upload" "Completed" "Message" "$LOCALNAME"
+report "Bitrepository upload" "Completed" "Message" "$ENTITY"

@@ -9,16 +9,14 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/reporterInclude.sh
+source $SCRIPT_PATH/env.sh
 
-CONFIGFILE=$1
+ENTITY=$1
 XML=$2
-FILEURL=$3
 
 
-LOCALNAME=`basename $FILEURL`
-report "FFprobe validator" "Starting" "Message" "$LOCALNAME"
+report "FFprobe validator" "Starting" "Message" "$ENTITY"
 
 $YOUSEE_HOME/components/profileValidator/validateXmlWithProfile.sh $XML $CONFIGFILE
 
-report "FFprobe validator" "Completed" "Message" "$LOCALNAME"
+report "FFprobe validator" "Completed" "Message" "$ENTITY"

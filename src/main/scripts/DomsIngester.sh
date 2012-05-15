@@ -9,19 +9,17 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/reporterInclude.sh
+source $SCRIPT_PATH/env.sh
 
-
-CONFIGFILE=$1
+ENTITY=$1
 REMOTEURL=$2
 CHECKSUM=$3
 FFPROBEPROFILE_LOCATION=$4
 CROSSCHECKPROFILE_LOCATION=$5
 YOUSEEMETADATA_LOCATION=$6
 
-LOCALNAME=`basename $REMOTEURL`
-report "Doms ingester" "Starting" "Message" "$LOCALNAME"
+report "Doms ingester" "Starting" "Message" "$ENTITY"
 
 cat $YOUSEE_HOME/examples/domsIngester_output.json
 
-report "Doms ingester" "Completed" "Message" "$LOCALNAME"
+report "Doms ingester" "Completed" "Message" "$ENTITY"

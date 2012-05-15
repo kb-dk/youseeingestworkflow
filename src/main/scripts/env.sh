@@ -1,13 +1,27 @@
 #!/bin/bash
 
-source $YOUSEE_HOME/config/statemonitorClientConfig.sh
+pushd . > /dev/null
+SCRIPT_PATH="${BASH_SOURCE[0]}";
+if ([ -h "${SCRIPT_PATH}" ]) then
+  while([ -h "${SCRIPT_PATH}" ]) do cd `dirname "$SCRIPT_PATH"`; SCRIPT_PATH=`readlink "${SCRIPT_PATH}"`; done
+fi
+cd `dirname ${SCRIPT_PATH}` > /dev/null
+SCRIPT_PATH=`pwd`;
+popd  > /dev/null
+
+source $SCRIPT_PATH/../config/combinedProperties.sh
+source $SCRIPT_PATH/../config/statemonitorClientConfig.sh
+
+NAME="`basename $0 .sh`Config"
+CONFIGFILE=`echo ${!NAME}`
+
 
 function report(){
     COMPONENT=$1
     STATE=$2
     MESSAGE=$3
     ENTITY=$4
-    if [ -n $MESSAGE ]; then
+    if [ -n "$MESSAGE" ]; then
         MESSAGE="<message>$MESSAGE</message>"
     else
         MESSAGE=""
@@ -21,6 +35,3 @@ function report(){
     fi
     return 0
 }
-
-
-

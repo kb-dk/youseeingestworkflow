@@ -9,15 +9,14 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/reporterInclude.sh
+source $SCRIPT_PATH/env.sh
 
 
-CONFIGFILE=$1
+ENTITY=$1
 LOCALFILE=$2
 
-LOCALNAME=`basename $LOCALFILE`
-report "Crosscheck characteriser" "Starting" "Message" "$LOCALNAME"
+report "Crosscheck characteriser" "Starting" "Message" "$ENTITY"
 
 cat $YOUSEE_HOME/examples/crossCheck_output.xml
 
-report "Crosscheck characteriser" "Completed" "Message" "$LOCALNAME"
+report "Crosscheck characteriser" "Completed" "Message" "$ENTITY"

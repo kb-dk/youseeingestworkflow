@@ -9,18 +9,14 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/reporterInclude.sh
+source $SCRIPT_PATH/env.sh
 
-CONFIGFILE=$1
-
+ENTITY=$1
 DOWNLOADER_JSON_OUTPUT=$2
-
-
-source $SCRIPT_PATH/reporterInclude.sh
 
 LOCALNAME=`cat $DOWNLOADER_JSON_OUTPUT | grep "localName" | cut -d'"' -f4`
 YOUSEENAME=`cat $DOWNLOADER_JSON_OUTPUT | grep "youseeName" | cut -d'"' -f4`
 
-report "handleQueuedfiles" "Queued" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$LOCALNAME"
+report "handleQueuedfiles" "Queued" "Started with youseeFilename='$YOUSEENAME' and localname='$ENTITY'" "$ENTITY"
 
 cat $DOWNLOADER_JSON_OUTPUT

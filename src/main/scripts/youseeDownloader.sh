@@ -9,15 +9,15 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/reporterInclude.sh
+source $SCRIPT_PATH/env.sh
 
-CONFIGFILE=$1
+ENTITY=$1
 YOUSEENAME=$2
 LOCALNAME=$3
 
-report "yousee Downloader" "Starting" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$LOCALNAME"
+report "yousee Downloader" "Starting" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$ENTITY"
 
 #cat $YOUSEE_HOME/examples/downloader_output_downloaded.json
 $YOUSEE_HOME/components/youseeDownloader/yousee-downloader.sh "$CONFIGFILE" "$YOUSEENAME" "$LOCALNAME"
 
-report "yousee Downloader" "completed" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$LOCALNAME"
+report "yousee Downloader" "completed" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$ENTITY"
