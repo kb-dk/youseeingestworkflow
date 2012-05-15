@@ -27,7 +27,6 @@ cp -u $YOUSEE_HOME/workflowDependencies/* $LIB
 
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
--inputvalue configFile "$YOUSEE_HOME/config/combinedProperties.json" \
 -inputvalue Download_initiator_input "$1"  \
 "$YOUSEE_HOME/taverna/Yousee_ingest_workflow.t2flow"
 
