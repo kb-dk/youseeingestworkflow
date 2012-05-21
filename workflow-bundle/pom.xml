@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dk.statsbiblioteket.mediespring</groupId>
+        <artifactId>yousee-workflow</artifactId>
+        <version>0.2-SNAPSHOT</version>
+    </parent>
+    <packaging>pom</packaging>
+
+    <groupId>dk.statsbiblioteket.mediespring</groupId>
+    <artifactId>workflow-bundle</artifactId>
+    <version>0.2-SNAPSHOT</version>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.statsbiblioteket.mediespring</groupId>
+            <artifactId>bitrepo_wrapper</artifactId>
+            <version>0.2-SNAPSHOT</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
+        <dependency>
+            <groupId>dk.statsbiblioteket.mediespring</groupId>
+            <artifactId>SB-yousee-profile-validation</artifactId>
+            <version>${profileValidator.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>dk.statsbiblioteket.digitv.youseeingester</groupId>
+            <artifactId>YouseeDigitvIngester</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>dk.statsbiblioteket.mediespring</groupId>
+            <artifactId>ingest_initiator_wrapper</artifactId>
+            <version>0.2-SNAPSHOT</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
+        <!--
+                <dependency>
+                    <groupId>dk.statsbiblioteket.doms</groupId>
+                    <artifactId>yousee-doms-ingest-client</artifactId>
+                    <version>${domsClient.version}</version>
+                    <classifier>bundle</classifier>
+                    <type>bundle</type>
+                </dependency>
+        -->
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0-beta-4</version>
+                <executions>
+                    <execution>
+                        <id>download-youseeDownloadApp</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <serverId>github</serverId>
+                            <url>https://raw.github.com/statsbiblioteket/yousee-file-downloader/${youseeDownloader.version}/</url>
+                            <fromFile>yousee-downloader.sh</fromFile>
+                            <toDir>${project.build.directory}/YouseeDownloader</toDir>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2.2</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+
+        <profile>
+            <id>deploy2test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.7</version>
+                        <executions>
+                            <execution>
+                                <phase>pre-integration-test</phase>
+                                <configuration>
+                                    <target>
+                                        <!-- Requires that a private/public key login has been enabled for this account -->
+                                        <scp file="target/yousee-workflow-${project.version}.zip"
+                                             toDir="yousee@canopus:~/ci/sb-yousee-workflow"
+                                             keyfile="${user.home}/.ssh/id_rsa" />
+                                        <sshexec host="canopus"
+                                                 username="yousee"
+                                                 keyfile="${user.home}/.ssh/id_rsa"
+                                                 command="unzip ~/ci/sb-yousee-workflow/yousee-workflow-${project.version}.zip"/>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.apache.ant</groupId>
+                                <artifactId>ant-jsch</artifactId>
+                                <version>1.8.3</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>runIntegrationTest</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.7</version>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <configuration>
+                                    <target>
+                                        <sshexec host="canopus"
+                                                 username="yousee"
+                                                 keyfile="${user.home}/.ssh/id_rsa"
+                                                 commandResource="target/test-classes/scripts/runIntegrationTest.sh" />
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.apache.ant</groupId>
+                                <artifactId>ant-jsch</artifactId>
+                                <version>1.8.3</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

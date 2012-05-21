@@ -1,5 +1,6 @@
 <assembly>
 
+    <id>package</id>
 
     <formats>
         <format>zip</format>
@@ -18,33 +19,43 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/downloadInitiatorLibs</outputDirectory>
-            <useTransitiveDependencies>true</useTransitiveDependencies>
-            <useTransitiveFiltering>true</useTransitiveFiltering>
-            <includes>
-                <include>dk.statsbiblioteket.mediaplatform.ingest:ingest_initiator_media_files</include>
-            </includes>
-        </dependencySet>
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>components/bitrepoLibs</outputDirectory>
-            <useTransitiveDependencies>true</useTransitiveDependencies>
-            <useTransitiveFiltering>true</useTransitiveFiltering>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
             <includes>
-                <include>dk.statsbiblioteket.mediaplatform:bitrepository-url-client</include>
+                <include>dk.statsbiblioteket.mediespring:bitrepo_wrapper</include>
             </includes>
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>components/profileValidator</outputDirectory>
-            <useTransitiveDependencies>true</useTransitiveDependencies>
-            <useTransitiveFiltering>true</useTransitiveFiltering>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
                 <include>dk.statsbiblioteket.mediespring:SB-yousee-profile-validation</include>
             </includes>
         </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>components/digiTVIngester</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>dk.statsbiblioteket.digitv.youseeingester:YouseeDigitvIngester</include>
+            </includes>
+        </dependencySet>
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>components/downloadInitiatorLibs</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>dk.statsbiblioteket.mediespring:ingest_initiator_wrapper</include>
+            </includes>
+        </dependencySet>
     </dependencySets>
+
 
     <fileSets>
 

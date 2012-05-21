@@ -21,6 +21,14 @@ ENDTIME=$5
 
 report "Digitv ingest" "Starting" "Message" "$ENTITY"
 
-cat $YOUSEE_HOME/examples/digiTVIngester_output.json
+java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
+ dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \
+ -filename "$ENTITY" \
+ -starttime "$STARTTIME" \
+ -stoptime "$ENDTIME" \
+ -channelid "$CHANNELID"
+# //-configFile "$CONFIGFILE"
+
+#cat $YOUSEE_HOME/examples/digiTVIngester_output.json
 
 report "Digitv ingest" "Completed" "Message" "$ENTITY"
