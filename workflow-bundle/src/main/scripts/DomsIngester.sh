@@ -20,15 +20,15 @@ YOUSEEMETADATA_LOCATION=$6
 
 report "Doms ingester" "Starting" "Message" "$ENTITY"
 
-cat $YOUSEE_HOME/examples/domsIngester_output.json
-#java -cp $YOUSEE_HOME/components/domsclientLibs/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsclientLibs/* \
-# dk.statsbiblioteket.doms.yousee.YouseeIngesterCLI \
-# -filename "$ENTITY" \
-# -url "$REMOTEURL" \
-# -checksum "$CHECKSUM" \
-# -ffprobe "$FFPROBEPROFILE_LOCATION" \
-# -crosscheck "$CROSSCHECKPROFILE_LOCATION" \
-# -metadata "$YOUSEEMETADATA_LOCATION" \
+#cat $YOUSEE_HOME/examples/domsIngester_output.json
+java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/* \
+ dk.statsbiblioteket.doms.yousee.YouseeIngesterCLI \
+ -filename "$ENTITY" \
+ -url "$REMOTEURL" \
+ -checksum "$CHECKSUM" \
+ -ffprobe "$FFPROBEPROFILE_LOCATION" \
+ -crosscheck "$CROSSCHECKPROFILE_LOCATION" \
+ -metadata "$YOUSEEMETADATA_LOCATION" \
 # //-configFile "$CONFIGFILE"
 
 report "Doms ingester" "Completed" "Message" "$ENTITY"

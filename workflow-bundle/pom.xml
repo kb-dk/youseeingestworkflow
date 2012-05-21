@@ -52,15 +52,15 @@
             <type>zip</type>
         </dependency>
 
-        <!--
-                <dependency>
-                    <groupId>dk.statsbiblioteket.doms</groupId>
-                    <artifactId>yousee-doms-ingest-client</artifactId>
-                    <version>${domsClient.version}</version>
-                    <classifier>bundle</classifier>
-                    <type>bundle</type>
-                </dependency>
-        -->
+
+        <dependency>
+            <groupId>dk.statsbiblioteket.doms</groupId>
+            <artifactId>yousee-doms-ingest-client</artifactId>
+            <version>${domsClient.version}</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
     </dependencies>
 
     <build>

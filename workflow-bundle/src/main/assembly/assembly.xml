@@ -16,6 +16,7 @@
             <includes>
                 <include>com.googlecode.json-simple:json-simple</include>
             </includes>
+            <scope>runtime</scope>
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
@@ -25,6 +26,7 @@
             <includes>
                 <include>dk.statsbiblioteket.mediespring:bitrepo_wrapper</include>
             </includes>
+            <scope>runtime</scope>
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
@@ -34,6 +36,7 @@
             <includes>
                 <include>dk.statsbiblioteket.mediespring:SB-yousee-profile-validation</include>
             </includes>
+            <scope>runtime</scope>
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
@@ -43,6 +46,7 @@
             <includes>
                 <include>dk.statsbiblioteket.digitv.youseeingester:YouseeDigitvIngester</include>
             </includes>
+            <scope>runtime</scope>
         </dependencySet>
 
         <dependencySet>
@@ -53,6 +57,18 @@
             <includes>
                 <include>dk.statsbiblioteket.mediespring:ingest_initiator_wrapper</include>
             </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>components/domsIngester</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>dk.statsbiblioteket.doms:yousee-doms-ingest-client</include>
+            </includes>
+            <scope>runtime</scope>
         </dependencySet>
     </dependencySets>
 
