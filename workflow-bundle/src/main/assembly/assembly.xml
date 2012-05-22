@@ -55,7 +55,7 @@
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
-                <include>dk.statsbiblioteket.mediespring:ingest_initiator_wrapper</include>
+                <include>dk.statsbiblioteket.mediaplatform.ingest:ingest_initiator_bundle</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>

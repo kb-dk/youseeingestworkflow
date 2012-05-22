@@ -30,5 +30,8 @@ java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$Y
  -crosscheck "$CROSSCHECKPROFILE_LOCATION" \
  -metadata "$YOUSEEMETADATA_LOCATION" \
 # //-configFile "$CONFIGFILE"
+PID=$!
+
+
 
 report "Doms ingester" "Completed" "Message" "$ENTITY"

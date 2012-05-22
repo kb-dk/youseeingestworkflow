@@ -44,10 +44,21 @@
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
+        <!--
+                <dependency>
+                    <groupId>dk.statsbiblioteket.mediespring</groupId>
+                    <artifactId>ingest_initiator_wrapper</artifactId>
+                    <version>0.2-SNAPSHOT</version>
+                    <classifier>bundle</classifier>
+                    <type>zip</type>
+                </dependency>
+        -->
+
+
         <dependency>
-            <groupId>dk.statsbiblioteket.mediespring</groupId>
-            <artifactId>ingest_initiator_wrapper</artifactId>
-            <version>0.2-SNAPSHOT</version>
+            <groupId>dk.statsbiblioteket.mediaplatform.ingest</groupId>
+            <artifactId>ingest_initiator_bundle</artifactId>
+            <version>${downloadInitiator.version}</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
