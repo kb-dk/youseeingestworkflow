@@ -13,10 +13,11 @@ source $SCRIPT_PATH/env.sh
 
 INPUT=$1
 
-report "ingest initiator" "Starting" "Started with input=$INPUT" "$INPUT"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Started with input=$INPUT" "$INPUT"
 
 #cat $YOUSEE_HOME/examples/download_initiator_output.json
 java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_media_files-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
 dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI "$CONFIGFILE" "$INPUT"
 
-report "ingest initiator" "Completed" "Started with input=$INPUT" "$INPUT"
+report "$NAME" "Completed" "Started with input=$INPUT" "$INPUT"

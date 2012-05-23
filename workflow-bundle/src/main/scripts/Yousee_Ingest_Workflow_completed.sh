@@ -12,13 +12,21 @@ popd  > /dev/null
 source $SCRIPT_PATH/env.sh
 
 ENTITY=$1
-LOCALFILEURL=$2
-CHANNELID=$3
-STARTTIME=$4
-ENDTIME=$5
+DOMSPID=$2
+DIGITVPID=$3
+REMOTEURL=$4
+LOCALURL=$5
 
-report "Bibliographic metadata validator" "Starting" "Message" "$ENTITY"
 
-cat $YOUSEE_HOME/examples/bibliograpthic_validator_output.json
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Message" "$ENTITY"
 
-report "Bibliographic metadata validator" "Completed" "Message" "$ENTITY"
+
+echo $DOMSPID
+echo $DIGITVPID
+echo $REMOTEURL
+echo $LOCALURL
+
+report "$NAME" "Completed" "Message" "$ENTITY"
+
+#TODO rm the downloaded file

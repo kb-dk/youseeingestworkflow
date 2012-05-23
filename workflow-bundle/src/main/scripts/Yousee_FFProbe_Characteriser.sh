@@ -12,12 +12,12 @@ popd  > /dev/null
 
 source $SCRIPT_PATH/env.sh
 
-
 ENTITY=$1
-XML=$2
+LOCALFILE=$2
 
-report "Crosscheck Validator" "Starting" "Message" "$ENTITY"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Message" "$ENTITY"
 
-$YOUSEE_HOME/components/profileValidator/validateXmlWithProfile.sh $XML $CONFIGFILE
+cat $YOUSEE_HOME/examples/ffprobe_output.xml
 
-report "Crosscheck Validator" "Completed" "Message" "$ENTITY"
+report "$NAME" "Completed" "Message" "$ENTITY"

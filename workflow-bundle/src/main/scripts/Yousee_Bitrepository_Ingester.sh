@@ -18,10 +18,11 @@ REMOTEFILEID=$3
 CHECKSUM=$4
 FILESIZE=$5
 
-report "Bitrepository upload" "Starting" "Message" "$ENTITY"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Message" "$ENTITY"
 
 java -cp $YOUSEE_HOME/components/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/components/bitrepoLibs/* \
 dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.TheClient \
 "$CONFIGFILE" "$LOCALFILEURL" "$REMOTEFILEID" "$CHECKSUM" "$FILESIZE"
 
-report "Bitrepository upload" "Completed" "Message" "$ENTITY"
+report "$NAME" "Completed" "Message" "$ENTITY"

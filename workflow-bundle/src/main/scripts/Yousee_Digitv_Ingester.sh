@@ -19,7 +19,8 @@ CHANNELID=$3
 STARTTIME=$4
 ENDTIME=$5
 
-report "Digitv ingest" "Starting" "Message" "$ENTITY"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Message" "$ENTITY"
 
 java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
  dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \
@@ -31,4 +32,4 @@ java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUS
 
 #cat $YOUSEE_HOME/examples/digiTVIngester_output.json
 
-report "Digitv ingest" "Completed" "Message" "$ENTITY"
+report "$NAME" "Completed" "Message" "$ENTITY"

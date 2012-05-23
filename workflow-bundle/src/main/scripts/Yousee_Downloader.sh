@@ -15,9 +15,10 @@ ENTITY=$1
 YOUSEENAME=$2
 LOCALNAME=$3
 
-report "yousee Downloader" "Starting" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$ENTITY"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$ENTITY"
 
 #cat $YOUSEE_HOME/examples/downloader_output_downloaded.json
 $YOUSEE_HOME/components/youseeDownloader/yousee-downloader.sh "$CONFIGFILE" "$YOUSEENAME" "$LOCALNAME"
 
-report "yousee Downloader" "completed" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$ENTITY"
+report "$NAME" "completed" "Started with youseeFilename='$YOUSEENAME' and localname='$LOCALNAME'" "$ENTITY"

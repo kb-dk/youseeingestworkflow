@@ -18,7 +18,8 @@ FFPROBEPROFILE_LOCATION=$4
 CROSSCHECKPROFILE_LOCATION=$5
 YOUSEEMETADATA_LOCATION=$6
 
-report "Doms ingester" "Starting" "Message" "$ENTITY"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Message" "$ENTITY"
 
 #cat $YOUSEE_HOME/examples/domsIngester_output.json
 java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/* \
@@ -34,4 +35,4 @@ PID=$!
 
 
 
-report "Doms ingester" "Completed" "Message" "$ENTITY"
+report "$NAME" "Completed" "Message" "$ENTITY"

@@ -27,7 +27,7 @@ cp -u $YOUSEE_HOME/workflowDependencies/* $LIB
 
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
--inputvalue Download_initiator_input "$1"  \
+-inputvalue Ingest_workflow_startDate "$1"  \
 "$YOUSEE_HOME/taverna/Yousee_ingest_workflow.t2flow"
 
 exit 0

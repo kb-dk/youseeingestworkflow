@@ -19,6 +19,7 @@
         <bitrepoClient.version>0.2</bitrepoClient.version>
         <profileValidator.version>0.2</profileValidator.version>
         <domsClient.version>0.1.0-SNAPSHOT</domsClient.version>
+        <digiTVingester.version>0.1.0-SNAPSHOT</digiTVingester.version>
     </properties>
 
 

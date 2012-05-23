@@ -11,9 +11,7 @@
     </parent>
     <packaging>pom</packaging>
 
-    <groupId>dk.statsbiblioteket.mediespring</groupId>
     <artifactId>workflow-bundle</artifactId>
-    <version>0.2-SNAPSHOT</version>
 
 
     <dependencies>
@@ -26,7 +24,7 @@
         <dependency>
             <groupId>dk.statsbiblioteket.mediespring</groupId>
             <artifactId>bitrepo_wrapper</artifactId>
-            <version>0.2-SNAPSHOT</version>
+            <version>${version}</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
@@ -40,20 +38,10 @@
         <dependency>
             <groupId>dk.statsbiblioteket.digitv.youseeingester</groupId>
             <artifactId>YouseeDigitvIngester</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>${digiTVingester.version}</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
-        <!--
-                <dependency>
-                    <groupId>dk.statsbiblioteket.mediespring</groupId>
-                    <artifactId>ingest_initiator_wrapper</artifactId>
-                    <version>0.2-SNAPSHOT</version>
-                    <classifier>bundle</classifier>
-                    <type>zip</type>
-                </dependency>
-        -->
-
 
         <dependency>
             <groupId>dk.statsbiblioteket.mediaplatform.ingest</groupId>

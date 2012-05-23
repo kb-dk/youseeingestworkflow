@@ -15,8 +15,9 @@ source $SCRIPT_PATH/env.sh
 ENTITY=$1
 LOCALFILE=$2
 
-report "Crosscheck characteriser" "Starting" "Message" "$ENTITY"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Message" "$ENTITY"
 
 cat $YOUSEE_HOME/examples/crossCheck_output.xml
 
-report "Crosscheck characteriser" "Completed" "Message" "$ENTITY"
+report "$NAME" "Completed" "Message" "$ENTITY"

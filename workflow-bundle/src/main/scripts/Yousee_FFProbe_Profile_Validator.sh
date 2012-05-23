@@ -14,9 +14,9 @@ source $SCRIPT_PATH/env.sh
 ENTITY=$1
 XML=$2
 
-
-report "FFprobe validator" "Starting" "Message" "$ENTITY"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Message" "$ENTITY"
 
 $YOUSEE_HOME/components/profileValidator/validateXmlWithProfile.sh $XML $CONFIGFILE
 
-report "FFprobe validator" "Completed" "Message" "$ENTITY"
+report "$NAME" "Completed" "Message" "$ENTITY"

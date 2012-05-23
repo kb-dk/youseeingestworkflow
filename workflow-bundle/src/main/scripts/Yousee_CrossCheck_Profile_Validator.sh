@@ -12,11 +12,13 @@ popd  > /dev/null
 
 source $SCRIPT_PATH/env.sh
 
+
 ENTITY=$1
-LOCALFILE=$2
+XML=$2
 
-report "FFprobe characteriser" "Starting" "Message" "$ENTITY"
+NAME=`basename $0 .sh`
+report "$NAME" "Starting" "Message" "$ENTITY"
 
-cat $YOUSEE_HOME/examples/ffprobe_output.xml
+$YOUSEE_HOME/components/profileValidator/validateXmlWithProfile.sh $XML $CONFIGFILE
 
-report "FFprobe characteriser" "Completed" "Message" "$ENTITY"
+report "$NAME" "Completed" "Message" "$ENTITY"
