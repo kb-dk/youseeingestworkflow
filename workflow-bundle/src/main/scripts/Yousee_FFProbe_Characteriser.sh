@@ -18,6 +18,6 @@ LOCALFILE=$2
 NAME=`basename $0 .sh`
 report "$NAME" "Starting" "Message" "$ENTITY"
 
-cat $YOUSEE_HOME/examples/ffprobe_output.xml
+$YOUSEE_HOME/components/ffprobe/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE
 
 report "$NAME" "Completed" "Message" "$ENTITY"
