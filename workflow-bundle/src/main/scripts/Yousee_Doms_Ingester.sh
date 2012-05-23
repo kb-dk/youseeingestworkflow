@@ -19,7 +19,7 @@ CROSSCHECKPROFILE_LOCATION=$5
 YOUSEEMETADATA_LOCATION=$6
 
 NAME=`basename $0 .sh`
-report "$NAME" "Starting" "Message" "$ENTITY"
+report "$NAME" "Started" "$ENTITY"
 
 #cat $YOUSEE_HOME/examples/domsIngester_output.json
 java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/* \
@@ -31,8 +31,11 @@ java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$Y
  -crosscheck "$CROSSCHECKPROFILE_LOCATION" \
  -metadata "$YOUSEEMETADATA_LOCATION" \
 # //-configFile "$CONFIGFILE"
-PID=$!
 
-
-
-report "$NAME" "Completed" "Message" "$ENTITY"
+RETURNCODE=$?
+if [ $RETURNCODE == 0 ];then
+   report "$NAME" "Completed" "$ENTITY"
+else
+    report "$NAME" "Failed" "$ENTITY"
+fi
+exit $RETURNCODE

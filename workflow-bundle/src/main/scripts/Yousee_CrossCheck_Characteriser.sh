@@ -16,8 +16,14 @@ ENTITY=$1
 LOCALFILE=$2
 
 NAME=`basename $0 .sh`
-report "$NAME" "Starting" "Message" "$ENTITY"
+report "$NAME" "Started" "$ENTITY"
 
 cat $YOUSEE_HOME/examples/crossCheck_output.xml
 
-report "$NAME" "Completed" "Message" "$ENTITY"
+RETURNCODE=$?
+if [ $RETURNCODE == 0 ];then
+   report "$NAME" "Completed" "$ENTITY"
+else
+    report "$NAME" "Failed" "$ENTITY"
+fi
+exit $RETURNCODE

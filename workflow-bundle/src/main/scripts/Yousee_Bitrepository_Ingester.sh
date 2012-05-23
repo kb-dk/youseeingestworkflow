@@ -19,10 +19,16 @@ CHECKSUM=$4
 FILESIZE=$5
 
 NAME=`basename $0 .sh`
-report "$NAME" "Starting" "Message" "$ENTITY"
+report "$NAME" "Started" "$ENTITY"
 
 java -cp $YOUSEE_HOME/components/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/components/bitrepoLibs/* \
 dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.TheClient \
 "$CONFIGFILE" "$LOCALFILEURL" "$REMOTEFILEID" "$CHECKSUM" "$FILESIZE"
 
-report "$NAME" "Completed" "Message" "$ENTITY"
+RETURNCODE=$?
+if [ $RETURNCODE == 0 ];then
+   report "$NAME" "Completed" "$ENTITY"
+else
+    report "$NAME" "Failed" "$ENTITY"
+fi
+exit $RETURNCODE

@@ -14,13 +14,16 @@ source $SCRIPT_PATH/env.sh
 ENTITY=$1
 RESULT=$2
 
+NAME=`basename $0 .sh`
+
+report "$NAME" "Started" "$ENTITY"
 if [ "$RESULT" == "true" ]; then
-   report "Validation" "Validation succes" "Message" "$ENTITY"
+   report "$NAME" "Completed" "$ENTITY"
    echo "Validated $ENTITY"
    echo "Validated $ENTITY" >&2
    exit 0
 else
-   report "Validation" "Validationfailure" "Message" "$ENTITY"
+   report "$NAME" "Failed" "$ENTITY"
    echo "Failed to validate $ENTITY"
    echo "Failed to validate $ENTITY" >&2
    exit 1

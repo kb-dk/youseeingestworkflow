@@ -1,3 +1,3 @@
 #!/bin/bash
 
-STATEMONTITORSERVER="http://canopus:34080/workflowstatemonitor"
+STATEMONTITORSERVER="http://canopus:9511/workflowstatemonitor"

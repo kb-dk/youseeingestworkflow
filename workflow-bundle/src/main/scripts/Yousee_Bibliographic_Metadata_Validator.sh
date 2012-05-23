@@ -18,8 +18,14 @@ STARTTIME=$4
 ENDTIME=$5
 
 NAME=`basename $0 .sh`
-report "$NAME" "Starting" "Message" "$ENTITY"
+report "$NAME" "Started" "$ENTITY"
 
 cat $YOUSEE_HOME/examples/bibliograpthic_validator_output.json
 
-report "$NAME" "Completed" "Message" "$ENTITY"
+RETURNCODE=$?
+if [ $RETURNCODE == 0 ];then
+   report "$NAME" "Completed" "$ENTITY"
+else
+    report "$NAME" "Failed" "$ENTITY"
+fi
+exit $RETURNCODE

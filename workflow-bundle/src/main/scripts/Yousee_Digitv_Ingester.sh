@@ -20,7 +20,7 @@ STARTTIME=$4
 ENDTIME=$5
 
 NAME=`basename $0 .sh`
-report "$NAME" "Starting" "Message" "$ENTITY"
+report "$NAME" "Started" "$ENTITY"
 
 java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
  dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \
@@ -32,4 +32,10 @@ java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUS
 
 #cat $YOUSEE_HOME/examples/digiTVIngester_output.json
 
-report "$NAME" "Completed" "Message" "$ENTITY"
+RETURNCODE=$?
+if [ $RETURNCODE == 0 ];then
+   report "$NAME" "Completed" "$ENTITY"
+else
+    report "$NAME" "Failed" "$ENTITY"
+fi
+exit $RETURNCODE

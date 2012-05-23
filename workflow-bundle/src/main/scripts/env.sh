@@ -19,8 +19,8 @@ CONFIGFILE=`echo ${!NAME}`
 function report(){
     COMPONENT=$1
     STATE=$2
-    MESSAGE=$3
-    ENTITY=$4
+    ENTITY=$3
+    MESSAGE="${*:4}"
     if [ -n "$MESSAGE" ]; then
         MESSAGE="<message>$MESSAGE</message>"
     else

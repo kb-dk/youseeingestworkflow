@@ -11,13 +11,21 @@ popd  > /dev/null
 
 source $SCRIPT_PATH/env.sh
 
+
 INPUT=$1
 
 NAME=`basename $0 .sh`
-report "$NAME" "Starting" "Started with input=$INPUT" "$INPUT"
+report "$NAME" "Started" "$INPUT"
 
-#cat $YOUSEE_HOME/examples/download_initiator_output.json
-java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_media_files-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
-dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI "$CONFIGFILE" "$INPUT"
 
-report "$NAME" "Completed" "Started with input=$INPUT" "$INPUT"
+cat $YOUSEE_HOME/examples/download_initiator_output.json
+#java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_impl-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
+#dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI "$CONFIGFILE" "$INPUT"
+
+RETURNCODE=$?
+if [ $RETURNCODE == 0 ];then
+   report "$NAME" "Completed" "$ENTITY"
+else
+    report "$NAME" "Failed" "$ENTITY"
+fi
+exit $RETURNCODE
