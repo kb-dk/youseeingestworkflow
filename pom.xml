@@ -15,7 +15,7 @@
 
     <properties>
         <youseeDownloader.version>1.0</youseeDownloader.version>
-        <downloadInitiator.version>0.4.0-SNAPSHOT</downloadInitiator.version>
+        <downloadInitiator.version>0.4.3-SNAPSHOT</downloadInitiator.version>
         <bitrepoClient.version>0.2</bitrepoClient.version>
         <profileValidator.version>0.2</profileValidator.version>
         <domsClient.version>0.1.0-SNAPSHOT</domsClient.version>
