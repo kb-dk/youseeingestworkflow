@@ -21,7 +21,7 @@ FILESIZE=$5
 NAME=`basename $0 .sh`
 report "$NAME" "Started" "$ENTITY"
 
-java -cp $YOUSEE_HOME/components/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/components/bitrepoLibs/* \
+$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/components/bitrepoLibs/* \
 dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.TheClient \
 "$CONFIGFILE" "$LOCALFILEURL" "$REMOTEFILEID" "$CHECKSUM" "$FILESIZE"
 

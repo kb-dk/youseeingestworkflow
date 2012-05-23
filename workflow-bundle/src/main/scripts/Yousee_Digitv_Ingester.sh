@@ -22,7 +22,7 @@ ENDTIME=$5
 NAME=`basename $0 .sh`
 report "$NAME" "Started" "$ENTITY"
 
-java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
+$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
  dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \
  -filename "$ENTITY" \
  -starttime "$STARTTIME" \

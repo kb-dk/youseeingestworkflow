@@ -122,13 +122,18 @@
                                 <phase>pre-integration-test</phase>
                                 <configuration>
                                     <target>
-                                        <echo message="${project.build.directory}/${project.build.finalName}-package.zip"/>
+
+                                        <!-- Requires that a private/public key login has been enabled for this account -->
+                                        <scp file="${project.build.directory}/${project.build.finalName}-package.zip"
+                                             toDir="yousee@canopus:~/yousee-workflow"
+                                             keyfile="${user.home}/.ssh/passwordless"/>
+                                        <sshexec host="canopus"
+                                                 username="yousee"
+                                                 keyfile="${user.home}/.ssh/passwordless"
+                                                 command="cd yousee-workflow/; rm -r ${project.build.finalName}; unzip ${project.build.finalName}-package.zip"
+                                                 failonerror="true"/>
                                         <!--Find deply folder ${project.build.outputDirectory}-->
                                         <!--unzip package-->
-                                        <delete dir="${project.build.directory}/${project.build.finalName}/" quiet="true"/>
-                                        <exec executable="unzip" dir="${project.build.directory}/" failonerror="true">
-                                            <arg value="${project.build.directory}/${project.build.finalName}-package.zip"/>
-                                        </exec>
                                     </target>
                                 </configuration>
                                 <goals>
@@ -147,19 +152,14 @@
                                     <!--Run workflow-->
 
                                     <target>
-                                        <exec executable="bin/runWorkflow.sh"
-                                              failonerror="true"
-                                              dir="${project.build.directory}/${project.build.finalName}/">
-                                            <arg value="2007-04-04"/>
-                                            <env key="TAVERNA_HOME" value="${user.home}/Tools/taverna-workbench-2.4.0/"/>
-                                            <env key="YOUSEE_CONFIG" value="${user.home}/Projects/Medieplatform-config/"/>
-                                        </exec>
-
-                                        <!--Inspect output?-->
-                                        <exec executable="bin/inspectResults.sh"
-                                              failonerror="true"
-                                              dir="${project.build.directory}/${project.build.finalName}/">
-                                        </exec>
+                                        <sshexec
+                                                host="canopus"
+                                                username="yousee"
+                                                keyfile="${user.home}/.ssh/passwordless"
+                                                command="~/yousee-workflow/${project.build.finalName}/integrationTests/integrationTest1.sh"
+                                                failonerror="true"
+                                                >
+                                        </sshexec>
                                     </target>
                                 </configuration>
                                 <goals>

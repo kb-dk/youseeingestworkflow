@@ -22,7 +22,7 @@ NAME=`basename $0 .sh`
 report "$NAME" "Started" "$ENTITY"
 
 #cat $YOUSEE_HOME/examples/domsIngester_output.json
-java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/* \
+$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/* \
  dk.statsbiblioteket.doms.yousee.YouseeIngesterCLI \
  -filename "$ENTITY" \
  -url "$REMOTEURL" \

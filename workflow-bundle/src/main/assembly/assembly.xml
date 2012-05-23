@@ -80,6 +80,11 @@
             <directory>src/main/bin</directory>
             <fileMode>755</fileMode>
         </fileSet>
+        <fileSet>
+            <outputDirectory>integrationTests</outputDirectory>
+            <directory>src/main/integrationTests</directory>
+            <fileMode>755</fileMode>
+        </fileSet>
 
         <fileSet>
             <outputDirectory>scripts</outputDirectory>

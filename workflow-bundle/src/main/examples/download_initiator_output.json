@@ -1,25 +1,20 @@
 {
-    "downloads":[
-        {
-            "fileID" : "DR HD_20120915_100000_20120915_110000.mux",
+     "downloads":[
+         {
+            "fileID" : "dr1_yousee.1326114000-2012-01-09-14.00.00_1326117600-2012-01-09-15.00.00_dvb1-1.ts",
+            "youSeeFilename" : "DR HD_20120915_100000_20120915_110000.mux",
             "startTime" : "20120915100000",
             "endTime" : "20120915110000",
             "youseeChannelID" : "DR HD",
             "sbChannelID" : "drhd"
-        },
-        {
-            "fileID" : "TV2_20120915_110000_20120915_120000.mux",
-            "startTime" : "20120915100000",
-            "endTime" : "20120915110000",
-            "youseeChannelID" : "TV2",
-            "sbChannelID" : "tv2"
-        },
-        {
-            "fileID" : "TV3_20120915_110000_20120915_120000.mux",
-            "startTime" : "20120915100000",
-            "endTime" : "20120915110000",
-            "youseeChannelID" : "TV3",
-            "sbChannelID" : "tv3"
-        }
-    ]
-}
+         },
+         {
+            "fileID" : "dr1_yousee.1326114000-2012-01-09-14.00.00_1326117600-2012-01-09-15.00.00_dvb1-1.ts",
+            "youSeeFilename" : "DR HD_20120915_110000_20120915_120000.mux",
+            "startTime" : "20120915110000",
+            "endTime" : "20120915120000",
+            "youseeChannelID" : "DR HD",
+            "sbChannelID" : "drhd"
+         }
+     ]
+ }
