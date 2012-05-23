@@ -110,7 +110,7 @@
     <profiles>
 
         <profile>
-            <id>deploy2test</id>
+            <id>integrationTestProfile</id>
             <build>
                 <plugins>
                     <plugin>
@@ -118,68 +118,71 @@
                         <version>1.7</version>
                         <executions>
                             <execution>
+                                <id>Extract zip bundle</id>
                                 <phase>pre-integration-test</phase>
                                 <configuration>
                                     <target>
-                                        <!-- Requires that a private/public key login has been enabled for this account -->
-                                        <scp file="target/yousee-workflow-${project.version}.zip"
-                                             toDir="yousee@canopus:~/ci/sb-yousee-workflow"
-                                             keyfile="${user.home}/.ssh/id_rsa" />
-                                        <sshexec host="canopus"
-                                                 username="yousee"
-                                                 keyfile="${user.home}/.ssh/id_rsa"
-                                                 command="unzip ~/ci/sb-yousee-workflow/yousee-workflow-${project.version}.zip"/>
+                                        <echo message="${project.build.directory}/${project.build.finalName}-package.zip"/>
+                                        <!--Find deply folder ${project.build.outputDirectory}-->
+                                        <!--unzip package-->
+                                        <delete dir="${project.build.directory}/${project.build.finalName}/" quiet="true"/>
+                                        <exec executable="unzip" dir="${project.build.directory}/" failonerror="true">
+                                            <arg value="${project.build.directory}/${project.build.finalName}-package.zip"/>
+                                        </exec>
                                     </target>
                                 </configuration>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
                             </execution>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <id>run taverna</id>
+
+                                <configuration>
+
+                                    <!--Verify that taverna is there-->
+                                    <!--Set taverna home-->
+                                    <!--set YouseeConfig-->
+                                    <!--Run workflow-->
+
+                                    <target>
+                                        <exec executable="bin/runWorkflow.sh"
+                                              failonerror="true"
+                                              dir="${project.build.directory}/${project.build.finalName}/">
+                                            <arg value="2007-04-04"/>
+                                            <env key="TAVERNA_HOME" value="${user.home}/Tools/taverna-workbench-2.4.0/"/>
+                                            <env key="YOUSEE_CONFIG" value="${user.home}/Projects/Medieplatform-config/"/>
+                                        </exec>
+
+                                        <!--Inspect output?-->
+                                        <exec executable="bin/inspectResults.sh"
+                                              failonerror="true"
+                                              dir="${project.build.directory}/${project.build.finalName}/">
+                                        </exec>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+
                         </executions>
                         <dependencies>
                             <dependency>
                                 <groupId>org.apache.ant</groupId>
                                 <artifactId>ant-jsch</artifactId>
-                                <version>1.8.3</version>
+                                <version>1.8.2</version>
                             </dependency>
                         </dependencies>
                     </plugin>
                 </plugins>
             </build>
         </profile>
+
         <profile>
-            <id>runIntegrationTest</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.7</version>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <configuration>
-                                    <target>
-                                        <sshexec host="canopus"
-                                                 username="yousee"
-                                                 keyfile="${user.home}/.ssh/id_rsa"
-                                                 commandResource="target/test-classes/scripts/runIntegrationTest.sh" />
-                                    </target>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.apache.ant</groupId>
-                                <artifactId>ant-jsch</artifactId>
-                                <version>1.8.3</version>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-                </plugins>
-            </build>
+            <id>deploy2test</id>
+
         </profile>
     </profiles>
 
