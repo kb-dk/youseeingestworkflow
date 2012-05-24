@@ -36,7 +36,7 @@ log() {
         flock -s 200
         if [ $verbosity -ge $1 ]; then
             # Expand escaped characters, wrap at 70 chars, indent wrapped lines
-            echo -e `date +'%b %d %H:%M:%S'` `hostname` $0[$$] "${@:2}" | fold -w70 -s | sed '2~1s/^/  /' >&3
+            echo -e "`date +'%b %d %H:%M:%S'`" "`hostname`" "`basename $0`[$$]" "${@:2}" | fold -w70 -s | sed '2~1s/^/  /' >&3
         fi
     ) 200>$LOCKFILE
 }
