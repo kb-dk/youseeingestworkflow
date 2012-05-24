@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 pushd . > /dev/null
 SCRIPT_PATH="${BASH_SOURCE[0]}";
 if ([ -h "${SCRIPT_PATH}" ]) then
@@ -11,18 +9,17 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
+echo "Running the first integration tests."
+echo "This tests just ensures that at least one file makes it through the worlflow"
 
-export TAVERNA_HOME="/home/yousee/taverna/taverna-workbench-2.4.0/"
-export YOUSEE_CONFIG="/home/yousee/Medieplatform-config/"
-export JAVA_HOME="/usr/java/jdk1.6.0_32/"
 
 cd $SCRIPT_PATH/..
 
 bin/runWorkflow.sh 2007-05-05
 RETURNCODE=$?
-#if [ -n "$RETURNCODE" ]; then
-#    exit $RETURNCODE
-#fi
+if [ "$RETURNCODE" -ne "0"]; then
+    exit $RETURNCODE
+fi
 
 COUNT=`ls -1 Yousee_Ingest_Workfl_output/Ingest_Workflow_Result/ | grep -v \.error | wc -l`
 #echo $COUNT;
