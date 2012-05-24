@@ -24,40 +24,40 @@
         <dependency>
             <groupId>dk.statsbiblioteket.mediespring</groupId>
             <artifactId>bitrepo_wrapper</artifactId>
-            <version>${version}</version>
+            <version>0.2-SNAPSHOT</version>
             <classifier>bundle</classifier>
             <type>zip</type>
+
         </dependency>
 
         <dependency>
             <groupId>dk.statsbiblioteket.mediespring</groupId>
             <artifactId>SB-yousee-profile-validation</artifactId>
-            <version>${profileValidator.version}</version>
             <type>zip</type>
         </dependency>
         <dependency>
             <groupId>dk.statsbiblioteket.digitv.youseeingester</groupId>
             <artifactId>YouseeDigitvIngester</artifactId>
-            <version>${digiTVingester.version}</version>
             <classifier>bundle</classifier>
             <type>zip</type>
+
         </dependency>
 
         <dependency>
             <groupId>dk.statsbiblioteket.mediaplatform.ingest</groupId>
             <artifactId>ingest_initiator_bundle</artifactId>
-            <version>${downloadInitiator.version}</version>
             <classifier>bundle</classifier>
             <type>zip</type>
+
         </dependency>
 
 
         <dependency>
             <groupId>dk.statsbiblioteket.doms</groupId>
             <artifactId>yousee-doms-ingest-client</artifactId>
-            <version>${domsClient.version}</version>
             <classifier>bundle</classifier>
             <type>zip</type>
+
         </dependency>
 
     </dependencies>
@@ -156,7 +156,7 @@
                                                 host="canopus"
                                                 username="yousee"
                                                 keyfile="${user.home}/.ssh/passwordless"
-                                                command="~/yousee-workflow/${project.build.finalName}/integrationTests/integrationTest1.sh"
+                                                command="~/yousee-workflow/${project.build.finalName}/integrationTests/runIntegrationTests.sh"
                                                 failonerror="true"
                                                 >
                                         </sshexec>
