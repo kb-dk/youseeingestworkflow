@@ -21,9 +21,11 @@ FILESIZE=$5
 NAME=`basename $0 .sh`
 report "$NAME" "Started" "$ENTITY"
 
-$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/bitrepoLibs/bitrepository-url-client-*:$YOUSEE_HOME/components/bitrepoLibs/* \
-dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.TheClient \
+pushd $YOUSEE_HOME/components/bitrepoLibs/ > /dev/null
+$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/Bitrepository_Ingester/url-put-client-*:$YOUSEE_HOME/components/Bitrepository_Ingester/* \
+dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.UrlClient \
 "$CONFIGFILE" "$LOCALFILEURL" "$REMOTEFILEID" "$CHECKSUM" "$FILESIZE"
+popd > /dev/null
 
 RETURNCODE=$?
 if [ $RETURNCODE == 0 ];then

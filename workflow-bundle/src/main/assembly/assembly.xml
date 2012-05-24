@@ -20,11 +20,11 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/bitrepoLibs</outputDirectory>
+            <outputDirectory>components/Bitrepository_Ingester</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
-                <include>dk.statsbiblioteket.mediespring:bitrepo_wrapper</include>
+                <include>dk.statsbiblioteket.mediaplatform:url-put-client</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
