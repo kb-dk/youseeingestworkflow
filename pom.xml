@@ -67,7 +67,7 @@
             <dependency>
                 <groupId>dk.statsbiblioteket.digitv.youseeingester</groupId>
                 <artifactId>YouseeDigitvIngester</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>0.1.0</version>
                 <classifier>bundle</classifier>
                 <type>zip</type>
             </dependency>

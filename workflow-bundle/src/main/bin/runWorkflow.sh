@@ -25,6 +25,9 @@ LIB="$HOME/.taverna-$VERSION/lib/"
 mkdir -p $LIB
 cp -u $YOUSEE_HOME/workflowDependencies/* $LIB
 
+mkdir -p $YOUSEE_HOME/logs
+mkdir -p $YOUSEE_HOME/locks
+
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
 -inputvalue Ingest_workflow_startDate "$1"  \

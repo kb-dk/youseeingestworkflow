@@ -9,13 +9,13 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-echo "Running the first integration tests."
+echo "Running the first integration test."
 echo "This tests just ensures that at least one file makes it through the workflow"
 
 
 cd $SCRIPT_PATH/..
 
-bin/runWorkflow.sh 2007-05-05
+bin/runWorkflow.sh 2003-05-05
 RETURNCODE=$?
 if [ "$RETURNCODE" -ne "0" ]; then
     exit $RETURNCODE

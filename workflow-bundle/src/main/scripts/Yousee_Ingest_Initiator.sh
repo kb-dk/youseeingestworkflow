@@ -18,13 +18,13 @@ NAME=`basename $0 .sh`
 report "$NAME" "Started" "$INPUT"
 
 
-cat $YOUSEE_HOME/examples/download_initiator_output.json
+#cat $YOUSEE_HOME/examples/download_initiator_output.json
 
 
-#pushd $YOUSEE_CONFIG > /dev/null
-#$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_impl-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
-#dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI "$CONFIGFILE" "$INPUT"
-#popd > /dev/null
+pushd $YOUSEE_CONFIG > /dev/null
+$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_impl-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
+dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI "$CONFIGFILE" "$INPUT"
+popd > /dev/null
 
 
 RETURNCODE=$?
