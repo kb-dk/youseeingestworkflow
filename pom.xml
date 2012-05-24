@@ -14,12 +14,13 @@
     <packaging>pom</packaging>
 
     <properties>
+
+        <!--"${user.home}/.ssh/passwordless"-->
         <youseeDownloader.version>1.0</youseeDownloader.version>
     </properties>
 
 
     <modules>
-        <module>bitrepo_wrapper</module>
         <module>workflow-bundle</module>
     </modules>
 
@@ -42,17 +43,13 @@
 
             <!--Yousee Bitrepository Ingester-->
             <dependency>
-                <groupId>dk.statsbiblioteket.mediespring</groupId>
-                <artifactId>bitrepo_wrapper</artifactId>
-                <version>0.2-SNAPSHOT</version>
+                <groupId>dk.statsbiblioteket.mediaplatform</groupId>
+                <artifactId>url-put-client</artifactId>
+                <version>0.4-SNAPSHOT</version>
                 <classifier>bundle</classifier>
                 <type>zip</type>
             </dependency>
-            <dependency>
-                <groupId>dk.statsbiblioteket.mediaplatform</groupId>
-                <artifactId>bitrepository-url-client</artifactId>
-                <version>0.2</version>
-            </dependency>
+
 
             <!--Yousee FFProbe Profile Validator-->
             <!--Yousee CrossCheck Profile Validator-->

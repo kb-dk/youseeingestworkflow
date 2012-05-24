@@ -22,9 +22,8 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>dk.statsbiblioteket.mediespring</groupId>
-            <artifactId>bitrepo_wrapper</artifactId>
-            <version>0.2-SNAPSHOT</version>
+            <groupId>dk.statsbiblioteket.mediaplatform</groupId>
+            <artifactId>url-put-client</artifactId>
             <classifier>bundle</classifier>
             <type>zip</type>
 
@@ -129,7 +128,7 @@
                                              keyfile="${user.home}/.ssh/passwordless"/>
                                         <sshexec host="canopus"
                                                  username="yousee"
-                                                 keyfile="${user.home}/.ssh/passwordless"
+                                                 keyfile="${env.passwordlessKey}"
                                                  command="cd yousee-workflow/; rm -r ${project.build.finalName}; unzip ${project.build.finalName}-package.zip"
                                                  failonerror="true"/>
                                         <!--Find deply folder ${project.build.outputDirectory}-->
@@ -155,7 +154,7 @@
                                         <sshexec
                                                 host="canopus"
                                                 username="yousee"
-                                                keyfile="${user.home}/.ssh/passwordless"
+                                                keyfile="${env.passwordlessKey}"
                                                 command="~/yousee-workflow/${project.build.finalName}/integrationTests/runIntegrationTests.sh"
                                                 failonerror="true"
                                                 >
