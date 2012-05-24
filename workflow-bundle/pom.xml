@@ -125,7 +125,7 @@
                                         <!-- Requires that a private/public key login has been enabled for this account -->
                                         <scp file="${project.build.directory}/${project.build.finalName}-package.zip"
                                              toDir="yousee@canopus:~/yousee-workflow"
-                                             keyfile="${user.home}/.ssh/passwordless"/>
+                                             keyfile="${env.passwordlessKey}"/>
                                         <sshexec host="canopus"
                                                  username="yousee"
                                                  keyfile="${env.passwordlessKey}"
