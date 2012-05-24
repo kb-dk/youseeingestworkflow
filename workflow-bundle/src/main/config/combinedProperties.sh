@@ -10,7 +10,7 @@ Yousee_CrossCheck_CharacteriserConfig="config.xml"
 
 Yousee_Bibliographic_Metadata_ValidatorConfig="config.xml"
 
-Yousee_FFProbe_CharacteriserConfig="config.xml"
+Yousee_FFProbe_CharacteriserConfig="$YOUSEE_CONFIG/ffprobeCharacterise/ffprobeCharacteriseConfig.sh"
 
 Yousee_CrossCheck_Profile_ValidatorConfig="$YOUSEE_CONFIG/crosscheckValidationProfile/crosscheckValidatorConfig.sh"
 

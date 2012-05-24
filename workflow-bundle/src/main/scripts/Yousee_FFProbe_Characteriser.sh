@@ -18,8 +18,8 @@ LOCALFILE=$2
 NAME=`basename $0 .sh`
 report "$NAME" "Started" "$ENTITY"
 
-cat $YOUSEE_HOME/examples/ffprobe_output.xml
-#$YOUSEE_HOME/components/ffprobe/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE
+#cat $YOUSEE_HOME/examples/ffprobe_output.xml
+$YOUSEE_HOME/components/FFProbe_Characteriser/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE
 
 RETURNCODE=$?
 if [ $RETURNCODE == 0 ];then

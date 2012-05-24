@@ -106,6 +106,12 @@
             <outputDirectory>examples</outputDirectory>
             <directory>src/main/examples</directory>
         </fileSet>
+
+        <fileSet>
+            <outputDirectory>components/FFProbe_Characteriser</outputDirectory>
+            <directory>src/main/components/FFProbe_Characteriser</directory>
+        </fileSet>
+
         <!--
 
                 <fileSet>
