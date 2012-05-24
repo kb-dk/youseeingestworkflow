@@ -22,13 +22,15 @@ ENDTIME=$5
 NAME=`basename $0 .sh`
 report "$NAME" "Started" "$ENTITY"
 
+pushd $YOUSEE_CONFIG > /dev/null
 $JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
  dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \
  -filename "$ENTITY" \
  -starttime "$STARTTIME" \
  -stoptime "$ENDTIME" \
- -channelid "$CHANNELID"
-# //-configFile "$CONFIGFILE"
+ -channelid "$CHANNELID" \
+ -config "$CONFIGFILE"
+popd > /dev/null
 
 #cat $YOUSEE_HOME/examples/digiTVIngester_output.json
 
