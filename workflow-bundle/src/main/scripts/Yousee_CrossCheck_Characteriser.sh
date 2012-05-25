@@ -18,7 +18,8 @@ LOCALFILE=$2
 NAME=`basename $0 .sh`
 report "$NAME" "Started" "$ENTITY"
 
-cat $YOUSEE_HOME/examples/crossCheck_output.xml
+#cat $YOUSEE_HOME/examples/crossCheck_output.xml
+$YOUSEE_HOME/components/Crosscheck_Characteriser/crosscheckCharacterise.sh $LOCALFILE $CONFIGFILE
 
 RETURNCODE=$?
 if [ $RETURNCODE == 0 ];then

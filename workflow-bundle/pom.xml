@@ -56,7 +56,23 @@
             <artifactId>yousee-doms-ingest-client</artifactId>
             <classifier>bundle</classifier>
             <type>zip</type>
+        </dependency>
 
+
+        <dependency>
+            <groupId>dk.statsbiblioteket.mediespring</groupId>
+            <artifactId>ffprobe_characteriser</artifactId>
+            <version>${version}</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
+        <dependency>
+            <groupId>dk.statsbiblioteket.mediespring</groupId>
+            <artifactId>crosscheck_characteriser</artifactId>
+            <version>${version}</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
         </dependency>
 
     </dependencies>
@@ -118,6 +134,7 @@
                         <executions>
                             <execution>
                                 <id>Extract zip bundle</id>
+
                                 <phase>pre-integration-test</phase>
                                 <configuration>
                                     <target>

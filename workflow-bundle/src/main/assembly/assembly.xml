@@ -28,6 +28,31 @@
             </includes>
             <scope>runtime</scope>
         </dependencySet>
+
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>components/FFProbe_Characteriser</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>dk.statsbiblioteket.mediespring:ffprobe_characteriser</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>components/Crosscheck_Characteriser</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>dk.statsbiblioteket.mediespring:crosscheck_characteriser</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>components/profileValidator</outputDirectory>

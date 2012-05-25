@@ -6,7 +6,7 @@ Yousee_DownloaderConfig="$YOUSEE_CONFIG/youseeDownloader/youseeDownloaderConfig.
 
 Yousee_Downloader_handleQueuedFileConfig="$YOUSEE_CONFIG/downloaderQueuedReporter/youseeDownloaderConfig.sh"
 
-Yousee_CrossCheck_CharacteriserConfig="config.xml"
+Yousee_CrossCheck_CharacteriserConfig="$YOUSEE_CONFIG/crosscheckCharacterise/crosscheckCharacteriseConfig.sh"
 
 Yousee_Bibliographic_Metadata_ValidatorConfig="config.xml"
 
