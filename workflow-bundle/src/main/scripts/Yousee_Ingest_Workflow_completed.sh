@@ -30,6 +30,7 @@ echo $REMOTEURL
 echo $LOCALURL
 rm $FILENAME
 report "$NAME" "Done" "$ENTITY"
+inf "$ENTITY" "$NAME succeeded for $ENTITY"
 exit "0"
 
 
