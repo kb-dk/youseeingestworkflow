@@ -15,14 +15,10 @@ ENTITY=$1
 XML=$2
 
 NAME=`basename $0 .sh`
-report "$NAME" "Started" "$ENTITY"
 
-$YOUSEE_HOME/components/profileValidator/validateXmlWithProfile.sh $XML $CONFIGFILE
+CMD="$YOUSEE_HOME/components/profileValidator/validateXmlWithProfile.sh $XML $CONFIGFILE"
 
+OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
-if [ $RETURNCODE == 0 ];then
-   report "$NAME" "Completed" "$ENTITY"
-else
-    report "$NAME" "Failed" "$ENTITY"
-fi
-exit $RETURNCODE
+echo "$OUTPUT"
+exit "$RETURNCODE"

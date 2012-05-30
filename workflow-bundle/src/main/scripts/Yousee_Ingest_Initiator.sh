@@ -15,21 +15,16 @@ source $SCRIPT_PATH/env.sh
 INPUT=$1
 
 NAME=`basename $0 .sh`
-report "$NAME" "Started" "$INPUT"
+
 
 
 #cat $YOUSEE_HOME/examples/download_initiator_output.json
 
-pushd $YOUSEE_CONFIG > /dev/null
-$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_impl-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
-dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI "$CONFIGFILE" "$INPUT"
-popd > /dev/null
+CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_impl-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
+dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI $CONFIGFILE $INPUT"
 
-
+OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME" "$INPUT"`"
 RETURNCODE=$?
-if [ $RETURNCODE == 0 ];then
-   report "$NAME" "Completed" "$ENTITY"
-else
-    report "$NAME" "Failed" "$ENTITY"
-fi
-exit $RETURNCODE
+echo "$OUTPUT"
+exit "$RETURNCODE"
+

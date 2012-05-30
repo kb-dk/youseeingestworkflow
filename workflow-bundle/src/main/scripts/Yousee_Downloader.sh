@@ -16,14 +16,10 @@ YOUSEENAME=$2
 LOCALNAME=$3
 
 NAME=`basename $0 .sh`
-report "$NAME" "Started" "$ENTITY"
 
-#cat $YOUSEE_HOME/examples/downloader_output_downloaded.json
-$YOUSEE_HOME/components/youseeDownloader/yousee-downloader.sh "$CONFIGFILE" "$YOUSEENAME" "$LOCALNAME"
+CMD="$YOUSEE_HOME/components/youseeDownloader/yousee-downloader.sh $CONFIGFILE $YOUSEENAME $LOCALNAME"
+
+OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
-if [ $RETURNCODE == 0 ];then
-   report "$NAME" "Completed" "$ENTITY"
-else
-    report "$NAME" "Failed" "$ENTITY"
-fi
-exit $RETURNCODE
+echo "$OUTPUT"
+exit "$RETURNCODE"

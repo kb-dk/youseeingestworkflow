@@ -58,7 +58,7 @@
             <dependency>
                 <groupId>dk.statsbiblioteket.mediespring</groupId>
                 <artifactId>SB-yousee-profile-validation</artifactId>
-                <version>0.2</version>
+                <version>0.3-SNAPSHOT</version>
                 <type>zip</type>
             </dependency>
 

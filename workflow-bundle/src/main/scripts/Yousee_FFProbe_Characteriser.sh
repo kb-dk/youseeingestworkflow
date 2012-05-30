@@ -16,15 +16,11 @@ ENTITY=$1
 LOCALFILE=$2
 
 NAME=`basename $0 .sh`
-report "$NAME" "Started" "$ENTITY"
 
-#cat $YOUSEE_HOME/examples/ffprobe_output.xml
-$YOUSEE_HOME/components/FFProbe_Characteriser/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE
+CMD="$YOUSEE_HOME/components/FFProbe_Characteriser/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE"
 
+OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
-if [ $RETURNCODE == 0 ];then
-   report "$NAME" "Completed" "$ENTITY"
-else
-    report "$NAME" "Failed" "$ENTITY"
-fi
-exit $RETURNCODE
+echo "$OUTPUT"
+exit "$RETURNCODE"
+

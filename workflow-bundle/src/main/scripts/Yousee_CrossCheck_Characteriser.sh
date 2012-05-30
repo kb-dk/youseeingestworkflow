@@ -11,20 +11,15 @@ popd  > /dev/null
 
 source $SCRIPT_PATH/env.sh
 
-
 ENTITY=$1
 LOCALFILE=$2
 
 NAME=`basename $0 .sh`
-report "$NAME" "Started" "$ENTITY"
 
-#cat $YOUSEE_HOME/examples/crossCheck_output.xml
-$YOUSEE_HOME/components/Crosscheck_Characteriser/crosscheckCharacterise.sh $LOCALFILE $CONFIGFILE
+CMD="$YOUSEE_HOME/components/Crosscheck_Characteriser/crosscheckCharacterise.sh $LOCALFILE $CONFIGFILE"
 
+OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
-if [ $RETURNCODE == 0 ];then
-   report "$NAME" "Completed" "$ENTITY"
-else
-    report "$NAME" "Failed" "$ENTITY"
-fi
-exit $RETURNCODE
+echo "$OUTPUT"
+exit "$RETURNCODE"
+
