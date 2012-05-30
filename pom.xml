@@ -80,6 +80,26 @@
                 <classifier>bundle</classifier>
                 <type>zip</type>
             </dependency>
+
+
+            <dependency>
+                <groupId>dk.statsbiblioteket.mediespring</groupId>
+                <artifactId>ffprobe_characteriser</artifactId>
+                <version>${project.version}</version>
+                <classifier>bundle</classifier>
+                <type>zip</type>
+            </dependency>
+
+            <dependency>
+                <groupId>dk.statsbiblioteket.mediespring</groupId>
+                <artifactId>crosscheck_characteriser</artifactId>
+                <version>${project.version}</version>
+                <classifier>bundle</classifier>
+                <type>zip</type>
+            </dependency>
+
+
+
         </dependencies>
     </dependencyManagement>
 
