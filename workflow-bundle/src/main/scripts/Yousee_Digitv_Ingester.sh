@@ -19,25 +19,19 @@ CHANNELID=$3
 STARTTIME=$4
 ENDTIME=$5
 
+
+
 NAME=`basename $0 .sh`
-report "$NAME" "Started" "$ENTITY"
 
-pushd $YOUSEE_CONFIG > /dev/null
-$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
+CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
  dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \
- -filename "$ENTITY" \
- -starttime "$STARTTIME" \
- -stoptime "$ENDTIME" \
- -channelid "$CHANNELID" \
- -config "$CONFIGFILE"
-popd > /dev/null
+ -filename $ENTITY \
+ -starttime $STARTTIME \
+ -stoptime $ENDTIME \
+ -channelid $CHANNELID \
+ -config $CONFIGFILE"
 
-#cat $YOUSEE_HOME/examples/digiTVIngester_output.json
-
+OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
-if [ $RETURNCODE == 0 ];then
-   report "$NAME" "Completed" "$ENTITY"
-else
-    report "$NAME" "Failed" "$ENTITY"
-fi
-exit $RETURNCODE
+echo "$OUTPUT"
+exit "$RETURNCODE"

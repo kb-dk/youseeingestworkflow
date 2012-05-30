@@ -18,24 +18,23 @@ FFPROBEPROFILE_LOCATION=$4
 CROSSCHECKPROFILE_LOCATION=$5
 YOUSEEMETADATA_LOCATION=$6
 
-NAME=`basename $0 .sh`
-report "$NAME" "Started" "$ENTITY"
 
-#cat $YOUSEE_HOME/examples/domsIngester_output.json
-$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/* \
+
+
+NAME=`basename $0 .sh`
+
+CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/* \
  dk.statsbiblioteket.doms.yousee.YouseeIngesterCLI \
- -filename "$ENTITY" \
- -url "$REMOTEURL" \
- -checksum "$CHECKSUM" \
- -ffprobe "$FFPROBEPROFILE_LOCATION" \
- -crosscheck "$CROSSCHECKPROFILE_LOCATION" \
- -metadata "$YOUSEEMETADATA_LOCATION" \
+ -filename $ENTITY \
+ -url $REMOTEURL \
+ -checksum $CHECKSUM \
+ -ffprobe $FFPROBEPROFILE_LOCATION \
+ -crosscheck $CROSSCHECKPROFILE_LOCATION \
+ -metadata $YOUSEEMETADATA_LOCATION "
 # //-configFile "$CONFIGFILE"
 
+OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
-if [ $RETURNCODE == 0 ];then
-   report "$NAME" "Completed" "$ENTITY"
-else
-    report "$NAME" "Failed" "$ENTITY"
-fi
-exit $RETURNCODE
+echo "$OUTPUT"
+exit "$RETURNCODE"
+
