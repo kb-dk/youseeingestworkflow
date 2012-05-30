@@ -13,6 +13,7 @@ source $SCRIPT_PATH/env.sh
 
 ENTITY=$1
 XML=$2
+CHANNELID=$3
 
 NAME=`basename $0 .sh`
 
