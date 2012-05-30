@@ -17,7 +17,7 @@ DOWNLOADER_JSON_OUTPUT=$2
 LOCALNAME=`cat $DOWNLOADER_JSON_OUTPUT | grep "localName" | cut -d'"' -f4`
 YOUSEENAME=`cat $DOWNLOADER_JSON_OUTPUT | grep "youseeName" | cut -d'"' -f4`
 
-NAME=`basename $0 .sh`
+NAME=`basename $0 .sh | cut -d'_' -f-2`
 report "$NAME" "Queued" "$ENTITY"
 
 cat $DOWNLOADER_JSON_OUTPUT

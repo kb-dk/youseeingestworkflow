@@ -18,6 +18,8 @@ REMOTEURL=$4
 LOCALURL=$5
 
 
+FILENAME="${LOCALURL#"file://"}"
+
 NAME=`basename $0 .sh`
 report "$NAME" "Started" "$ENTITY"
 
@@ -26,13 +28,8 @@ echo $DOMSPID
 echo $DIGITVPID
 echo $REMOTEURL
 echo $LOCALURL
-RETURNCODE=$?
-if [ $RETURNCODE == 0 ];then
-    report "$NAME" "Done" "$ENTITY"
-else
-    report "$NAME" "Failed" "$ENTITY"
-fi
-exit $RETURNCODE
+rm $FILENAME
+report "$NAME" "Done" "$ENTITY"
+exit "0"
 
 
-#TODO rm the downloaded file
