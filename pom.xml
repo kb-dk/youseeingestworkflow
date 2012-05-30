@@ -47,7 +47,7 @@
             <dependency>
                 <groupId>dk.statsbiblioteket.mediaplatform</groupId>
                 <artifactId>url-put-client</artifactId>
-                <version>0.4-SNAPSHOT</version>
+                <version>0.3</version>
                 <classifier>bundle</classifier>
                 <type>zip</type>
             </dependency>
