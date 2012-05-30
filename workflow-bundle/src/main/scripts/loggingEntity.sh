@@ -9,8 +9,6 @@
 # verbosity=2 The loglevel
 # LOCKFILE The file to ensure that different invocations do not race the log
 
-touch $logFile
-exec 3>>$logFile
 
 silent_lvl=0
 err_lvl=1
@@ -18,25 +16,25 @@ wrn_lvl=2
 inf_lvl=3
 dbg_lvl=4
 
-notify() { log $silent_lvl "NOTE:" "$@"; } # Always prints
+notify() { log $1 $silent_lvl "NOTE:" "${@:2}"; } # Always prints
 
-error() { log $err_lvl "ERROR:" "$@" ; }
+error() { log $1 $err_lvl "ERROR:" "${@:2}" ; }
 
-warn() { log $wrn_lvl "WARNING:" "$@"; }
+warn() { log $1 $wrn_lvl "WARNING:" "${@:2}"; }
 
-inf() { log $inf_lvl "INFO:" "$@"; } # "info" is already a command
+inf() { log $1 $inf_lvl "INFO:" "${@:2}"; } # "info" is already a command
 
-debug() { log $dbg_lvl "DEBUG:" "$@"; }
+debug() { log $1 $dbg_lvl "DEBUG:" "${@:2}"; }
 
 log() {
     (
-	if [ -z "${*:3}" ]; then
+	if [ -z "${*:4}" ]; then
 		return
 	fi
         flock -s 200
-        if [ $verbosity -ge $1 ]; then
+        if [ $verbosity -ge $2 ]; then
             # Expand escaped characters, wrap at 70 chars, indent wrapped lines
-            echo -e "`date +'%b %d %H:%M:%S'`" "`hostname`" "`basename $0`[$$]" "${@:2}" | fold -w70 -s | sed '2~1s/^/  /' >&3
+            echo -e "`date +'%b %d %H:%M:%S'`" "`hostname`" "`basename $0`[$$]" "${@:2}" | fold -w70 -s | sed '2~1s/^/  /' >> $LOGDIR/$1.log
         fi
     ) 200>$LOCKFILE
 }

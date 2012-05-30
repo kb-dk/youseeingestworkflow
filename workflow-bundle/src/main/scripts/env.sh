@@ -13,8 +13,8 @@ source $SCRIPT_PATH/../config/combinedProperties.sh
 source $SCRIPT_PATH/../config/statemonitorClientConfig.sh
 source $SCRIPT_PATH/../config/componentLoggingConfig.sh
 
-
-source $SCRIPT_PATH/logging.sh
+source $SCRIPT_PATH/loggingEntity.sh
+mkdir -p $LOGDIR
 
 NAME="`basename $0 .sh`Config"
 CONFIGFILE=`echo ${!NAME}`
@@ -60,17 +60,17 @@ function execute() {
 
 
     if [ "$RETURNCODE" -eq "0" ]; then
-        debug "$NAME succeeded for $ENTITY \n \
-        std err was \"`cat $tempfile`\" \n \
-        std out was: \"$OUTPUT\""
+        debug "$ENTITY" "$NAME succeeded for $ENTITY \n \
+        std out was: \"$OUTPUT\"\n \
+        std err was \"`cat $tempfile`\""
         rm "$tempfile"
         echo "$OUTPUT"
         report "$NAME" "Completed" "$ENTITY"
         return "0"
     else
-        error "$NAME succeeded for $ENTITY \n \
-        std err was \"`cat $tempfile`\" \n \
-        std out was: \"$OUTPUT\""
+        error "$ENTITY" "$NAME failed for $ENTITY \n \
+        std out was: \"$OUTPUT\"\n \
+        std err was \"`cat $tempfile`\""
         rm "$tempfile"
         report "$NAME" "Failed" "$ENTITY"
         return "$RETURNCODE"
