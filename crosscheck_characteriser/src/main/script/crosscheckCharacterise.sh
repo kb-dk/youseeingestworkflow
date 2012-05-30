@@ -1,7 +1,7 @@
 #!/bin/bash
 
-FILEURL=$1
-CONFIG=$2
+FILEURL="$1"
+CONFIG="$2"
 
 pushd . > /dev/null
 SCRIPT_PATH="${BASH_SOURCE[0]}";
@@ -16,9 +16,9 @@ if [ -z $YOUSEE_HOME ]; then
     YOUSEE_HOME=$SCRIPT_PATH/unittest
 fi
 
-source $CONFIG
+source "$CONFIG"
 
-source $SCRIPT_PATH/logging.sh
+source "$SCRIPT_PATH/logging.sh"
 
 
 #std error to log
@@ -29,7 +29,7 @@ tempfile="`mktemp`"
 
 #echo $tempfile
 
-FILENAME=${FILEURL#"file://"}
+FILENAME="${FILEURL#"file://"}"
 
 OUTPUT="`ssh $HOST crosscheck  -f x $FILENAME 2> "$tempfile"`"
 RETURNCODE="$?"
