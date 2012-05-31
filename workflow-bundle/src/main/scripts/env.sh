@@ -72,6 +72,7 @@ function execute() {
         std out was: \"$OUTPUT\"\n \
         std err was \"`cat $tempfile`\""
         rm "$tempfile"
+        echo "$OUTPUT"
         report "$NAME" "Failed" "$ENTITY" "$OUTPUT"
         return "$RETURNCODE"
     fi

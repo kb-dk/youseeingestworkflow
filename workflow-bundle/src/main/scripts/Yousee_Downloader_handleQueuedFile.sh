@@ -9,31 +9,25 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-echo "CALLED"
-echo "CALLED" >@2
-
 source $SCRIPT_PATH/env.sh
 
-ENTITY=$1
-DOWNLOADER_JSON_OUTPUT=$2
+ENTITY="$1"
+DOWNLOADER_JSON_OUTPUT="$PWD/$2"
 
-NAME=`basename $0 .sh | cut -d'_' -f-2`
+NAME=`basename "$0" ".sh" | cut -d'_' -f-2`
 
-CMD="grep \"queued\": $DOWNLOADER_JSON_OUTPUT | wc -l"
-#echo "$CMD was the command"
-FOUND=`$CMD`
-#echo "$FOUND was found"
+CMD="grep \"queued\": $DOWNLOADER_JSON_OUTPUT "
+FOUND=`$CMD | wc -l`
 
-if [ "$FOUND" -eq "0" ]; then \
-   cat $DOWNLOADER_JSON_OUTPUT
-   exit 0
+if [ "$FOUND" -eq 0 ]; then 
+    report "$NAME" "Completed" "$ENTITY"
+    cat $DOWNLOADER_JSON_OUTPUT
+    debug "$ENTITY" "Component $NAME marked $ENTITY as ok. FOUND was $FOUND, DOWNLOADER was $DOWNLOADER_JSON_OUTPUT. Contents was  `cat $DOWNLOADER_JSON_OUTPUT`"
+    exit 0
 else
     report "$NAME" "Queued" "$ENTITY"
-    cat $DOWNLOADER_JSON_OUTPUT
+    debug "$ENTITY" "Component $NAME marked $ENTITY as queued"
     exit 1
 fi
 
-
-#LOCALNAME=`cat $DOWNLOADER_JSON_OUTPUT | grep "localName" | cut -d'"' -f4`
-#YOUSEENAME=`cat $DOWNLOADER_JSON_OUTPUT | grep "youseeName" | cut -d'"' -f4`
 
