@@ -11,6 +11,7 @@
         <fileSet>
             <outputDirectory></outputDirectory>
             <directory>src/main/script</directory>
+            <fileMode>0755</fileMode>
         </fileSet>
 
     </fileSets>
