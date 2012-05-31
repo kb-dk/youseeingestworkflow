@@ -21,6 +21,15 @@
             <version>1.1.1</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>dk.statsbiblioteket.mediespring</groupId>
+            <artifactId>yousee-file-downloader</artifactId>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
+
         <dependency>
             <groupId>dk.statsbiblioteket.mediaplatform</groupId>
             <artifactId>url-put-client</artifactId>
@@ -77,27 +86,6 @@
 
     <build>
         <plugins>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>wagon-maven-plugin</artifactId>
-                <version>1.0-beta-4</version>
-                <executions>
-                    <execution>
-                        <id>download-youseeDownloadApp</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>download-single</goal>
-                        </goals>
-                        <configuration>
-                            <serverId>github</serverId>
-                            <url>https://raw.github.com/statsbiblioteket/yousee-file-downloader/${youseeDownloader.version}/</url>
-                            <fromFile>yousee-downloader.sh</fromFile>
-                            <toDir>${project.build.directory}/YouseeDownloader</toDir>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.2.2</version>

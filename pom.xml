@@ -13,11 +13,6 @@
     <version>0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <properties>
-
-        <!--"${user.home}/.ssh/passwordless"-->
-        <youseeDownloader.version>1.0</youseeDownloader.version>
-    </properties>
 
 
     <modules>
@@ -84,11 +79,21 @@
 
             <dependency>
                 <groupId>dk.statsbiblioteket.mediespring</groupId>
+                <artifactId>yousee-file-downloader</artifactId>
+                <version>2.0</version>
+                <classifier>bundle</classifier>
+                <type>zip</type>
+            </dependency>
+
+            <dependency>
+                <groupId>dk.statsbiblioteket.mediespring</groupId>
                 <artifactId>ffprobe_characteriser</artifactId>
                 <version>${project.version}</version>
                 <classifier>bundle</classifier>
                 <type>zip</type>
             </dependency>
+
+
 
             <dependency>
                 <groupId>dk.statsbiblioteket.mediespring</groupId>

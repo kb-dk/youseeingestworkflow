@@ -20,6 +20,16 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>components/youseeDownloader</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>dk.statsbiblioteket.mediespring:yousee-file-downloader</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>components/Bitrepository_Ingester</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
@@ -122,39 +132,12 @@
             <directory>src/main/taverna</directory>
         </fileSet>
 
-        <fileSet>
-            <outputDirectory>config</outputDirectory>
-            <directory>src/main/config</directory>
-        </fileSet>
 
         <fileSet>
             <outputDirectory>examples</outputDirectory>
             <directory>src/main/examples</directory>
         </fileSet>
 
-        <fileSet>
-            <outputDirectory>components/FFProbe_Characteriser</outputDirectory>
-            <directory>src/main/components/FFProbe_Characteriser</directory>
-        </fileSet>
-
-        <!--
-
-                <fileSet>
-                    <outputDirectory>components/validationProfiles</outputDirectory>
-                    <directory>src/main/validationProfiles</directory>
-                </fileSet>
-
-                <fileSet>
-                    <outputDirectory>components/profileValidator</outputDirectory>
-                    <directory>src/main/profileValidator</directory>
-                </fileSet>
-        -->
-
-        <fileSet>
-            <outputDirectory>components/youseeDownloader</outputDirectory>
-            <directory>${project.build.directory}/YouseeDownloader</directory>
-            <fileMode>755</fileMode>
-        </fileSet>
 
 
     </fileSets>
