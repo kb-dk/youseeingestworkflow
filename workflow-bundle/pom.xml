@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>dk.statsbiblioteket.mediespring</groupId>
         <artifactId>yousee-workflow</artifactId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.2</version>
     </parent>
     <packaging>pom</packaging>
 
@@ -126,14 +124,8 @@
                                     <target>
 
                                         <!-- Requires that a private/public key login has been enabled for this account -->
-                                        <scp file="${project.build.directory}/${project.build.finalName}-package.zip"
-                                             toDir="yousee@canopus:~/yousee-workflow"
-                                             keyfile="${env.passwordlessKey}"/>
-                                        <sshexec host="canopus"
-                                                 username="yousee"
-                                                 keyfile="${env.passwordlessKey}"
-                                                 command="cd yousee-workflow/; rm -r ${project.build.finalName}; unzip ${project.build.finalName}-package.zip"
-                                                 failonerror="true"/>
+                                        <scp file="${project.build.directory}/${project.build.finalName}-package.zip" toDir="yousee@canopus:~/yousee-workflow" keyfile="${env.passwordlessKey}" />
+                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command="cd yousee-workflow/; rm -r ${project.build.finalName}; unzip ${project.build.finalName}-package.zip" failonerror="true" />
                                         <!--Find deply folder ${project.build.outputDirectory}-->
                                         <!--unzip package-->
                                     </target>
@@ -154,13 +146,7 @@
                                     <!--Run workflow-->
 
                                     <target>
-                                        <sshexec
-                                                host="canopus"
-                                                username="yousee"
-                                                keyfile="${env.passwordlessKey}"
-                                                command="~/yousee-workflow/${project.build.finalName}/integrationTests/runIntegrationTests.sh"
-                                                failonerror="true"
-                                                >
+                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command="~/yousee-workflow/${project.build.finalName}/integrationTests/runIntegrationTests.sh" failonerror="true">
                                         </sshexec>
                                     </target>
                                 </configuration>
