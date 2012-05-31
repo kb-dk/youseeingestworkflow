@@ -1,0 +1,74 @@
+The workflow system is distributed as a Zip file.
+
+To run the system, a number of dependencies must be fulfilled beforehand.
+1. Java
+2. Taverna
+3. Xsltproc
+4. crosscheck-passwordless ssh
+5. Scratch disk
+6. ffmpeg
+7. Config
+8. Monitor webservice
+9. Ingest initiator service
+10. Yousee download server
+11. Digitv server
+12. Bitreposity server
+13. Doms server
+
+
+
+1. Java
+The system have been tested on java version "1.6.0_32".
+The environment variable JAVA_HOME must be set
+
+2. Taverna Workbench
+The system require the Taverna workflow engine, a Java application hosted on http://www.taverna.org.uk
+The system have been tested with the Taverna version 2.4
+Get the application from http://www.taverna.org.uk/download/workbench/2-4/
+It is a zip file, which (of course) must be extracted
+The environment variable TAVERNA_HOME must be set
+
+3. xsltproc
+This package or some version like it
+ http://packages.ubuntu.com/quantal/xsltproc
+
+4. Crosscheck-passwordless ssh
+The workflow system must be able to access the machine that can run the CrossCheck.
+At present, this is dvbt300. The command "ssh dvbt300 crosscheck" must display the usage
+of crosscheck, without requesting a password
+
+5. Scratch Disk
+A folder, currently /home/yousee/scratch must be present. This folder will be used
+to hold the downloaded files until they have been stored in the Bit repository.
+The contents of this folder must be accessible by the same directory path on the
+crosscheck machine, currently dvbt300
+
+6. ffmpeg
+Specifically ffprobe. The workflow have been tested with version 0.10
+
+7. Config
+The environment variable YOUSEE_CONFIG must be set, and point to the common
+folder for config.
+
+8. Monitor Webservice
+The monitor webservice is a service used to track the progress of individual files
+through the workflow. It must be running on the assigned address, or the workflow
+will not work.
+
+9. There must be a digitv database that have been upgraded with the nessesary tables
+to work with the ingest initiator component.
+
+10. Yousee Download server. A yousee download server must be running. Ideally, this
+ should be a server provided by Yousee, but for now the server is something we
+ must host ourselves.
+
+11. There must exist a digitv database, that have been upgraded with the nessesary
+ components to woth with the digitv ingester
+
+12. There must exist a bitrepository server.
+
+13. There must exist a doms server.
+
+The workflow system is distributed as a Zip file. To run the workflow, extract the
+zip file, and run "bin/runWorkflow.sh 2004-11-01". This will cause the scheduled
+channels to be archived from that date and 28 days in past.
