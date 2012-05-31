@@ -23,15 +23,14 @@ YOUSEEMETADATA_LOCATION=$6
 
 NAME=`basename $0 .sh`
 
-CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/* \
+CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/*:`dirname $CONFIGFILE` \
  dk.statsbiblioteket.doms.yousee.YouseeIngesterCLI \
  -filename $ENTITY \
  -url $REMOTEURL \
- -checksum $CHECKSUM \
  -ffprobe $FFPROBEPROFILE_LOCATION \
  -crosscheck $CROSSCHECKPROFILE_LOCATION \
- -metadata $YOUSEEMETADATA_LOCATION "
-# //-configFile "$CONFIGFILE"
+ -metadata $YOUSEEMETADATA_LOCATION \
+ -config $CONFIGFILE "
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
