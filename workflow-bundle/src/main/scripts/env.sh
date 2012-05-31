@@ -9,9 +9,9 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/../config/combinedProperties.sh
-source $SCRIPT_PATH/../config/statemonitorClientConfig.sh
-source $SCRIPT_PATH/../config/componentLoggingConfig.sh
+source $YOUSEE_CONFIG/ingestworkflow/combinedProperties.sh
+source $YOUSEE_CONFIG/ingestworkflow/statemonitorClientConfig.sh
+source $YOUSEE_CONFIG/ingestworkflow/componentLoggingConfig.sh
 
 source $SCRIPT_PATH/loggingEntity.sh
 mkdir -p $LOGDIR
