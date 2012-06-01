@@ -10,7 +10,7 @@
 
     <groupId>dk.statsbiblioteket.mediespring</groupId>
     <artifactId>yousee-workflow</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3</version>
     <packaging>pom</packaging>
 
 
