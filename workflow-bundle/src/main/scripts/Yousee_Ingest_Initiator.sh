@@ -23,7 +23,7 @@ NAME=`basename $0 .sh`
 CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_impl-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
 dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI $CONFIGFILE $INPUT"
 
-OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME" "$INPUT"`"
+OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME"`"
 RETURNCODE=$?
 echo "$OUTPUT"
 exit "$RETURNCODE"

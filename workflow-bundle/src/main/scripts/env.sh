@@ -48,7 +48,9 @@ function execute() {
     local NAME="$3"
     local ENTITY="$4"
 
-    report "$NAME" "Started" "$ENTITY"
+    if [ -n "$ENTITY" ]; then
+        report "$NAME" "Started" "$ENTITY"
+    fi
     pushd "$WORKINGDIR" > /dev/null
 
     local tempfile="`mktemp`"
@@ -60,20 +62,28 @@ function execute() {
 
 
     if [ "$RETURNCODE" -eq "0" ]; then
-        debug "$ENTITY" "$NAME succeeded for $ENTITY \n \
-        std out was: \"$OUTPUT\"\n \
-        std err was \"`cat $tempfile`\""
+        if [ -n "$ENTITY" ]; then
+            debug "$ENTITY" "$NAME succeeded for $ENTITY \n \
+            std out was: \"$OUTPUT\"\n \
+            std err was \"`cat $tempfile`\""
+        fi
         rm "$tempfile"
         echo "$OUTPUT"
-        report "$NAME" "Completed" "$ENTITY"
+        if [ -n "$ENTITY" ]; then
+            report "$NAME" "Completed" "$ENTITY"
+        fi
         return "0"
     else
-        error "$ENTITY" "$NAME failed for $ENTITY \n \
-        std out was: \"$OUTPUT\"\n \
-        std err was \"`cat $tempfile`\""
+        if [ -n "$ENTITY" ]; then
+            error "$ENTITY" "$NAME failed for $ENTITY \n \
+            std out was: \"$OUTPUT\"\n \
+            std err was \"`cat $tempfile`\""
+        fi
         rm "$tempfile"
         echo "$OUTPUT"
-        report "$NAME" "Failed" "$ENTITY" "$OUTPUT"
+        if [ -n "$ENTITY" ]; then
+            report "$NAME" "Failed" "$ENTITY" "$OUTPUT"
+        fi
         return "$RETURNCODE"
     fi
 }
