@@ -19,8 +19,9 @@ CHANNELID=$3
 
 NAME=`basename $0 .sh`
 
+APPDIR="$YOUSEE_HOME/services/Profile_Validator/"
 
-CMD="$YOUSEE_HOME/components/profileValidator/validateXmlWithProfile.sh $XML $CONFIGFILE"
+CMD="$APPDIR/bin/validateXmlWithProfile.sh $XML $CONFIGFILE"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?

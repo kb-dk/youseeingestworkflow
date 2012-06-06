@@ -23,7 +23,9 @@ ENDTIME=$5
 
 NAME=`basename $0 .sh`
 
-CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/digiTVIngester/YouseeDigitvIngester-*.jar:$YOUSEE_HOME/components/digiTVIngester/* \
+APPDIR="$YOUSEE_HOME/services/DigiTV_Ingester/"
+
+CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
  dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \
  -filename $ENTITY \
  -starttime $STARTTIME \

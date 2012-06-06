@@ -20,7 +20,7 @@ NAME=`basename $0 .sh`
 
 #cat $YOUSEE_HOME/examples/download_initiator_output.json
 
-CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/downloadInitiatorLibs/ingest_initiator_impl-*.jar:$YOUSEE_HOME/components/downloadInitiatorLibs/* \
+CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/services/Ingest_Initiator/bin/*:$YOUSEE_HOME/services/Ingest_Initiator/external-products/* \
 dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI $CONFIGFILE $INPUT"
 
 OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME"`"

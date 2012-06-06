@@ -17,7 +17,7 @@ LOCALFILE=$2
 
 NAME=`basename $0 .sh`
 
-CMD="$YOUSEE_HOME/components/FFProbe_Characteriser/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE"
+CMD="$YOUSEE_HOME/services/FFProbe_Characteriser/bin/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?

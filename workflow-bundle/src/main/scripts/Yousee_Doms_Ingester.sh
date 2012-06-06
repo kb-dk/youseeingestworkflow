@@ -23,7 +23,9 @@ YOUSEEMETADATA_LOCATION=$6
 
 NAME=`basename $0 .sh`
 
-CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/domsIngester/yousee-doms-ingest-client-*.jar:$YOUSEE_HOME/components/domsIngester/*:`dirname $CONFIGFILE` \
+APPDIR="$YOUSEE_HOME/services/Doms_Ingester"
+
+CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname $CONFIGFILE` \
  dk.statsbiblioteket.doms.yousee.YouseeIngesterCLI \
  -filename $ENTITY \
  -url $REMOTEURL \

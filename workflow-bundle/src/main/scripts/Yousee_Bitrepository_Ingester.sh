@@ -20,13 +20,13 @@ FILESIZE=$5
 
 NAME="`basename $0 .sh`"
 
-WORKINGDIR="$YOUSEE_HOME/components/bitrepoLibs/"
+APPDIR="$YOUSEE_HOME/services/bitrepository_ingester"
 
-CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/components/Bitrepository_Ingester/url-put-client-*:$YOUSEE_HOME/components/Bitrepository_Ingester/* \
+CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
 dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.UrlClient \
 $CONFIGFILE $LOCALFILEURL $REMOTEFILEID $CHECKSUM $FILESIZE"
 
-OUTPUT="`execute "$WORKINGDIR" "$CMD" "$NAME" "$ENTITY"`"
+OUTPUT="`execute "$APPDIR" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
 echo "$OUTPUT"
 exit "$RETURNCODE"

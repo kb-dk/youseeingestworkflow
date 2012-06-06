@@ -10,7 +10,7 @@
     <dependencySets>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>workflowDependencies</outputDirectory>
+            <outputDirectory>services/yousee_workflow/external-products</outputDirectory>
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <includes>
@@ -18,9 +18,10 @@
             </includes>
             <scope>runtime</scope>
         </dependencySet>
+
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/youseeDownloader</outputDirectory>
+            <outputDirectory>services/yousee_file_downloader/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
@@ -28,11 +29,33 @@
             </includes>
             <scope>runtime</scope>
         </dependencySet>
+
+
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/Bitrepository_Ingester</outputDirectory>
+            <outputDirectory>services/bitrepository_ingester/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>url-put-client-*</exclude>
+                </excludes>
+            </unpackOptions>
+            <includes>
+                <include>dk.statsbiblioteket.mediaplatform:url-put-client</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>services/bitrepository_ingester/bin</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>url-put-client-*</include>
+                </includes>
+            </unpackOptions>
             <includes>
                 <include>dk.statsbiblioteket.mediaplatform:url-put-client</include>
             </includes>
@@ -40,9 +63,10 @@
         </dependencySet>
 
 
+
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/FFProbe_Characteriser</outputDirectory>
+            <outputDirectory>services/FFProbe_Characteriser/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
@@ -53,7 +77,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/Crosscheck_Characteriser</outputDirectory>
+            <outputDirectory>services/Crosscheck_Characteriser/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
@@ -65,7 +89,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/profileValidator</outputDirectory>
+            <outputDirectory>services/Profile_Validator/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
@@ -73,47 +97,117 @@
             </includes>
             <scope>runtime</scope>
         </dependencySet>
+
+
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/digiTVIngester</outputDirectory>
+            <outputDirectory>services/DigiTV_Ingester/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>YouseeDigitvIngester-*.jar</exclude>
+                </excludes>
+            </unpackOptions>
+            <includes>
+                <include>dk.statsbiblioteket.digitv.youseeingester:YouseeDigitvIngester</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>services/DigiTV_Ingester/bin</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>YouseeDigitvIngester-*.jar</include>
+                </includes>
+            </unpackOptions>
             <includes>
                 <include>dk.statsbiblioteket.digitv.youseeingester:YouseeDigitvIngester</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
 
+
+
+
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/downloadInitiatorLibs</outputDirectory>
+            <outputDirectory>services/Ingest_Initiator/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>ingest_initiator_impl-*.jar</exclude>
+                </excludes>
+            </unpackOptions>
+            <includes>
+                <include>dk.statsbiblioteket.mediaplatform.ingest:ingest_initiator_bundle</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>services/Ingest_Initiator/bin</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>ingest_initiator_impl-*.jar</include>
+                </includes>
+            </unpackOptions>
             <includes>
                 <include>dk.statsbiblioteket.mediaplatform.ingest:ingest_initiator_bundle</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
 
+
+
+
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/domsIngester</outputDirectory>
+            <outputDirectory>services/Doms_Ingester/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>yousee-doms-ingest-client-*.jar</exclude>
+                </excludes>
+            </unpackOptions>
             <includes>
                 <include>dk.statsbiblioteket.doms:yousee-doms-ingest-client</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>services/Doms_Ingester/bin</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>yousee-doms-ingest-client-*.jar</include>
+                </includes>
+            </unpackOptions>
+            <includes>
+                <include>dk.statsbiblioteket.doms:yousee-doms-ingest-client</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
     </dependencySets>
 
 
     <fileSets>
 
         <fileSet>
-            <outputDirectory>bin</outputDirectory>
+            <outputDirectory>services/yousee_workflow/bin</outputDirectory>
             <directory>src/main/bin</directory>
             <fileMode>755</fileMode>
+            <filtered>true</filtered>
         </fileSet>
         <fileSet>
             <outputDirectory>integrationTests</outputDirectory>
@@ -122,13 +216,13 @@
         </fileSet>
 
         <fileSet>
-            <outputDirectory>scripts</outputDirectory>
+            <outputDirectory>services/yousee_workflow/external-products</outputDirectory>
             <directory>src/main/scripts</directory>
             <fileMode>755</fileMode>
         </fileSet>
 
         <fileSet>
-            <outputDirectory>taverna</outputDirectory>
+            <outputDirectory>services/yousee_workflow/external-products</outputDirectory>
             <directory>src/main/taverna</directory>
         </fileSet>
 

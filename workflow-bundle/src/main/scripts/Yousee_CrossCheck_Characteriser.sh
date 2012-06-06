@@ -16,7 +16,9 @@ LOCALFILE=$2
 
 NAME=`basename $0 .sh`
 
-CMD="$YOUSEE_HOME/components/Crosscheck_Characteriser/crosscheckCharacterise.sh $LOCALFILE $CONFIGFILE"
+APPDIR="$YOUSEE_HOME/services/Crosscheck_Characteriser/"
+
+CMD="$APPDIR/bin/crosscheckCharacterise.sh $LOCALFILE $CONFIGFILE"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
