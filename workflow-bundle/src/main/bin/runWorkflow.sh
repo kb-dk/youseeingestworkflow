@@ -11,13 +11,34 @@ popd  > /dev/null
 
 
 
+
+if [ -r $SCRIPT_PATH/setenv.sh ]; then
+    source $SCRIPT_PATH/setenv.sh
+fi
+
+
+if [ -z "$YOUSEE_HOME" ]; then
+   echo "YOUSEE_HOME is not set. Must be set before execution. Exiting"
+   exit 1
+fi
+
+
 if [ -z "$TAVERNA_HOME" ]; then
    echo "TAVERNA_HOME is not set. Must be set before execution. Exiting"
    exit 1
 fi
 
+if [ -z "$JAVA_HOME" ]; then
+   echo "JAVA_HOME is not set. Must be set before execution. Exiting"
+   exit 1
+fi
 
-source $SCRIPT_PATH/setenv.sh
+if [ -z "$YOUSEE_CONFIG" ]; then
+   echo "YOUSEE_CONFIG is not set. Must be set before execution. Exiting"
+   exit 1
+fi
+
+
 export COMPONENTS=$SCRIPT_PATH/../external-products
 
 
