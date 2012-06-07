@@ -26,7 +26,7 @@ function report(){
     local ENTITY=$3
     local MESSAGE="${*:4}"
     if [ -n "$MESSAGE" ]; then
-        MESSAGE="<message>$MESSAGE</message>"
+        MESSAGE="<message><![CDATA[""$MESSAGE""]]></message>"
     else
         MESSAGE=""
     fi
@@ -60,30 +60,24 @@ function execute() {
 
     popd > /dev/null
 
-
+    local MESSAGE=""
     if [ "$RETURNCODE" -eq "0" ]; then
         if [ -n "$ENTITY" ]; then
-            debug "$ENTITY" "$NAME succeeded for $ENTITY \n \
-            std out was: \"$OUTPUT\"\n \
-            std err was \"`cat $tempfile`\""
+            MESSAGE= "std out: $OUTPUT \n std err: "`cat "$tempfile"`
+            debug "$ENTITY" "$NAME succeeded for $ENTITY: \n $MESSAGE"
+            report "$NAME" "Completed" "$ENTITY" "`echo "$OUTPUT"| head -q -n10`"
         fi
         rm "$tempfile"
         echo "$OUTPUT"
-        if [ -n "$ENTITY" ]; then
-            report "$NAME" "Completed" "$ENTITY"
-        fi
         return "0"
     else
         if [ -n "$ENTITY" ]; then
-            error "$ENTITY" "$NAME failed for $ENTITY \n \
-            std out was: \"$OUTPUT\"\n \
-            std err was \"`cat $tempfile`\""
+            MESSAGE= "std out: $OUTPUT \n std err: "`cat "$tempfile"`
+            error "$ENTITY" "$NAME failed for $ENTITY: \n $MESSAGE"
+            report "$NAME" "Failed" "$ENTITY" "$OUTPUT" "$MESSAGE"
         fi
         rm "$tempfile"
         echo "$OUTPUT"
-        if [ -n "$ENTITY" ]; then
-            report "$NAME" "Failed" "$ENTITY" "$OUTPUT"
-        fi
         return "$RETURNCODE"
     fi
 }

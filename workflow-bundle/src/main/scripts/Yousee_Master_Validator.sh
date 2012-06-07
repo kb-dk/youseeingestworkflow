@@ -22,11 +22,11 @@ NAME=`basename $0 .sh`
 
 report "$NAME" "Started" "$ENTITY"
 if [ "$RESULT" == "true" ]; then
-   report "$NAME" "Completed" "$ENTITY"
+   report "$NAME" "Completed" "$ENTITY" "$NAME succeeded for $ENTITY"
    inf "$ENTITY" "$NAME succeeded for $ENTITY"
    exit 0
 else
-   report "$NAME" "Failed" "$ENTITY"
-   inf "$ENTITY" "$NAME succeeded for $ENTITY"
+   report "$NAME" "Failed" "$ENTITY" "$NAME failed for $ENTITY"
+   warn "$ENTITY" "$NAME failed for $ENTITY"
    exit 1
 fi

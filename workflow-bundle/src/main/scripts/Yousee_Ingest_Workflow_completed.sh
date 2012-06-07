@@ -29,7 +29,7 @@ echo $DIGITVPID
 echo $REMOTEURL
 echo $LOCALURL
 rm $FILENAME
-report "$NAME" "Done" "$ENTITY"
+report "$NAME" "Done" "$ENTITY" "$NAME succeeded for $ENTITY"
 inf "$ENTITY" "$NAME succeeded for $ENTITY"
 exit "0"
 
