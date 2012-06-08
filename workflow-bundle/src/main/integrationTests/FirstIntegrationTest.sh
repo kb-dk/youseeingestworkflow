@@ -15,7 +15,7 @@ echo "This tests just ensures that at least one file makes it through the workfl
 
 cd $SCRIPT_PATH/..
 
-services/yousee_workflow/bin/runWorkflow.sh 2040-05-05
+bin/runWorkflow.sh 2040-05-05
 RETURNCODE=$?
 if [ "$RETURNCODE" -ne "0" ]; then
     exit $RETURNCODE

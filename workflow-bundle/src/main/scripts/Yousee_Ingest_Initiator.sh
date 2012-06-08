@@ -17,10 +17,9 @@ INPUT=$1
 NAME=`basename $0 .sh`
 
 
+APPDIR="$YOUSEE_COMPONENTS/Ingest_Initiator"
 
-#cat $YOUSEE_HOME/examples/download_initiator_output.json
-
-CMD="$JAVA_HOME/bin/java -cp $YOUSEE_HOME/services/Ingest_Initiator/bin/*:$YOUSEE_HOME/services/Ingest_Initiator/external-products/* \
+CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
 dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI $CONFIGFILE $INPUT"
 
 OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME"`"

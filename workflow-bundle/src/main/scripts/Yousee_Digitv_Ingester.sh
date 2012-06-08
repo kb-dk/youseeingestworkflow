@@ -23,7 +23,7 @@ ENDTIME=$5
 
 NAME=`basename $0 .sh`
 
-APPDIR="$YOUSEE_HOME/services/DigiTV_Ingester/"
+APPDIR="$YOUSEE_COMPONENTS/DigiTV_Ingester/"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
  dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \

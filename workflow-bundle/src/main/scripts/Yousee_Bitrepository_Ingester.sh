@@ -20,7 +20,7 @@ FILESIZE=$5
 
 NAME="`basename $0 .sh`"
 
-APPDIR="$YOUSEE_HOME/services/bitrepository_ingester"
+APPDIR="$YOUSEE_COMPONENTS/bitrepository_ingester"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
 dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.UrlClient \

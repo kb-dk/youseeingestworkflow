@@ -16,7 +16,7 @@ LOCALFILE=$2
 
 NAME=`basename $0 .sh`
 
-APPDIR="$YOUSEE_HOME/services/Crosscheck_Characteriser/"
+APPDIR="$YOUSEE_COMPONENTS/Crosscheck_Characteriser/"
 
 CMD="$APPDIR/bin/crosscheckCharacterise.sh $LOCALFILE $CONFIGFILE"
 

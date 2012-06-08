@@ -23,7 +23,7 @@ YOUSEEMETADATA_LOCATION=$6
 
 NAME=`basename $0 .sh`
 
-APPDIR="$YOUSEE_HOME/services/Doms_Ingester"
+APPDIR="$YOUSEE_COMPONENTS/Doms_Ingester"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname $CONFIGFILE` \
  dk.statsbiblioteket.doms.yousee.YouseeIngesterCLI \

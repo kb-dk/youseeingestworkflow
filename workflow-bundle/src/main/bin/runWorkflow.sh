@@ -37,16 +37,14 @@ if [ -z "$YOUSEE_CONFIG" ]; then
 fi
 
 
-export COMPONENTS=$SCRIPT_PATH/../external-products
 
-
-mkdir -p $YOUSEE_HOME/logs
-mkdir -p $YOUSEE_HOME/locks
+mkdir -p $YOUSEE_LOGS
+mkdir -p $YOUSEE_LOCKS
 
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
 -inputvalue Ingest_workflow_startDate "$1"  \
-"$COMPONENTS/Yousee_ingest_workflow.t2flow"
+"$YOUSEE_WORKFLOWS/Yousee_ingest_workflow.t2flow"
 
 exit 0
 

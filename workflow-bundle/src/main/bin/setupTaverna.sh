@@ -10,8 +10,6 @@ SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
 
-export COMPONENTS=$SCRIPT_PATH/../external-products
-
 
 if [ -r $SCRIPT_PATH/setenv.sh ]; then
     source $SCRIPT_PATH/setenv.sh
@@ -28,4 +26,4 @@ fi
 VERSION=`head -1 $TAVERNA_HOME/release-notes.txt | sed 's/.$//' | cut -d' ' -f4`
 LIB="$HOME/.taverna-$VERSION/lib/"
 mkdir -p $LIB
-cp -u $COMPONENTS/*.jar $LIB
+cp -u $YOUSEE_DEPENDENCIES/*.jar $LIB

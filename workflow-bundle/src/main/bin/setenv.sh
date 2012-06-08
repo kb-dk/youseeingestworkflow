@@ -1,1 +1,11 @@
-export YOUSEE_HOME="$HOME/yousee-workflow/workflow-bundle-${project.version}"
+#export TAVERNA_HOME="/home/yousee/taverna/taverna-workbench-2.4.0"
+#export JAVA_HOME="/usr/java/jdk1.6.0_32"
+
+#export YOUSEE_HOME="$HOME/yousee-workflow/workflow-bundle-${project.version}"
+#export YOUSEE_CONFIG="/home/yousee/Medieplatform-config"
+#export YOUSEE_LOGS="$YOUSEE_HOME/logs"
+#export YOUSEE_LOCKS="$YOUSEE_HOME/locks"
+#export YOUSEE_COMPONENTS="$YOUSEE_HOME/components"
+#export YOUSEE_SCRIPTS="$YOUSEE_HOME/lib/scripts"
+#export YOUSEE_WORKFLOWS="$YOUSEE_HOME/lib/taverna"
+#export YOUSEE_DEPENDENCIES="$YOUSEE_HOME/lib/tavernaLibs"
