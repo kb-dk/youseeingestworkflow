@@ -17,7 +17,7 @@ LOCALNAME=$3
 
 NAME=`basename $0 .sh`
 
-CMD="$YOUSEE_COMPONENTS/yousee_file_downloader/bin/yousee-downloader.sh $CONFIGFILE $YOUSEENAME $LOCALNAME"
+CMD="$YOUSEE_COMPONENTS/$NAME/bin/yousee-downloader.sh $CONFIGFILE $YOUSEENAME $LOCALNAME"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?

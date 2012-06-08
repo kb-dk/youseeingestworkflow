@@ -12,6 +12,19 @@
     <artifactId>workflow-bundle</artifactId>
 
 
+    <properties>
+        <yousee.home>$YOUSEE_HOME</yousee.home>
+        <yousee.config>/home/yousee/Medieplatform-config</yousee.config>
+        <yousee.logs>logs</yousee.logs>
+        <yousee.locks>locks</yousee.locks>
+        <yousee.workflow.dependencies>lib/tavernaLibs</yousee.workflow.dependencies>
+        <yousee.workflow.dir>lib/taverna</yousee.workflow.dir>
+        <yousee.script.dir>scripts</yousee.script.dir>
+        <yousee.components.dir>components</yousee.components.dir>
+        <yousee.bin>bin</yousee.bin>
+
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>

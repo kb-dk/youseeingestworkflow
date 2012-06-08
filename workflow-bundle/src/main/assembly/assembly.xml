@@ -10,7 +10,7 @@
     <dependencySets>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>lib/tavernaLibs</outputDirectory>
+            <outputDirectory>${yousee.workflow.dependencies}</outputDirectory>
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <includes>
@@ -21,7 +21,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/yousee_file_downloader/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Downloader/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
@@ -33,7 +33,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/bitrepository_ingester/external-products</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Bitrepository_Ingester/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -48,7 +48,7 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/bitrepository_ingester/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Bitrepository_Ingester/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -66,7 +66,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/FFProbe_Characteriser/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_FFProbe_Characteriser/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
@@ -77,7 +77,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/Crosscheck_Characteriser/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_CrossCheck_Characteriser/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
@@ -89,7 +89,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/Profile_Validator/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Profile_Validator/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
@@ -101,7 +101,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/DigiTV_Ingester/external-products</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Digitv_Ingester/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -116,7 +116,7 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/DigiTV_Ingester/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Digitv_Ingester/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -135,7 +135,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/Ingest_Initiator/external-products</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Ingest_Initiator/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -150,7 +150,7 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/Ingest_Initiator/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Ingest_Initiator/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -169,7 +169,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/Doms_Ingester/external-products</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Doms_Ingester/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -184,7 +184,7 @@
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>components/Doms_Ingester/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Doms_Ingester/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -204,25 +204,26 @@
     <fileSets>
 
         <fileSet>
-            <outputDirectory>bin</outputDirectory>
+            <outputDirectory>${yousee.bin}</outputDirectory>
             <directory>src/main/bin</directory>
-            <fileMode>755</fileMode>
+            <fileMode>0700</fileMode>
             <filtered>true</filtered>
         </fileSet>
         <fileSet>
             <outputDirectory>integrationTests</outputDirectory>
             <directory>src/main/integrationTests</directory>
-            <fileMode>755</fileMode>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
         </fileSet>
 
         <fileSet>
-            <outputDirectory>lib/scripts</outputDirectory>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
             <directory>src/main/scripts</directory>
             <fileMode>755</fileMode>
         </fileSet>
 
         <fileSet>
-            <outputDirectory>lib/taverna</outputDirectory>
+            <outputDirectory>${yousee.workflow.dir}</outputDirectory>
             <directory>src/main/taverna</directory>
         </fileSet>
 

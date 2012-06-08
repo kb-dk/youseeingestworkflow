@@ -17,7 +17,7 @@ INPUT=$1
 NAME=`basename $0 .sh`
 
 
-APPDIR="$YOUSEE_COMPONENTS/Ingest_Initiator"
+APPDIR="$YOUSEE_COMPONENTS/$NAME"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
 dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI $CONFIGFILE $INPUT"
