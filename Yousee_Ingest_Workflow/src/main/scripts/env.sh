@@ -63,7 +63,7 @@ function execute() {
     local MESSAGE=""
     if [ "$RETURNCODE" -eq "0" ]; then
         if [ -n "$ENTITY" ]; then
-            MESSAGE= "std out: $OUTPUT \n std err: "`cat "$tempfile"`
+            MESSAGE="std out: $OUTPUT \n std err: "`cat "$tempfile"`
             debug "$ENTITY" "$NAME succeeded for $ENTITY: \n $MESSAGE"
             report "$NAME" "Completed" "$ENTITY" "`echo "$OUTPUT"| head -q -n10`"
         fi
@@ -72,7 +72,7 @@ function execute() {
         return "0"
     else
         if [ -n "$ENTITY" ]; then
-            MESSAGE= "std out: $OUTPUT \n std err: "`cat "$tempfile"`
+            MESSAGE="std out: $OUTPUT \n std err: "`cat "$tempfile"`
             error "$ENTITY" "$NAME failed for $ENTITY: \n $MESSAGE"
             report "$NAME" "Failed" "$ENTITY" "$OUTPUT" "$MESSAGE"
         fi
