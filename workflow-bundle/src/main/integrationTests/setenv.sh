@@ -3,6 +3,7 @@ export JAVA_HOME="/usr/java/jdk1.6.0_32"
 
 export YOUSEE_HOME="$HOME/yousee-workflow/workflow-bundle-${project.version}"
 export YOUSEE_CONFIG="${yousee.config}"
+export YOUSEE_WORKFLOW_CONFIG="${yousee.workflow.config}"
 export YOUSEE_LOGS="${yousee.home}/${yousee.logs}"
 export YOUSEE_LOCKS="${yousee.home}/${yousee.locks}"
 export YOUSEE_COMPONENTS="${yousee.home}/${yousee.components.dir}"
