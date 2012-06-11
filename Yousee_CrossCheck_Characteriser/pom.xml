@@ -2,14 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>dk.statsbiblioteket.mediespring</groupId>
-        <artifactId>yousee-workflow</artifactId>
+  <parent>
+        <groupId>dk.statsbiblioteket.medieplatform</groupId>
+        <artifactId>Yousee_Ingest_Workflow_Parent</artifactId>
         <version>0.4-SNAPSHOT</version>
     </parent>
+
+    <artifactId>Yousee_CrossCheck_Characteriser</artifactId>
     <packaging>pom</packaging>
 
-    <artifactId>ffprobe_characteriser</artifactId>
+
 
 
     <build>
@@ -37,8 +39,5 @@
 
         </plugins>
     </build>
-
-
-
-
+    
 </project>

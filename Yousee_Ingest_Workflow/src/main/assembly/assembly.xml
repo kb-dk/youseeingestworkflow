@@ -1,6 +1,6 @@
 <assembly>
 
-    <id>package</id>
+    <id>bundle</id>
 
     <formats>
         <format>zip</format>
@@ -70,7 +70,7 @@
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
-                <include>dk.statsbiblioteket.mediespring:ffprobe_characteriser</include>
+                <include>dk.statsbiblioteket.medieplatform:Yousee_FFProbe_Characteriser</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -81,7 +81,7 @@
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
-                <include>dk.statsbiblioteket.mediespring:crosscheck_characteriser</include>
+                <include>dk.statsbiblioteket.medieplatform:Yousee_CrossCheck_Characteriser</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>

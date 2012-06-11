@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>dk.statsbiblioteket.mediespring</groupId>
-        <artifactId>yousee-workflow</artifactId>
+        <groupId>dk.statsbiblioteket.medieplatform</groupId>
+        <artifactId>Yousee_Ingest_Workflow_Parent</artifactId>
         <version>0.4-SNAPSHOT</version>
     </parent>
     <packaging>pom</packaging>
 
-    <artifactId>workflow-bundle</artifactId>
+    <artifactId>Yousee_Ingest_Workflow</artifactId>
 
 
     <properties>
@@ -79,17 +79,18 @@
             <type>zip</type>
         </dependency>
 
-
         <dependency>
-            <groupId>dk.statsbiblioteket.mediespring</groupId>
-            <artifactId>ffprobe_characteriser</artifactId>
+            <groupId>dk.statsbiblioteket.medieplatform</groupId>
+            <artifactId>Yousee_FFProbe_Characteriser</artifactId>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
 
+
+
         <dependency>
-            <groupId>dk.statsbiblioteket.mediespring</groupId>
-            <artifactId>crosscheck_characteriser</artifactId>
+            <groupId>dk.statsbiblioteket.medieplatform</groupId>
+            <artifactId>Yousee_CrossCheck_Characteriser</artifactId>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>

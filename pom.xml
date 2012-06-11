@@ -8,17 +8,17 @@
         <version>3</version>
     </parent>
 
-    <groupId>dk.statsbiblioteket.mediespring</groupId>
-    <artifactId>yousee-workflow</artifactId>
+    <groupId>dk.statsbiblioteket.medieplatform</groupId>
+    <artifactId>Yousee_Ingest_Workflow_Parent</artifactId>
     <version>0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
 
 
     <modules>
-        <module>workflow-bundle</module>
-        <module>ffprobe_characteriser</module>
-        <module>crosscheck_characteriser</module>
+        <module>Yousee_Ingest_Workflow</module>
+        <module>Yousee_FFProbe_Characteriser</module>
+        <module>Yousee_CrossCheck_Characteriser</module>
     </modules>
 
     <dependencyManagement>
@@ -86,8 +86,8 @@
             </dependency>
 
             <dependency>
-                <groupId>dk.statsbiblioteket.mediespring</groupId>
-                <artifactId>ffprobe_characteriser</artifactId>
+                <groupId>dk.statsbiblioteket.medieplatform</groupId>
+                <artifactId>Yousee_FFProbe_Characteriser</artifactId>
                 <version>${project.version}</version>
                 <classifier>bundle</classifier>
                 <type>zip</type>
@@ -96,8 +96,8 @@
 
 
             <dependency>
-                <groupId>dk.statsbiblioteket.mediespring</groupId>
-                <artifactId>crosscheck_characteriser</artifactId>
+                <groupId>dk.statsbiblioteket.medieplatform</groupId>
+                <artifactId>Yousee_CrossCheck_Characteriser</artifactId>
                 <version>${project.version}</version>
                 <classifier>bundle</classifier>
                 <type>zip</type>
