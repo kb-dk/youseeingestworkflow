@@ -51,11 +51,13 @@
             <!--Yousee FFProbe Profile Validator-->
             <!--Yousee CrossCheck Profile Validator-->
             <dependency>
-                <groupId>dk.statsbiblioteket.mediespring</groupId>
-                <artifactId>SB-yousee-profile-validation</artifactId>
-                <version>0.3</version>
+                <groupId>dk.statsbiblioteket.medieplatform</groupId>
+                <artifactId>Yousee_Profile_Validator</artifactId>
+                <version>0.4-SNAPSHOT</version>
                 <type>zip</type>
             </dependency>
+
+
 
             <!--Yousee Digitv Ingester-->
             <dependency>
@@ -78,9 +80,9 @@
 
 
             <dependency>
-                <groupId>dk.statsbiblioteket.mediespring</groupId>
-                <artifactId>yousee-file-downloader</artifactId>
-                <version>2.0</version>
+                <groupId>dk.statsbiblioteket.medieplatform</groupId>
+                <artifactId>Yousee_Downloader</artifactId>
+                <version>2.1-SNAPSHOT</version>
                 <classifier>bundle</classifier>
                 <type>zip</type>
             </dependency>

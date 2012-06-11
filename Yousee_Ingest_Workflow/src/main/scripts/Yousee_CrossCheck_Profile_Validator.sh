@@ -19,7 +19,7 @@ CHANNELID=$3
 
 NAME=`basename $0 .sh`
 
-APPDIR="$YOUSEE_COMPONENTS/Profile_Validator/"
+APPDIR="$YOUSEE_COMPONENTS/Yousee_Profile_Validator/"
 
 CMD="$APPDIR/bin/validateXmlWithProfile.sh $XML $CONFIGFILE"
 

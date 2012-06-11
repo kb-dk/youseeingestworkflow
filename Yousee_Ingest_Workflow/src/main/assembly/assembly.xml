@@ -25,7 +25,7 @@
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
-                <include>dk.statsbiblioteket.mediespring:yousee-file-downloader</include>
+                <include>dk.statsbiblioteket.medieplatform:Yousee_Downloader</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -89,11 +89,11 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Profile_Validator/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/Yousee_Profile_Validator/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
-                <include>dk.statsbiblioteket.mediespring:SB-yousee-profile-validation</include>
+                <include>dk.statsbiblioteket.medieplatform:Yousee_Profile_Validator</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>

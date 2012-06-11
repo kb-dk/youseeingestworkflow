@@ -35,8 +35,8 @@
         </dependency>
 
         <dependency>
-            <groupId>dk.statsbiblioteket.mediespring</groupId>
-            <artifactId>yousee-file-downloader</artifactId>
+            <groupId>dk.statsbiblioteket.medieplatform</groupId>
+            <artifactId>Yousee_Downloader</artifactId>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
@@ -51,8 +51,8 @@
         </dependency>
 
         <dependency>
-            <groupId>dk.statsbiblioteket.mediespring</groupId>
-            <artifactId>SB-yousee-profile-validation</artifactId>
+            <groupId>dk.statsbiblioteket.medieplatform</groupId>
+            <artifactId>Yousee_Profile_Validator</artifactId>
             <type>zip</type>
         </dependency>
         <dependency>
