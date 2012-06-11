@@ -1,7 +1,7 @@
 export TAVERNA_HOME="/home/yousee/taverna/taverna-workbench-2.4.0"
 export JAVA_HOME="/usr/java/jdk1.6.0_32"
 
-export YOUSEE_HOME="$HOME/yousee-workflow/workflow-bundle-${project.version}"
+export YOUSEE_HOME="$HOME/yousee-workflow/Yousee_Ingest_Workflow-${project.version}"
 export YOUSEE_CONFIG="${yousee.config}"
 export YOUSEE_WORKFLOW_CONFIG="${yousee.workflow.config}"
 export YOUSEE_LOGS="${yousee.home}/${yousee.logs}"
