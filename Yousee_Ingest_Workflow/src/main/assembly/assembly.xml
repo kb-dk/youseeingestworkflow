@@ -21,11 +21,11 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Downloader/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${yousee.downloader}/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <includes>
-                <include>dk.statsbiblioteket.medieplatform:Yousee_Downloader</include>
+                <include>${medieplatform}:${yousee.downloader}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -33,99 +33,99 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Bitrepository_Ingester/external-products</outputDirectory>
-            <useTransitiveDependencies>false</useTransitiveDependencies>
-            <unpack>true</unpack>
-            <unpackOptions>
-                <excludes>
-                    <exclude>url-put-client-*</exclude>
-                </excludes>
-            </unpackOptions>
-            <includes>
-                <include>dk.statsbiblioteket.mediaplatform:url-put-client</include>
-            </includes>
-            <scope>runtime</scope>
-        </dependencySet>
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Bitrepository_Ingester/bin</outputDirectory>
-            <useTransitiveDependencies>false</useTransitiveDependencies>
-            <unpack>true</unpack>
-            <unpackOptions>
-                <includes>
-                    <include>url-put-client-*</include>
-                </includes>
-            </unpackOptions>
-            <includes>
-                <include>dk.statsbiblioteket.mediaplatform:url-put-client</include>
-            </includes>
-            <scope>runtime</scope>
-        </dependencySet>
-
-
-
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_FFProbe_Characteriser/bin</outputDirectory>
-            <useTransitiveDependencies>false</useTransitiveDependencies>
-            <unpack>true</unpack>
-            <includes>
-                <include>dk.statsbiblioteket.medieplatform:Yousee_FFProbe_Characteriser</include>
-            </includes>
-            <scope>runtime</scope>
-        </dependencySet>
-
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_CrossCheck_Characteriser/bin</outputDirectory>
-            <useTransitiveDependencies>false</useTransitiveDependencies>
-            <unpack>true</unpack>
-            <includes>
-                <include>dk.statsbiblioteket.medieplatform:Yousee_CrossCheck_Characteriser</include>
-            </includes>
-            <scope>runtime</scope>
-        </dependencySet>
-
-
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Profile_Validator/bin</outputDirectory>
-            <useTransitiveDependencies>false</useTransitiveDependencies>
-            <unpack>true</unpack>
-            <includes>
-                <include>dk.statsbiblioteket.medieplatform:Yousee_Profile_Validator</include>
-            </includes>
-            <scope>runtime</scope>
-        </dependencySet>
-
-
-        <dependencySet>
-            <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Digitv_Ingester/external-products</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${bitrepository.ingester}/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
                 <excludes>
-                    <exclude>YouseeDigitvIngester-*.jar</exclude>
+                    <exclude>${bitrepository.ingester}-*</exclude>
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.digitv.youseeingester:YouseeDigitvIngester</include>
+                <include>dk.statsbiblioteket.mediaplatform:${bitrepository.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Digitv_Ingester/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${bitrepository.ingester}/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
                 <includes>
-                    <include>YouseeDigitvIngester-*.jar</include>
+                    <include>${bitrepository.ingester}-*</include>
                 </includes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.digitv.youseeingester:YouseeDigitvIngester</include>
+                <include>dk.statsbiblioteket.mediaplatform:${bitrepository.ingester}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${ffprobe.characteriser}/bin</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>${medieplatform}:${ffprobe.characteriser}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${crosscheck.characteriser}/bin</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>${medieplatform}:${crosscheck.characteriser}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${profile.validator}/bin</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <includes>
+                <include>${medieplatform}:${profile.validator}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${yousee.digitv.ingester}/external-products</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>${yousee.digitv.ingester}-*.jar</exclude>
+                </excludes>
+            </unpackOptions>
+            <includes>
+                <include>dk.statsbiblioteket.digitv.youseeingester:${yousee.digitv.ingester}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${yousee.digitv.ingester}/bin</outputDirectory>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>${yousee.digitv.ingester}-*.jar</include>
+                </includes>
+            </unpackOptions>
+            <includes>
+                <include>dk.statsbiblioteket.digitv.youseeingester:${yousee.digitv.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -135,7 +135,7 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Ingest_Initiator/external-products</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${yousee.ingest.initiator}/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -144,13 +144,13 @@
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.mediaplatform.ingest:ingest_initiator_bundle</include>
+                <include>dk.statsbiblioteket.mediaplatform.ingest:${yousee.ingest.initiator}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Ingest_Initiator/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${yousee.ingest.initiator}/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
@@ -159,7 +159,7 @@
                 </includes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.mediaplatform.ingest:ingest_initiator_bundle</include>
+                <include>dk.statsbiblioteket.mediaplatform.ingest:${yousee.ingest.initiator}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -169,31 +169,31 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Doms_Ingester/external-products</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${yousee.doms.ingester}/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
                 <excludes>
-                    <exclude>yousee-doms-ingest-client-*.jar</exclude>
+                    <exclude>${yousee.doms.ingester}-*.jar</exclude>
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.doms:yousee-doms-ingest-client</include>
+                <include>dk.statsbiblioteket.doms:${yousee.doms.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/Yousee_Doms_Ingester/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${yousee.doms.ingester}/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
                 <includes>
-                    <include>yousee-doms-ingest-client-*.jar</include>
+                    <include>${yousee.doms.ingester}-*.jar</include>
                 </includes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.doms:yousee-doms-ingest-client</include>
+                <include>dk.statsbiblioteket.doms:${yousee.doms.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -218,13 +218,15 @@
 
         <fileSet>
             <outputDirectory>${yousee.script.dir}</outputDirectory>
-            <directory>src/main/scripts</directory>
-            <fileMode>755</fileMode>
+            <directory>src/main/env</directory>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
         </fileSet>
 
         <fileSet>
             <outputDirectory>${yousee.workflow.dir}</outputDirectory>
             <directory>src/main/taverna</directory>
+            <filtered>true</filtered>
         </fileSet>
 
 
@@ -239,6 +241,110 @@
 
     </fileSets>
 
+    <files>
+        <file>
+            <source>src/main/scripts/bitrepository.ingester.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${bitrepository.ingester}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>src/main/scripts/crosscheck.characteriser.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${crosscheck.characteriser}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/scripts/crosscheck.profile.validator.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${crosscheck.profile.validator}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/scripts/ffprobe.characteriser.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${ffprobe.characteriser}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/scripts/ffprobe.profile.validator.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${ffprobe.profile.validator}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>src/main/scripts/yousee.digitv.ingester.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${yousee.digitv.ingester}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>src/main/scripts/yousee.doms.ingester.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${yousee.doms.ingester}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>src/main/scripts/yousee.ingest.initiator.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${yousee.ingest.initiator}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>src/main/scripts/yousee.downloader.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${yousee.downloader}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+
+        <file>
+            <source>src/main/scripts/yousee.downloader.handleQueuedFile.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${yousee.downloader.handleQueuedFile}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>src/main/scripts/Master_Validator.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <!--<destName>${yousee.downloader.handleQueuedFile}.sh</destName>-->
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>src/main/scripts/Yousee_Bibliographic_Metadata_Validator.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+<!--            <destName>${yousee.downloader.handleQueuedFile}.sh</destName>-->
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>src/main/scripts/Yousee_Ingest_Workflow_completed.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+<!--            <destName>${yousee.downloader.handleQueuedFile}.sh</destName>-->
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+
+    </files>
 
 
 </assembly>

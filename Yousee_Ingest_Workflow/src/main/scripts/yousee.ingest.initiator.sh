@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 pushd . > /dev/null
 SCRIPT_PATH="${BASH_SOURCE[0]}";
 if ([ -h "${SCRIPT_PATH}" ]) then
@@ -10,16 +9,21 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/env.sh
 
-ENTITY=$1
-LOCALFILE=$2
+
+
+INPUT=$1
 
 NAME=`basename $0 .sh`
 
-CMD="$YOUSEE_COMPONENTS/$NAME/bin/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE"
+source $SCRIPT_PATH/env.sh
 
-OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
+APPDIR="$YOUSEE_COMPONENTS/${yousee.ingest.initiator}"
+
+CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
+dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI $CONFIGFILE $INPUT"
+
+OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME"`"
 RETURNCODE=$?
 echo "$OUTPUT"
 exit "$RETURNCODE"

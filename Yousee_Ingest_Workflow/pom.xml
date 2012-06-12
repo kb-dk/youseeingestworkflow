@@ -27,6 +27,8 @@
         <integrationtest.basedir>$HOME/yousee-workflow</integrationtest.basedir>
         <integrationtest.workflowdir>${integrationtest.basedir}/services/workflow</integrationtest.workflowdir>
         <yousee.config>${integrationtest.basedir}/services/conf</yousee.config>
+
+
     </properties>
 
     <dependencies>
@@ -37,63 +39,80 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
-            <groupId>dk.statsbiblioteket.medieplatform</groupId>
-            <artifactId>Yousee_Downloader</artifactId>
-            <classifier>bundle</classifier>
-            <type>zip</type>
-        </dependency>
 
-
-        <dependency>
-            <groupId>dk.statsbiblioteket.mediaplatform</groupId>
-            <artifactId>url-put-client</artifactId>
-            <classifier>bundle</classifier>
-            <type>zip</type>
-
-        </dependency>
-
-        <dependency>
-            <groupId>dk.statsbiblioteket.medieplatform</groupId>
-            <artifactId>Yousee_Profile_Validator</artifactId>
-            <type>zip</type>
-        </dependency>
-        <dependency>
-            <groupId>dk.statsbiblioteket.digitv.youseeingester</groupId>
-            <artifactId>YouseeDigitvIngester</artifactId>
-            <classifier>bundle</classifier>
-            <type>zip</type>
-
-        </dependency>
-
+        <!--Yousee Ingest Initiator-->
         <dependency>
             <groupId>dk.statsbiblioteket.mediaplatform.ingest</groupId>
-            <artifactId>ingest_initiator_bundle</artifactId>
+            <artifactId>${yousee.ingest.initiator}</artifactId>
+            <version>1.1.1-SNAPSHOT</version>
             <classifier>bundle</classifier>
             <type>zip</type>
-
         </dependency>
 
 
+        <!--Yousee Bitrepository Ingester-->
+        <dependency>
+            <groupId>dk.statsbiblioteket.mediaplatform</groupId>
+            <artifactId>${bitrepository.ingester}</artifactId>
+            <version>0.3</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
+
+        <!--Yousee FFProbe Profile Validator-->
+        <!--Yousee CrossCheck Profile Validator-->
+        <dependency>
+            <groupId>${medieplatform}</groupId>
+            <artifactId>${profile.validator}</artifactId>
+            <version>0.4-SNAPSHOT</version>
+            <type>zip</type>
+        </dependency>
+
+
+
+        <!--Yousee Digitv Ingester-->
+        <dependency>
+            <groupId>dk.statsbiblioteket.digitv.youseeingester</groupId>
+            <artifactId>${yousee.digitv.ingester}</artifactId>
+            <version>0.3.1-SNAPSHOT</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
+
+        <!--Yousee Doms Ingester-->
         <dependency>
             <groupId>dk.statsbiblioteket.doms</groupId>
-            <artifactId>yousee-doms-ingest-client</artifactId>
-            <classifier>bundle</classifier>
-            <type>zip</type>
-        </dependency>
-
-        <dependency>
-            <groupId>dk.statsbiblioteket.medieplatform</groupId>
-            <artifactId>Yousee_FFProbe_Characteriser</artifactId>
+            <artifactId>${yousee.doms.ingester}</artifactId>
+            <version>0.1.0</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
 
 
+        <dependency>
+            <groupId>${medieplatform}</groupId>
+            <artifactId>${yousee.downloader}</artifactId>
+            <version>2.1-SNAPSHOT</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
 
         <dependency>
-            <groupId>dk.statsbiblioteket.medieplatform</groupId>
-            <artifactId>Yousee_CrossCheck_Characteriser</artifactId>
+            <groupId>${medieplatform}</groupId>
+            <artifactId>${ffprobe.characteriser}</artifactId>
+            <version>${project.version}</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>${medieplatform}</groupId>
+            <artifactId>${crosscheck.characteriser}</artifactId>
+            <version>${project.version}</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>

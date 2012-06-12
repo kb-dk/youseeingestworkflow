@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 pushd . > /dev/null
 SCRIPT_PATH="${BASH_SOURCE[0]}";
 if ([ -h "${SCRIPT_PATH}" ]) then
@@ -9,21 +10,32 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/env.sh
 
 
-INPUT=$1
+
+ENTITY=$1
+REMOTEURL=$2
+CHANNELID=$3
+STARTTIME=$4
+ENDTIME=$5
+
+
 
 NAME=`basename $0 .sh`
 
+source $SCRIPT_PATH/env.sh
 
-APPDIR="$YOUSEE_COMPONENTS/$NAME"
+APPDIR="$YOUSEE_COMPONENTS/${yousee.digitv.ingester}/"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
-dk.statsbiblioteket.mediaplatform.ingest.mediafilesinitiator.IngestMediaFilesInitiatorCLI $CONFIGFILE $INPUT"
+ dk.statsbiblioteket.digitv.youseeingester.YouseeDigitvIngester \
+ -filename $ENTITY \
+ -starttime $STARTTIME \
+ -stoptime $ENDTIME \
+ -channelid $CHANNELID \
+ -config $CONFIGFILE"
 
-OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME"`"
+OUTPUT="`execute "$YOUSEE_CONFIG" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
 echo "$OUTPUT"
 exit "$RETURNCODE"
-

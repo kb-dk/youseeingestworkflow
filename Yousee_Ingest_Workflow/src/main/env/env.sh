@@ -16,8 +16,8 @@ source $YOUSEE_WORKFLOW_CONFIG/componentLoggingConfig.sh
 source $SCRIPT_PATH/loggingEntity.sh
 mkdir -p $LOGDIR
 
-NAME="`basename $0 .sh`Config"
-CONFIGFILE=`echo ${!NAME}`
+CONFIGNAME="${NAME//-/_}Config"
+CONFIGFILE="${!CONFIGNAME}"
 
 
 function report(){

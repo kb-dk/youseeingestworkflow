@@ -10,7 +10,10 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/env.sh
+SCRIPT="`basename $0`"
+NAME="${bitrepository.ingester}"
+
+
 
 ENTITY=$1
 LOCALFILEURL=$2
@@ -18,7 +21,7 @@ REMOTEFILEID=$3
 CHECKSUM=$4
 FILESIZE=$5
 
-NAME="`basename $0 .sh`"
+source $SCRIPT_PATH/env.sh
 
 APPDIR="$YOUSEE_COMPONENTS/$NAME"
 

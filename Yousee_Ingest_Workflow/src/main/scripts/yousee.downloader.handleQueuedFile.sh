@@ -9,12 +9,14 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/env.sh
+
 
 ENTITY="$1"
 DOWNLOADER_JSON_OUTPUT="$PWD/$2"
 
 NAME=`basename "$0" ".sh" | cut -d'_' -f-2`
+
+source $SCRIPT_PATH/env.sh
 
 CMD="grep \"queued\": $DOWNLOADER_JSON_OUTPUT "
 FOUND=`$CMD | wc -l`

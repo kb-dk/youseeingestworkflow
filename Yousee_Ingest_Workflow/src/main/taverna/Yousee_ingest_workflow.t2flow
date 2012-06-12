@@ -19,7 +19,7 @@
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_Ingest_Initiator.sh "%%input%%"</command>
+    <command>$YOUSEE_SCRIPTS/${yousee.ingest.initiator}.sh "%%input%%"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>
@@ -242,7 +242,7 @@ fileSize = obj.get("fileSize").toString();
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_FFProbe_Characteriser.sh `basename "%%fileURL%%"` "%%fileURL%%"</command>
+    <command>$YOUSEE_SCRIPTS/${ffprobe.characteriser}.sh `basename "%%fileURL%%"` "%%fileURL%%"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>
@@ -294,7 +294,7 @@ fileSize = obj.get("fileSize").toString();
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_CrossCheck_Characteriser.sh `basename "%%fileURL%%"` "%%fileURL%%"</command>
+    <command>$YOUSEE_SCRIPTS/${crosscheck.characteriser}.sh `basename "%%fileURL%%"` "%%fileURL%%"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>
@@ -346,7 +346,7 @@ fileSize = obj.get("fileSize").toString();
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_FFProbe_Profile_Validator.sh "%%filename%%" "profile" "%%channelID%%"</command>
+    <command>$YOUSEE_SCRIPTS/${ffprobe.profile.validator}.sh "%%filename%%" "profile" "%%channelID%%"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>
@@ -427,7 +427,7 @@ fileSize = obj.get("fileSize").toString();
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_CrossCheck_Profile_Validator.sh "%%filename%%" "profile" "%%channelID%%"</command>
+    <command>$YOUSEE_SCRIPTS/${crosscheck.profile.validator}.sh "%%filename%%" "profile" "%%channelID%%"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>
@@ -584,7 +584,7 @@ if (ffprobeValid &amp;&amp; ccValid &amp;&amp; metaValid){
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_Master_Validator.sh "%%filename%%" "%%result%%"
+    <command>$YOUSEE_SCRIPTS/${master.validator}.sh "%%filename%%" "%%result%%"
 
 </command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
@@ -654,7 +654,7 @@ if (ffprobeValid &amp;&amp; ccValid &amp;&amp; metaValid){
     <usecaseid />
     <description />
     <command>FILENAME=`basename "%%fileUrl%%"`
-$YOUSEE_SCRIPTS/Yousee_Bitrepository_Ingester.sh "$FILENAME" "%%fileUrl%%" "$FILENAME" "%%checksum%%"  "%%fileSize%%"
+$YOUSEE_SCRIPTS/${bitrepository.ingester}.sh "$FILENAME" "%%fileUrl%%" "$FILENAME" "%%checksum%%"  "%%fileSize%%"
 </command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
@@ -818,7 +818,7 @@ remoteURL = obj.get("UrlToFile").toString();
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_Doms_Ingester.sh "%%filename%%" "%%remoteURL%%" "%%checksum%%" "ffprobeProfile" "crossCheckProfile" "youseeMetadata"</command>
+    <command>$YOUSEE_SCRIPTS/${yousee.doms.ingester}.sh "%%filename%%" "%%remoteURL%%" "%%checksum%%" "ffprobeProfile" "crossCheckProfile" "youseeMetadata"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>
@@ -980,7 +980,7 @@ domsPid = obj.get("domsPid").toString();
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_Digitv_Ingester.sh "%%filename%%" "%%remoteUrl%%" "%%channelID%%" "%%startTime%%" "%%endTime%%"
+    <command>$YOUSEE_SCRIPTS/${yousee.digitv.ingester}.sh "%%filename%%" "%%remoteUrl%%" "%%channelID%%" "%%startTime%%" "%%endTime%%"
 </command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
@@ -1570,7 +1570,7 @@ domsMetadata = builder.toString();
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_Downloader_handleQueuedFile.sh "%%filename%%"  "downloaderInput"
+    <command>$YOUSEE_SCRIPTS/${yousee.downloader.handleQueuedFile}.sh "%%filename%%"  "downloaderInput"
 </command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>

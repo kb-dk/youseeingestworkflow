@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 pushd . > /dev/null
 SCRIPT_PATH="${BASH_SOURCE[0]}";
 if ([ -h "${SCRIPT_PATH}" ]) then
@@ -12,17 +13,13 @@ popd  > /dev/null
 
 
 ENTITY=$1
-LOCALFILEURL=$2
-CHANNELID=$3
-STARTTIME=$4
-ENDTIME=$5
-
+LOCALFILE=$2
 
 NAME=`basename $0 .sh`
 
 source $SCRIPT_PATH/env.sh
 
-CMD="cat $YOUSEE_HOME/examples/bibliograpthic_validator_output.json"
+CMD="$YOUSEE_COMPONENTS/${ffprobe.characteriser}/bin/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?

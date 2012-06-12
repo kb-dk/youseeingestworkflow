@@ -10,7 +10,7 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/env.sh
+
 
 
 ENTITY=$1
@@ -19,7 +19,9 @@ CHANNELID=$3
 
 NAME=`basename $0 .sh`
 
-APPDIR="$YOUSEE_COMPONENTS/Yousee_Profile_Validator/"
+source $SCRIPT_PATH/env.sh
+
+APPDIR="$YOUSEE_COMPONENTS/${profile.validator}/"
 
 CMD="$APPDIR/bin/validateXmlWithProfile.sh $XML $CONFIGFILE"
 

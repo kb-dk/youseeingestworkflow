@@ -9,7 +9,7 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/env.sh
+
 
 ENTITY=$1
 DOMSPID=$2
@@ -17,10 +17,11 @@ DIGITVPID=$3
 REMOTEURL=$4
 LOCALURL=$5
 
-
 FILENAME="${LOCALURL#"file://"}"
 
 NAME=`basename $0 .sh`
+source $SCRIPT_PATH/env.sh
+
 report "$NAME" "Started" "$ENTITY"
 
 

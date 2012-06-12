@@ -9,7 +9,7 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/env.sh
+
 
 ENTITY=$1
 YOUSEENAME=$2
@@ -17,7 +17,9 @@ LOCALNAME=$3
 
 NAME=`basename $0 .sh`
 
-CMD="$YOUSEE_COMPONENTS/$NAME/bin/yousee-downloader.sh $CONFIGFILE $YOUSEENAME $LOCALNAME"
+source $SCRIPT_PATH/env.sh
+
+CMD="$YOUSEE_COMPONENTS/${yousee.downloader}/bin/yousee-downloader.sh $CONFIGFILE $YOUSEENAME $LOCALNAME"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?

@@ -9,7 +9,7 @@
     </parent>
     <packaging>pom</packaging>
 
-    <artifactId>Yousee_FFProbe_Characteriser</artifactId>
+    <artifactId>ffprobecharacteriser</artifactId>
 
 
     <build>

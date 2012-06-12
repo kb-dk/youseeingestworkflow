@@ -17,98 +17,29 @@
 
     <modules>
         <module>Yousee_Ingest_Workflow</module>
-        <module>Yousee_FFProbe_Characteriser</module>
-        <module>Yousee_CrossCheck_Characteriser</module>
+        <module>${ffprobe.characteriser}</module>
+        <module>${crosscheck.characteriser}</module>
     </modules>
 
-    <dependencyManagement>
+
+    <properties>
+        <medieplatform>dk.statsbiblioteket.medieplatform</medieplatform>
+        <profile.validator>Yousee_Profile_Validator</profile.validator>
+        <ffprobe.profile.validator>FFProbe_Profile_Validator</ffprobe.profile.validator>
+        <crosscheck.profile.validator>CrossCheck_Profile_Validator</crosscheck.profile.validator>
+        <bitrepository.ingester>url-put-client</bitrepository.ingester>
+        <yousee.digitv.ingester>YouseeDigitvIngester</yousee.digitv.ingester>
+        <yousee.doms.ingester>yousee-doms-ingest-client</yousee.doms.ingester>
+        <yousee.downloader>Yousee_Downloader</yousee.downloader>
+        <yousee.downloader.handleQueuedFile>${yousee.downloader}_handleQueuedFile</yousee.downloader.handleQueuedFile>
+        <crosscheck.characteriser>crosscheckcharacteriser</crosscheck.characteriser>
+        <ffprobe.characteriser>ffprobecharacteriser</ffprobe.characteriser>
+        <yousee.ingest.initiator>ingest_initiator_bundle</yousee.ingest.initiator>
+        <master.validator>Master_Validator</master.validator>
+
+    </properties>
 
 
-
-        <dependencies>
-
-
-            <!--Yousee Ingest Initiator-->
-            <dependency>
-                <groupId>dk.statsbiblioteket.mediaplatform.ingest</groupId>
-                <artifactId>ingest_initiator_bundle</artifactId>
-                <version>1.1.1-SNAPSHOT</version>
-                <classifier>bundle</classifier>
-                <type>zip</type>
-            </dependency>
-
-
-            <!--Yousee Bitrepository Ingester-->
-            <dependency>
-                <groupId>dk.statsbiblioteket.mediaplatform</groupId>
-                <artifactId>url-put-client</artifactId>
-                <version>0.3</version>
-                <classifier>bundle</classifier>
-                <type>zip</type>
-            </dependency>
-
-
-            <!--Yousee FFProbe Profile Validator-->
-            <!--Yousee CrossCheck Profile Validator-->
-            <dependency>
-                <groupId>dk.statsbiblioteket.medieplatform</groupId>
-                <artifactId>Yousee_Profile_Validator</artifactId>
-                <version>0.4-SNAPSHOT</version>
-                <type>zip</type>
-            </dependency>
-
-
-
-            <!--Yousee Digitv Ingester-->
-            <dependency>
-                <groupId>dk.statsbiblioteket.digitv.youseeingester</groupId>
-                <artifactId>YouseeDigitvIngester</artifactId>
-                <version>0.3.1-SNAPSHOT</version>
-                <classifier>bundle</classifier>
-                <type>zip</type>
-            </dependency>
-
-
-            <!--Yousee Doms Ingester-->
-            <dependency>
-                <groupId>dk.statsbiblioteket.doms</groupId>
-                <artifactId>yousee-doms-ingest-client</artifactId>
-                <version>0.1.0</version>
-                <classifier>bundle</classifier>
-                <type>zip</type>
-            </dependency>
-
-
-            <dependency>
-                <groupId>dk.statsbiblioteket.medieplatform</groupId>
-                <artifactId>Yousee_Downloader</artifactId>
-                <version>2.1-SNAPSHOT</version>
-                <classifier>bundle</classifier>
-                <type>zip</type>
-            </dependency>
-
-            <dependency>
-                <groupId>dk.statsbiblioteket.medieplatform</groupId>
-                <artifactId>Yousee_FFProbe_Characteriser</artifactId>
-                <version>${project.version}</version>
-                <classifier>bundle</classifier>
-                <type>zip</type>
-            </dependency>
-
-
-
-            <dependency>
-                <groupId>dk.statsbiblioteket.medieplatform</groupId>
-                <artifactId>Yousee_CrossCheck_Characteriser</artifactId>
-                <version>${project.version}</version>
-                <classifier>bundle</classifier>
-                <type>zip</type>
-            </dependency>
-
-
-
-        </dependencies>
-    </dependencyManagement>
 
     <scm>
         <connection>scm:git:git://github.com/statsbiblioteket/SB-yousee-workflow.git</connection>

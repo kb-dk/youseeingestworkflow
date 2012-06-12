@@ -9,7 +9,7 @@ cd `dirname ${SCRIPT_PATH}` > /dev/null
 SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
-source $SCRIPT_PATH/env.sh
+
 
 ENTITY=$1
 REMOTEURL=$2
@@ -23,7 +23,9 @@ YOUSEEMETADATA_LOCATION=$6
 
 NAME=`basename $0 .sh`
 
-APPDIR="$YOUSEE_COMPONENTS/$NAME"
+source $SCRIPT_PATH/env.sh
+
+APPDIR="$YOUSEE_COMPONENTS/${yousee.doms.ingester}"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname $CONFIGFILE` \
  dk.statsbiblioteket.doms.yousee.YouseeIngesterCLI \
