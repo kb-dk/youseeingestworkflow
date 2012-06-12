@@ -14,7 +14,7 @@
 
     <properties>
         <yousee.home>$YOUSEE_HOME</yousee.home>
-        <yousee.config>/home/yousee/Medieplatform-config</yousee.config>
+
         <yousee.logs>logs</yousee.logs>
         <yousee.locks>locks</yousee.locks>
         <yousee.workflow.dependencies>workflowDependencies</yousee.workflow.dependencies>
@@ -24,6 +24,9 @@
         <yousee.components.dir>components</yousee.components.dir>
         <yousee.bin>bin</yousee.bin>
 
+        <integrationtest.basedir>$HOME/yousee-workflow</integrationtest.basedir>
+        <integrationtest.workflowdir>${integrationtest.basedir}/services/workflow</integrationtest.workflowdir>
+        <yousee.config>${integrationtest.basedir}/services/conf</yousee.config>
     </properties>
 
     <dependencies>
@@ -139,8 +142,15 @@
                                     <target>
 
                                         <!-- Requires that a private/public key login has been enabled for this account -->
-                                        <scp file="${project.build.directory}/${project.build.finalName}-bundle.zip" toDir="yousee@canopus:~/yousee-workflow" keyfile="${env.passwordlessKey}" />
-                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command="cd yousee-workflow/; rm -r ${project.build.finalName}; unzip ${project.build.finalName}-bundle.zip" failonerror="true" />
+                                        <scp file="${project.build.directory}/${project.build.finalName}-bundle.zip" toDir="yousee@canopus:${integrationtest.basedir}" keyfile="${env.passwordlessKey}" />
+                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command="
+                                        cd ${integrationtest.basedir};
+                                         rm -r ${project.build.finalName};
+                                          unzip ${project.build.finalName}-bundle.zip;
+                                          rm -r ${integrationtest.workflowdir};
+                                          mkdir ${integrationtest.workflowdir};
+                                          mv ${project.build.finalName}/* ${integrationtest.workflowdir}/;
+                                           " failonerror="true" />
                                         <!--Find deply folder ${project.build.outputDirectory}-->
                                         <!--unzip package-->
                                     </target>
@@ -161,7 +171,7 @@
                                     <!--Run workflow-->
 
                                     <target>
-                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command="~/yousee-workflow/${project.build.finalName}/integrationTests/runIntegrationTests.sh" failonerror="true">
+                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command="${integrationtest.workflowdir}/integrationTests/runIntegrationTests.sh" failonerror="true">
                                         </sshexec>
                                     </target>
                                 </configuration>
