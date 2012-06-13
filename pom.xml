@@ -9,14 +9,14 @@
     </parent>
 
     <groupId>dk.statsbiblioteket.medieplatform</groupId>
-    <artifactId>Yousee_Ingest_Workflow_Parent</artifactId>
+    <artifactId>youseeingestworkflow_Parent</artifactId>
     <version>0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
 
 
     <modules>
-        <module>Yousee_Ingest_Workflow</module>
+        <module>youseeingestworkflow</module>
         <module>${ffprobe.characteriser}</module>
         <module>${crosscheck.characteriser}</module>
     </modules>

@@ -4,12 +4,12 @@
 
     <parent>
         <groupId>dk.statsbiblioteket.medieplatform</groupId>
-        <artifactId>Yousee_Ingest_Workflow_Parent</artifactId>
+        <artifactId>youseeingestworkflow_Parent</artifactId>
         <version>0.4-SNAPSHOT</version>
     </parent>
     <packaging>pom</packaging>
 
-    <artifactId>Yousee_Ingest_Workflow</artifactId>
+    <artifactId>youseeingestworkflow</artifactId>
 
 
     <properties>
