@@ -24,20 +24,23 @@
 
     <properties>
         <medieplatform>dk.statsbiblioteket.medieplatform</medieplatform>
+
+        <bitrepository.ingester>yousee-bitrepository-ingester</bitrepository.ingester>
+
+        <yousee.digitv.ingester>yousee-digitv-ingester</yousee.digitv.ingester>
+        <ffprobe.profile.validator>ffprobe-profile-validator</ffprobe.profile.validator>
+        <crosscheck.profile.validator>crosscheck-profile-validator</crosscheck.profile.validator>
         <profile.validator>profile-validator</profile.validator>
-        <ffprobe.profile.validator>FFProbe_Profile_Validator</ffprobe.profile.validator>
-        <crosscheck.profile.validator>CrossCheck_Profile_Validator</crosscheck.profile.validator>
-        <bitrepository.ingester>url-put-client</bitrepository.ingester>
-        <yousee.digitv.ingester>YouseeDigitvIngester</yousee.digitv.ingester>
-        <yousee.doms.ingester>yousee-doms-ingest-client</yousee.doms.ingester>
+        <yousee.doms.ingester>yousee-doms-ingester</yousee.doms.ingester>
         <yousee.downloader>yousee-downloader</yousee.downloader>
         <yousee.downloader.handleQueuedFile>${yousee.downloader}_handleQueuedFile</yousee.downloader.handleQueuedFile>
         <crosscheck.characteriser>crosscheck-characteriser</crosscheck.characteriser>
         <ffprobe.characteriser>ffprobe-characteriser</ffprobe.characteriser>
-        <yousee.ingest.initiator>ingest_initiator_bundle</yousee.ingest.initiator>
+        <yousee.ingest.initiator>yousee-ingest-initiator</yousee.ingest.initiator>
         <master.validator>master-validator</master.validator>
         <yousee.ingest.workflow>yousee-ingest-workflow</yousee.ingest.workflow>
         <yousee.ingest.workflow.completed>${yousee.ingest.workflow}-completed</yousee.ingest.workflow.completed>
+        <yousee.bibliographic.metadata.validator>yousee-bibliographic-metadata-validator</yousee.bibliographic.metadata.validator>
     </properties>
 
 

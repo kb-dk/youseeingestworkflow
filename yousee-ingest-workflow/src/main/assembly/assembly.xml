@@ -42,7 +42,7 @@
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.mediaplatform:${bitrepository.ingester}</include>
+                <include>${medieplatform}:${bitrepository.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -57,7 +57,7 @@
                 </includes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.mediaplatform:${bitrepository.ingester}</include>
+                <include>${medieplatform}:${bitrepository.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -110,7 +110,7 @@
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.digitv.youseeingester:${yousee.digitv.ingester}</include>
+                <include>${medieplatform}:${yousee.digitv.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -125,7 +125,7 @@
                 </includes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.digitv.youseeingester:${yousee.digitv.ingester}</include>
+                <include>${medieplatform}:${yousee.digitv.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -140,11 +140,11 @@
             <unpack>true</unpack>
             <unpackOptions>
                 <excludes>
-                    <exclude>ingest_initiator_impl-*.jar</exclude>
+                    <exclude>${yousee.ingest.initiator}-*.jar</exclude>
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.mediaplatform.ingest:${yousee.ingest.initiator}</include>
+                <include>${medieplatform}:${yousee.ingest.initiator}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -155,11 +155,11 @@
             <unpack>true</unpack>
             <unpackOptions>
                 <includes>
-                    <include>ingest_initiator_impl-*.jar</include>
+                    <include>${yousee.ingest.initiator}-*.jar</include>
                 </includes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.mediaplatform.ingest:${yousee.ingest.initiator}</include>
+                <include>${medieplatform}:${yousee.ingest.initiator}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -178,7 +178,7 @@
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.doms:${yousee.doms.ingester}</include>
+                <include>${medieplatform}:${yousee.doms.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -193,7 +193,7 @@
                 </includes>
             </unpackOptions>
             <includes>
-                <include>dk.statsbiblioteket.doms:${yousee.doms.ingester}</include>
+                <include>${medieplatform}:${yousee.doms.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -321,7 +321,7 @@
         </file>
 
         <file>
-            <source>src/main/scripts/Master_Validator.sh</source>
+            <source>src/main/scripts/master.validator.sh</source>
             <outputDirectory>${yousee.script.dir}</outputDirectory>
             <destName>${master.validator}.sh</destName>
             <fileMode>0700</fileMode>
@@ -329,17 +329,17 @@
         </file>
 
         <file>
-            <source>src/main/scripts/Yousee_Bibliographic_Metadata_Validator.sh</source>
+            <source>src/main/scripts/yousee.bibliographic.metadata.validator.sh</source>
             <outputDirectory>${yousee.script.dir}</outputDirectory>
-<!--            <destName>${yousee.downloader.handleQueuedFile}.sh</destName>-->
+            <destName>${yousee.bibliographic.metadata.validator}.sh</destName>
             <fileMode>0700</fileMode>
             <filtered>true</filtered>
         </file>
 
         <file>
-            <source>src/main/scripts/Yousee_Ingest_Workflow_completed.sh</source>
+            <source>src/main/scripts/yousee.ingest.workflow.completed.sh</source>
             <outputDirectory>${yousee.script.dir}</outputDirectory>
-<!--            <destName>${yousee.downloader.handleQueuedFile}.sh</destName>-->
+            <destName>${yousee.ingest.workflow.completed}.sh</destName>
             <fileMode>0700</fileMode>
             <filtered>true</filtered>
         </file>

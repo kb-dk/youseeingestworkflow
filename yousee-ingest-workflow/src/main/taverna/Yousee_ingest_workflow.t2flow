@@ -117,7 +117,7 @@ for (int i = 0; i &lt; list.size(); i++) {
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_Downloader.sh "%%filename%%" "%%yousee_resource%%"  "%%filename%%"</command>
+    <command>$YOUSEE_SCRIPTS/${yousee.downloader}.sh "%%filename%%" "%%yousee_resource%%"  "%%filename%%"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>
@@ -1131,7 +1131,7 @@ digiTVIdentifier = obj.get("id").toString();
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_Ingest_Workflow_completed.sh "%%filename%%" "%%domsPid%%" "%%digiTVPid%%" "%%remoteUrl%%" "%%localUrl%%"</command>
+    <command>$YOUSEE_SCRIPTS/${yousee.ingest.workflow.completed}.sh "%%filename%%" "%%domsPid%%" "%%digiTVPid%%" "%%remoteUrl%%" "%%localUrl%%"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>
@@ -1317,7 +1317,7 @@ sbFilename = obj.get("fileID").toString();</script>
   <useCaseDescription>
     <usecaseid />
     <description />
-    <command>$YOUSEE_SCRIPTS/Yousee_Bibliographic_Metadata_Validator.sh `basename "%%fileUrl%%"` "%%fileUrl%%" "%%channelID%%" "%%startTime%%" "%%endTime%%"</command>
+    <command>$YOUSEE_SCRIPTS/${yousee.bibliographic.metadata.validator}.sh `basename "%%fileUrl%%"` "%%fileUrl%%" "%%channelID%%" "%%startTime%%" "%%endTime%%"</command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>
     <tags>

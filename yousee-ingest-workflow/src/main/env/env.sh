@@ -16,7 +16,10 @@ source $YOUSEE_WORKFLOW_CONFIG/componentLoggingConfig.sh
 source $SCRIPT_PATH/loggingEntity.sh
 mkdir -p $LOGDIR
 
-CONFIGNAME="${NAME//[\- _]/}Config"
+CONFIGNAME="$NAME"
+CONFIGNAME="${CONFIGNAME//[\- _]/}"
+CONFIGNAME="${CONFIGNAME,,}"
+CONFIGNAME="${CONFIGNAME}Config"
 CONFIGFILE="${!CONFIGNAME}"
 
 
