@@ -654,7 +654,7 @@ if (ffprobeValid &amp;&amp; ccValid &amp;&amp; metaValid){
     <usecaseid />
     <description />
     <command>FILENAME=`basename "%%fileUrl%%"`
-$YOUSEE_SCRIPTS/${bitrepository.ingester}.sh "$FILENAME" "%%fileUrl%%" "$FILENAME" "%%checksum%%"  "%%fileSize%%"
+$YOUSEE_SCRIPTS/${yousee.bitrepository.ingester}.sh "$FILENAME" "%%fileUrl%%" "$FILENAME" "%%checksum%%"  "%%fileSize%%"
 </command>
     <preparingTimeoutInSeconds>1200</preparingTimeoutInSeconds>
     <executionTimeoutInSeconds>1800</executionTimeoutInSeconds>

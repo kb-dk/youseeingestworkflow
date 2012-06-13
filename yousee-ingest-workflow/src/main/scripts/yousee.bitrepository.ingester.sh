@@ -11,7 +11,7 @@ SCRIPT_PATH=`pwd`;
 popd  > /dev/null
 
 SCRIPT="`basename $0`"
-NAME="${bitrepository.ingester}"
+NAME="${yousee.bitrepository.ingester}"
 
 
 
@@ -26,7 +26,7 @@ source $SCRIPT_PATH/env.sh
 APPDIR="$YOUSEE_COMPONENTS/$NAME"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
-dk.statsbiblioteket.mediaplatform.bitrepository.urlclient.UrlClient \
+dk.statsbiblioteket.medieplatform.bitrepository.ingester.Ingester \
 $CONFIGFILE $LOCALFILEURL $REMOTEFILEID $CHECKSUM $FILESIZE"
 
 OUTPUT="`execute "$APPDIR" "$CMD" "$NAME" "$ENTITY"`"

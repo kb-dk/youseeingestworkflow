@@ -53,7 +53,7 @@
         <!--Yousee Bitrepository Ingester-->
         <dependency>
             <groupId>${medieplatform}</groupId>
-            <artifactId>${bitrepository.ingester}</artifactId>
+            <artifactId>${yousee.bitrepository.ingester}</artifactId>
             <version>0.4-SNAPSHOT</version>
             <classifier>bundle</classifier>
             <type>zip</type>

@@ -33,31 +33,31 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/${bitrepository.ingester}/external-products</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${yousee.bitrepository.ingester}/external-products</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
                 <excludes>
-                    <exclude>${bitrepository.ingester}-*</exclude>
+                    <exclude>${yousee.bitrepository.ingester}-*</exclude>
                 </excludes>
             </unpackOptions>
             <includes>
-                <include>${medieplatform}:${bitrepository.ingester}</include>
+                <include>${medieplatform}:${yousee.bitrepository.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
-            <outputDirectory>${yousee.components.dir}/${bitrepository.ingester}/bin</outputDirectory>
+            <outputDirectory>${yousee.components.dir}/${yousee.bitrepository.ingester}/bin</outputDirectory>
             <useTransitiveDependencies>false</useTransitiveDependencies>
             <unpack>true</unpack>
             <unpackOptions>
                 <includes>
-                    <include>${bitrepository.ingester}-*</include>
+                    <include>${yousee.bitrepository.ingester}-*</include>
                 </includes>
             </unpackOptions>
             <includes>
-                <include>${medieplatform}:${bitrepository.ingester}</include>
+                <include>${medieplatform}:${yousee.bitrepository.ingester}</include>
             </includes>
             <scope>runtime</scope>
         </dependencySet>
@@ -243,9 +243,9 @@
 
     <files>
         <file>
-            <source>src/main/scripts/bitrepository.ingester.sh</source>
+            <source>src/main/scripts/yousee.bitrepository.ingester.sh</source>
             <outputDirectory>${yousee.script.dir}</outputDirectory>
-            <destName>${bitrepository.ingester}.sh</destName>
+            <destName>${yousee.bitrepository.ingester}.sh</destName>
             <fileMode>0700</fileMode>
             <filtered>true</filtered>
         </file>
