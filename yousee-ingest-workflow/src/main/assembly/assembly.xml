@@ -323,7 +323,7 @@
         <file>
             <source>src/main/scripts/Master_Validator.sh</source>
             <outputDirectory>${yousee.script.dir}</outputDirectory>
-            <!--<destName>${yousee.downloader.handleQueuedFile}.sh</destName>-->
+            <destName>${master.validator}.sh</destName>
             <fileMode>0700</fileMode>
             <filtered>true</filtered>
         </file>

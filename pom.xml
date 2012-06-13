@@ -9,14 +9,14 @@
     </parent>
 
     <groupId>dk.statsbiblioteket.medieplatform</groupId>
-    <artifactId>youseeingestworkflow_Parent</artifactId>
+    <artifactId>yousee-ingest-workflow-parent</artifactId>
     <version>0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
 
 
 
     <modules>
-        <module>youseeingestworkflow</module>
+        <module>${yousee.ingest.workflow}</module>
         <module>${ffprobe.characteriser}</module>
         <module>${crosscheck.characteriser}</module>
     </modules>
@@ -24,27 +24,28 @@
 
     <properties>
         <medieplatform>dk.statsbiblioteket.medieplatform</medieplatform>
-        <profile.validator>Yousee_Profile_Validator</profile.validator>
+        <profile.validator>profile-validator</profile.validator>
         <ffprobe.profile.validator>FFProbe_Profile_Validator</ffprobe.profile.validator>
         <crosscheck.profile.validator>CrossCheck_Profile_Validator</crosscheck.profile.validator>
         <bitrepository.ingester>url-put-client</bitrepository.ingester>
         <yousee.digitv.ingester>YouseeDigitvIngester</yousee.digitv.ingester>
         <yousee.doms.ingester>yousee-doms-ingest-client</yousee.doms.ingester>
-        <yousee.downloader>Yousee_Downloader</yousee.downloader>
+        <yousee.downloader>yousee-downloader</yousee.downloader>
         <yousee.downloader.handleQueuedFile>${yousee.downloader}_handleQueuedFile</yousee.downloader.handleQueuedFile>
-        <crosscheck.characteriser>crosscheckcharacteriser</crosscheck.characteriser>
-        <ffprobe.characteriser>ffprobecharacteriser</ffprobe.characteriser>
+        <crosscheck.characteriser>crosscheck-characteriser</crosscheck.characteriser>
+        <ffprobe.characteriser>ffprobe-characteriser</ffprobe.characteriser>
         <yousee.ingest.initiator>ingest_initiator_bundle</yousee.ingest.initiator>
-        <master.validator>Master_Validator</master.validator>
-
+        <master.validator>master-validator</master.validator>
+        <yousee.ingest.workflow>yousee-ingest-workflow</yousee.ingest.workflow>
+        <yousee.ingest.workflow.completed>${yousee.ingest.workflow}-completed</yousee.ingest.workflow.completed>
     </properties>
 
 
 
     <scm>
-        <connection>scm:git:git://github.com/statsbiblioteket/SB-yousee-workflow.git</connection>
-        <url>scm:git:git://github.com/statsbiblioteket:SB-yousee-workflow.git</url>
-        <developerConnection>scm:git:git://github.com/statsbiblioteket/SB-yousee-workflow.git</developerConnection>
+        <connection>scm:git:git://github.com/statsbiblioteket/youseeingestworkflow.git</connection>
+        <url>scm:git:git://github.com/statsbiblioteket:youseeingestworkflow.git</url>
+        <developerConnection>scm:git:git://github.com/statsbiblioteket/youseeingestworkflow.git</developerConnection>
     </scm>
 
     <repositories>

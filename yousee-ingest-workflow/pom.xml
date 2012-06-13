@@ -4,12 +4,12 @@
 
     <parent>
         <groupId>dk.statsbiblioteket.medieplatform</groupId>
-        <artifactId>youseeingestworkflow_Parent</artifactId>
+        <artifactId>yousee-ingest-workflow-parent</artifactId>
         <version>0.4-SNAPSHOT</version>
     </parent>
     <packaging>pom</packaging>
 
-    <artifactId>youseeingestworkflow</artifactId>
+    <artifactId>yousee-ingest-workflow</artifactId>
 
 
     <properties>
@@ -19,7 +19,7 @@
         <yousee.locks>locks</yousee.locks>
         <yousee.workflow.dependencies>workflowDependencies</yousee.workflow.dependencies>
         <yousee.workflow.dir>taverna</yousee.workflow.dir>
-        <yousee.workflow.config>${yousee.config}/Yousee_Ingest_Workflow</yousee.workflow.config>
+        <yousee.workflow.config>${yousee.config}/youseeingestworkflow</yousee.workflow.config>
         <yousee.script.dir>scripts</yousee.script.dir>
         <yousee.components.dir>components</yousee.components.dir>
         <yousee.bin>bin</yousee.bin>

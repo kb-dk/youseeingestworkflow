@@ -4,14 +4,12 @@
 
     <parent>
         <groupId>dk.statsbiblioteket.medieplatform</groupId>
-        <artifactId>youseeingestworkflow_Parent</artifactId>
+        <artifactId>yousee-ingest-workflow-parent</artifactId>
         <version>0.4-SNAPSHOT</version>
     </parent>
-
-    <artifactId>crosscheckcharacteriser</artifactId>
     <packaging>pom</packaging>
 
-
+    <artifactId>ffprobe-characteriser</artifactId>
 
 
     <build>
@@ -39,5 +37,8 @@
 
         </plugins>
     </build>
+
+
+
 
 </project>
