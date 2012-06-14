@@ -5,7 +5,7 @@
     <parent>
         <groupId>dk.statsbiblioteket.medieplatform</groupId>
         <artifactId>yousee-ingest-workflow-parent</artifactId>
-        <version>0.5-SNAPSHOT</version>
+        <version>0.5</version>
     </parent>
     <packaging>pom</packaging>
 
@@ -162,7 +162,7 @@
 
                                         <!-- Requires that a private/public key login has been enabled for this account -->
                                         <scp file="${project.build.directory}/${project.build.finalName}-bundle.zip" toDir="yousee@canopus:${integrationtest.basedir}" keyfile="${env.passwordlessKey}" />
-                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command=" cd ${integrationtest.basedir}; rm -r ${project.build.finalName};                                           unzip ${project.build.finalName}-bundle.zip;                                           rm -r ${integrationtest.workflowdir};                                           mkdir ${integrationtest.workflowdir};                                           mv ${project.build.finalName}/* ${integrationtest.workflowdir}/;                                            " failonerror="true" />
+                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command=" cd ${integrationtest.basedir}; rm -r ${project.build.finalName}; unzip ${project.build.finalName}-bundle.zip;                                           rm -r ${integrationtest.workflowdir};                                           mkdir ${integrationtest.workflowdir};                                           mv ${project.build.finalName}/* ${integrationtest.workflowdir}/;                                            " failonerror="true" />
                                         <!--Find deply folder ${project.build.outputDirectory}-->
                                         <!--unzip package-->
                                     </target>
