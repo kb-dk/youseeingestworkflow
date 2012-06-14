@@ -28,8 +28,10 @@ function report(){
     local STATE=$2
     local ENTITY=$3
     local MESSAGE="${*:4}"
+
     if [ -n "$MESSAGE" ]; then
-        MESSAGE="<message><![CDATA[""$MESSAGE""]]></message>"
+        MESSAGE=${MESSAGE:0:254}
+        MESSAGE=`echo -e "<message><![CDATA[""$MESSAGE""]]></message>"`
     else
         MESSAGE=""
     fi
@@ -37,8 +39,18 @@ function report(){
     local COMPONENT="<component>$COMPONENT</component>"
     local STATEBLOB="<state>$COMPONENT$STATE$MESSAGE</state>"
     if [ -n $STATEMONTITORSERVER ]; then
-        echo "$STATEBLOB" \
-        | curl -s -i -H 'Content-Type: text/xml' -d@- $STATEMONTITORSERVER/states/$ENTITY > /dev/null
+        local RESULT=`echo "$STATEBLOB" \
+        | curl -s -i -H 'Content-Type: text/xml' -H 'Accept: application/json' -d@- \
+          $STATEMONTITORSERVER/states/$ENTITY?preservedStates=Stopped&preservedStates=Restarted`
+#        debug "$ENTITY" "$RESULT"
+        local RETURNCODE
+        echo "$RESULT" | grep '"stateName":"\(Stopped\|Restarted\)"'
+        RETURNCODE="$?"
+        if [ "$RETURNCODE" -eq 0 ]; then
+            exit 127
+        fi
+
+
     fi
     return 0
 }
@@ -52,35 +64,32 @@ function execute() {
     local ENTITY="$4"
 
     if [ -n "$ENTITY" ]; then
-        report "$NAME" "Started" "$ENTITY"
+        report "$NAME" "Started" "$ENTITY" "$CMD"
+        debug "$ENTITY" "$NAME started:  $CMD"
     fi
     pushd "$WORKINGDIR" > /dev/null
 
     local tempfile="`mktemp`"
     local OUTPUT
+    local RETURNCODE
     OUTPUT="`$CMD 2> $tempfile`"
     RETURNCODE="$?"
 
     popd > /dev/null
 
     local MESSAGE=""
-    if [ "$RETURNCODE" -eq "0" ]; then
-        if [ -n "$ENTITY" ]; then
-            MESSAGE="std out: $OUTPUT \n std err: "`cat "$tempfile"`
+    MESSAGE="std out: \n '$OUTPUT' \n std err: \n '"`cat "$tempfile"`"'"
+    rm "$tempfile"
+    echo "$OUTPUT"
+
+    if [ -n "$ENTITY" ]; then
+        if [ "$RETURNCODE" -eq "0" ]; then
             debug "$ENTITY" "$NAME succeeded for $ENTITY: \n $MESSAGE"
             report "$NAME" "Completed" "$ENTITY" "`echo "$OUTPUT"| head -q -n10`"
-        fi
-        rm "$tempfile"
-        echo "$OUTPUT"
-        return "0"
-    else
-        if [ -n "$ENTITY" ]; then
-            MESSAGE="std out: $OUTPUT \n std err: "`cat "$tempfile"`
+        else
             error "$ENTITY" "$NAME failed for $ENTITY: \n $MESSAGE"
             report "$NAME" "Failed" "$ENTITY" "$OUTPUT" "$MESSAGE"
         fi
-        rm "$tempfile"
-        echo "$OUTPUT"
-        return "$RETURNCODE"
     fi
+    return "$RETURNCODE"
 }

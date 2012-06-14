@@ -19,6 +19,8 @@ NAME=`basename $0 .sh`
 
 source $SCRIPT_PATH/env.sh
 
+report "${yousee.ingest.workflow}" "Started" "$ENTITY"
+
 CMD="$YOUSEE_COMPONENTS/${yousee.downloader}/bin/yousee-downloader.sh $CONFIGFILE $YOUSEENAME $LOCALNAME"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"

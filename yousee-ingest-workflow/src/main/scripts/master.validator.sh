@@ -12,7 +12,7 @@ popd  > /dev/null
 
 
 ENTITY=$1
-RESULT=$2
+VALIDATIONRESULT=$2
 
 
 
@@ -21,12 +21,12 @@ NAME=`basename $0 .sh`
 source $SCRIPT_PATH/env.sh
 
 report "$NAME" "Started" "$ENTITY"
-if [ "$RESULT" == "true" ]; then
-   report "$NAME" "Completed" "$ENTITY" "$NAME succeeded for $ENTITY"
+if [ "$VALIDATIONRESULT" == "true" ]; then
+   report "$NAME" "Completed" "$ENTITY" "$NAME succeeded"
    inf "$ENTITY" "$NAME succeeded for $ENTITY"
    exit 0
 else
-   report "$NAME" "Failed" "$ENTITY" "$NAME failed for $ENTITY"
+   report "$NAME" "Failed" "$ENTITY" "$NAME failed"
    warn "$ENTITY" "$NAME failed for $ENTITY"
    exit 1
 fi
