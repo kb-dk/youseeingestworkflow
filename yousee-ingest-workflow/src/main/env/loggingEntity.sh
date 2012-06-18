@@ -27,14 +27,14 @@ inf() { log $1 $inf_lvl "INFO:" "${@:2}"; } # "info" is already a command
 debug() { log $1 $dbg_lvl "DEBUG:" "${@:2}"; }
 
 log() {
-    (
 	if [ -z "${*:4}" ]; then
 		return
 	fi
-        flock -s 200
-        if [ $verbosity -ge $2 ]; then
-            # Expand escaped characters, wrap at 70 chars, indent wrapped lines
-            echo -e "`date +'%b %d %H:%M:%S'`" "`hostname`" "`basename $0`[$$]" "${@:3}" | fold -w$LINE_LENGTH -s | sed '2~1s/^/  /' >> $LOGDIR/$1.log
-        fi
+    (
+    flock -e -w 180 200
+    if [ $verbosity -ge $2 ]; then
+        # Expand escaped characters, wrap at 70 chars, indent wrapped lines
+        echo -e "`date +'%b %d %H:%M:%S'`" "`hostname`" "`basename $0`[$$]" "${@:3}" | fold -w$LINE_LENGTH -s | sed '2~1s/^/  /' >> $LOGDIR/$1.log
+    fi
     ) 200>$LOCKFILE
 }
