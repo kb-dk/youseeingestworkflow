@@ -21,7 +21,7 @@ if [ -d "$YOUSEE_LOGS/$INPUT_DATE" ]; then
   rm -r "$YOUSEE_LOGS/$INPUT_DATE"
 fi
 
-bin/runWorkflow.sh "$INPUT_DATE"
+$YOUSEE_BIN/runWorkflow.sh "$INPUT_DATE"
 RETURNCODE=$?
 if [ "$RETURNCODE" -ne "0" ]; then
     exit $RETURNCODE

@@ -12,7 +12,7 @@ popd  > /dev/null
 echo "Running the suite of integration tests"
 
 
-source $SCRIPT_PATH/setenv.sh
+source $SCRIPT_PATH/../bin/setenv.sh
 
 pushd $SCRIPT_PATH > /dev/null
 
