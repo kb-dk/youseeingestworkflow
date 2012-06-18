@@ -21,6 +21,9 @@ CONFIGNAME="${CONFIGNAME//[\- _]/}"
 CONFIGNAME="${CONFIGNAME,,}"
 CONFIGNAME="${CONFIGNAME}Config"
 CONFIGFILE="${!CONFIGNAME}"
+if [ -z "$CONFIGFILE" ]; then
+   CONFIGFILE="NOT SET"
+fi
 
 
 function report(){
@@ -30,7 +33,7 @@ function report(){
     local MESSAGE="${*:4}"
 
     if [ -n "$MESSAGE" ]; then
-        MESSAGE=${MESSAGE:0:254}
+        MESSAGE="${MESSAGE:0:$MESSAGE_LENGTH}"
         MESSAGE=`echo -e "<message><![CDATA[""$MESSAGE""]]></message>"`
     else
         MESSAGE=""
@@ -38,15 +41,17 @@ function report(){
     local STATE="<stateName>$STATE</stateName>"
     local COMPONENT="<component>$COMPONENT</component>"
     local STATEBLOB="<state>$COMPONENT$STATE$MESSAGE</state>"
-    if [ -n $STATEMONTITORSERVER ]; then
-        local RESULT=`echo "$STATEBLOB" \
+    if [ -n "$STATEMONTITORSERVER" ]; then
+        local RESULT
+        RESULT=`echo "$STATEBLOB" \
         | curl -s -i -H 'Content-Type: text/xml' -H 'Accept: application/json' -d@- \
-          $STATEMONTITORSERVER/states/$ENTITY?preservedStates=Stopped&preservedStates=Restarted`
+          "$STATEMONTITORSERVER/states/$ENTITY?preservedStates=Stopped&preservedStates=Restarted"`
 #        debug "$ENTITY" "$RESULT"
         local RETURNCODE
         echo "$RESULT" | grep '"stateName":"\(Stopped\|Restarted\)"'
         RETURNCODE="$?"
         if [ "$RETURNCODE" -eq 0 ]; then
+            inf "$ENTITY" "Stopped processing due to file having been marked as stopped or restarted"
             exit 127
         fi
 

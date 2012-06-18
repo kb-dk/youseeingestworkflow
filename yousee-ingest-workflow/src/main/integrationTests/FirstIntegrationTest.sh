@@ -15,13 +15,19 @@ echo "This tests just ensures that at least one file makes it through the workfl
 
 cd $SCRIPT_PATH/..
 
-bin/runWorkflow.sh 2040-05-05
+INPUT_DATE=2040-05-05
+
+if [ -d "$YOUSEE_LOGS/$INPUT_DATE" ]; then
+  rm -r "$YOUSEE_LOGS/$INPUT_DATE"
+fi
+
+bin/runWorkflow.sh "$INPUT_DATE"
 RETURNCODE=$?
 if [ "$RETURNCODE" -ne "0" ]; then
     exit $RETURNCODE
 fi
 
-COUNT=`ls -1 Yousee_Ingest_Workfl_output/Ingest_Workflow_Result/ | grep -v \.error | wc -l`
+COUNT=`ls -1 "$YOUSEE_LOGS/$INPUT_DATE/Ingest_Workflow_Result/" | grep -v \.error | wc -l`
 #echo $COUNT;
 if [ "$COUNT" -gt "0" ]; then
     exit 0

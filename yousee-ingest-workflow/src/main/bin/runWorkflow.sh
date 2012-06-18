@@ -44,7 +44,8 @@ mkdir -p $YOUSEE_LOCKS
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
 -inputvalue Ingest_workflow_startDate "$1"  \
-"$YOUSEE_WORKFLOWS/Yousee_ingest_workflow.t2flow"
+"$YOUSEE_WORKFLOWS/Yousee_ingest_workflow.t2flow" \
+-outputdir "$YOUSEE_LOGS/$1"
 
 exit 0
 
