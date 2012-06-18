@@ -20,7 +20,6 @@ LOCALURL=$5
 FILENAME="${LOCALURL#"file://"}"
 
 NAME=`basename $0 .sh`
-WORKFLOW="${yousee.ingest.workflow}"
 source $SCRIPT_PATH/env.sh
 
 report "$NAME" "Started" "$ENTITY"
@@ -32,7 +31,7 @@ echo $REMOTEURL
 echo $LOCALURL
 rm $FILENAME
 report "$NAME" "Completed" "$ENTITY" "$NAME succeeded for $ENTITY"
-report "$WORKFLOW" "Done" "$ENTITY" "$WORKFLOW succeeded for $ENTITY"
+reportWorkflowCompleted "$ENTITY" "$WORKFLOW succeeded for $ENTITY"
 inf "$ENTITY" "$NAME succeeded for $ENTITY"
 exit "0"
 

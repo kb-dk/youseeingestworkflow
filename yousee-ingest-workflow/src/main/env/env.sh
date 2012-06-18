@@ -22,7 +22,7 @@ CONFIGNAME="${CONFIGNAME,,}"
 CONFIGNAME="${CONFIGNAME}Config"
 CONFIGFILE="${!CONFIGNAME}"
 if [ -z "$CONFIGFILE" ]; then
-   CONFIGFILE="NOT SET"
+   CONFIGFILE="NOT_SET"
 fi
 
 
@@ -33,7 +33,7 @@ function report(){
     local MESSAGE="${*:4}"
 
     if [ -n "$MESSAGE" ]; then
-        MESSAGE="${MESSAGE:0:$MESSAGE_LENGTH}"
+        #MESSAGE="${MESSAGE:0:$MESSAGE_LENGTH}"
         MESSAGE=`echo -e "<message><![CDATA[""$MESSAGE""]]></message>"`
     else
         MESSAGE=""
@@ -41,25 +41,57 @@ function report(){
     local STATE="<stateName>$STATE</stateName>"
     local COMPONENT="<component>$COMPONENT</component>"
     local STATEBLOB="<state>$COMPONENT$STATE$MESSAGE</state>"
-    if [ -n "$STATEMONTITORSERVER" ]; then
-        local RESULT
-        RESULT=`echo "$STATEBLOB" \
-        | curl -s -i -H 'Content-Type: text/xml' -H 'Accept: application/json' -d@- \
+
+    local RESULT
+    local RETURNCODE
+
+    RESULT=`echo "$STATEBLOB" \
+       | curl -s -i -H 'Content-Type: text/xml' -H 'Accept: application/json' -d@- \
           "$STATEMONTITORSERVER/states/$ENTITY?preservedStates=Stopped&preservedStates=Restarted"`
-#        debug "$ENTITY" "$RESULT"
-        local RETURNCODE
-        echo "$RESULT" | grep '"stateName":"\(Stopped\|Restarted\)"'
-        RETURNCODE="$?"
-        if [ "$RETURNCODE" -eq 0 ]; then
-            inf "$ENTITY" "Stopped processing due to file having been marked as stopped or restarted"
-            exit 127
-        fi
-
-
+    RETURNCODE="$?"
+    if [ "$RETURNCODE" -ne 0 ]; then
+        error "$ENTITY" "Failed to communicate with state monitor" "$RESULT"
+        exit $RETURNCODE
     fi
+    echo "$RESULT" | grep '"stateName":"\(Stopped\|Restarted\)"'
+    RETURNCODE="$?"
+    if [ "$RETURNCODE" -eq 0 ]; then
+        inf "$ENTITY" "Stopped processing due to file having been marked as stopped or restarted"
+        exit 127
+    fi
+
     return 0
 }
 
+function reportWorkflowCompleted(){
+    report "${yousee.ingest.workflow}" "Done" $*
+}
+
+#Mainly because when we start, we should overwrite restarted states.
+function reportWorkflowStarted(){
+    local ENTITY=$1
+
+    local STATEBLOB="<state><component>${yousee.ingest.workflow}</component><stateName>Started</stateName></state>"
+
+    local RESULT
+    local RETURNCODE
+
+    RESULT=`echo "$STATEBLOB" \
+       | curl -s -i -H 'Content-Type: text/xml' -H 'Accept: application/json' -d@- \
+          "$STATEMONTITORSERVER/states/$ENTITY?preservedStates=Stopped"`
+    RETURNCODE="$?"
+    if [ "$RETURNCODE" -ne 0 ]; then
+        error "$ENTITY" "Failed to communicate with state monitor" "$RESULT"
+        exit $RETURNCODE
+    fi
+    echo "$RESULT" | grep '"stateName":"\(Stopped\)"'
+    RETURNCODE="$?"
+    if [ "$RETURNCODE" -eq 0 ]; then
+        inf "$ENTITY" "Stopped processing due to file having been marked as stopped"
+        exit 127
+    fi
+    return 0
+}
 
 
 function execute() {
