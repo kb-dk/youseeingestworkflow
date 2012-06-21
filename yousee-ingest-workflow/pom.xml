@@ -19,7 +19,7 @@
         <yousee.locks>locks</yousee.locks>
         <yousee.workflow.dependencies>workflowDependencies</yousee.workflow.dependencies>
         <yousee.workflow.dir>taverna</yousee.workflow.dir>
-        <yousee.workflow.config>${yousee.config}/youseeingestworkflow</yousee.workflow.config>
+        <yousee.workflow.config>youseeingestworkflow</yousee.workflow.config>
         <yousee.script.dir>scripts</yousee.script.dir>
         <yousee.components.dir>components</yousee.components.dir>
         <yousee.bin>bin</yousee.bin>
@@ -123,7 +123,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2.2</version>
+                <version>2.3</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/main/assembly/assembly.xml</descriptor>
@@ -141,6 +141,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
     <profiles>
