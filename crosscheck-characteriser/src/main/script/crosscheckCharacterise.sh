@@ -31,7 +31,7 @@ tempfile="`mktemp`"
 
 FILENAME="${FILEURL#"file://"}"
 
-OUTPUT="`ssh $HOST crosscheck  -f x $FILENAME 2> "$tempfile"`"
+OUTPUT="`ssh $HOST crosscheck  -a 0 -f x $FILENAME 2> "$tempfile"`"
 RETURNCODE="$?"
 
 #echo $OUTPUT
