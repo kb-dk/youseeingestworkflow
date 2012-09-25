@@ -54,7 +54,7 @@
         <dependency>
             <groupId>${medieplatform}</groupId>
             <artifactId>${yousee.bitrepository.ingester}</artifactId>
-            <version>0.4</version>
+            <version>0.5-SNAPSHOT</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
@@ -155,17 +155,17 @@
                         <version>1.7</version>
                         <executions>
                             <execution>
-                                <id>Extract zip bundle</id>
+                                <id>Extract bundle</id>
 
                                 <phase>pre-integration-test</phase>
                                 <configuration>
                                     <target>
 
                                         <!-- Requires that a private/public key login has been enabled for this account -->
-                                        <scp file="${project.build.directory}/${project.build.finalName}-bundle.zip" toDir="yousee@canopus:${integrationtest.basedir}" keyfile="${env.passwordlessKey}" />
-                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command=" cd ${integrationtest.basedir}; rm -r ${project.build.finalName}; unzip ${project.build.finalName}-bundle.zip; rm -r ${integrationtest.workflowdir}; mkdir ${integrationtest.workflowdir}; mv ${project.build.finalName}/* ${integrationtest.workflowdir}/; " failonerror="true" />
+                                        <scp file="${project.build.directory}/${project.build.finalName}-bundle.tar.gz" toDir="yousee@canopus:${integrationtest.basedir}" keyfile="${env.passwordlessKey}" />
+                                        <sshexec host="canopus" username="yousee" keyfile="${env.passwordlessKey}" command=" cd ${integrationtest.basedir}; rm -r ${project.build.finalName}; tar xfz ${project.build.finalName}-bundle.tar.gz; rm -r ${integrationtest.workflowdir}; mkdir ${integrationtest.workflowdir}; mv ${project.build.finalName}/* ${integrationtest.workflowdir}/; " failonerror="true" />
                                         <!--Find deply folder ${project.build.outputDirectory}-->
-                                        <!--unzip package-->
+                                        <!--untar package-->
                                     </target>
                                 </configuration>
                                 <goals>
