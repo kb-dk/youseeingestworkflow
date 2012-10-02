@@ -116,8 +116,10 @@ function execute() {
 
     local MESSAGE=""
     MESSAGE="std out: \n '$OUTPUT' \n std err: \n '"`cat "$tempfile"`"'"
+    cat "$tempfile" >2&
     rm "$tempfile"
     echo "$OUTPUT"
+
 
     if [ -n "$ENTITY" ]; then
         if [ "$RETURNCODE" -eq "0" ]; then

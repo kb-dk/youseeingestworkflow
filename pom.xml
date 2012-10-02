@@ -32,6 +32,7 @@
         <crosscheck.profile.validator>crosscheck-profile-validator</crosscheck.profile.validator>
         <profile.validator>profile-validator</profile.validator>
         <yousee.doms.ingester>yousee-doms-ingester</yousee.doms.ingester>
+        <yousee.doms.metadata.packager>broadcastMetadata-packager</yousee.doms.metadata.packager>
         <yousee.downloader>yousee-downloader</yousee.downloader>
         <yousee.downloader.handleQueuedFile>${yousee.downloader}_handleQueuedFile</yousee.downloader.handleQueuedFile>
         <crosscheck.characteriser>crosscheck-characteriser</crosscheck.characteriser>

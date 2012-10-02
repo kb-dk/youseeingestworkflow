@@ -85,7 +85,16 @@
         <dependency>
             <groupId>${medieplatform}</groupId>
             <artifactId>${yousee.doms.ingester}</artifactId>
-            <version>0.1.1</version>
+            <version>0.1.2-SNAPSHOT</version>
+            <classifier>bundle</classifier>
+            <type>zip</type>
+        </dependency>
+
+        <!--Yousee Doms Ingester-->
+        <dependency>
+            <groupId>${medieplatform}</groupId>
+            <artifactId>${yousee.doms.metadata.packager}</artifactId>
+            <version>0.1.2-SNAPSHOT</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>

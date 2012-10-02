@@ -211,6 +211,42 @@
             <scope>runtime</scope>
         </dependencySet>
 
+
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${yousee.doms.metadata.packager}/external-products</outputDirectory>
+            <directoryMode>0755</directoryMode>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>${yousee.doms.metadata.packager}-*.jar</exclude>
+                </excludes>
+            </unpackOptions>
+            <includes>
+                <include>${medieplatform}:${yousee.doms.metadata.packager}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${yousee.doms.metadata.packager}/bin</outputDirectory>
+            <directoryMode>0755</directoryMode>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>${yousee.doms.metadata.packager}-*.jar</include>
+                </includes>
+            </unpackOptions>
+            <includes>
+                <include>${medieplatform}:${yousee.doms.metadata.packager}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+
     </dependencySets>
 
 
@@ -307,6 +343,13 @@
             <source>src/main/scripts/yousee.doms.ingester.sh</source>
             <outputDirectory>${yousee.script.dir}</outputDirectory>
             <destName>${yousee.doms.ingester}.sh</destName>
+            <fileMode>0700</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/scripts/yousee.doms.metadata.packager.sh</source>
+            <outputDirectory>${yousee.script.dir}</outputDirectory>
+            <destName>${yousee.doms.metadata.packager}.sh</destName>
             <fileMode>0700</fileMode>
             <filtered>true</filtered>
         </file>

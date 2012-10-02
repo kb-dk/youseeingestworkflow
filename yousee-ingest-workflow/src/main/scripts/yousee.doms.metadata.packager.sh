@@ -12,31 +12,29 @@ popd  > /dev/null
 
 
 ENTITY=$1
-REMOTEURL=$2
-CHECKSUM=$3
-FFPROBEPROFILE_LOCATION=$4
-FFPROBEERROR_LOCATION=$5
-CROSSCHECKPROFILE_LOCATION=$6
-YOUSEEMETADATA_LOCATION=$7
-
-
+CHECKSUM=$2
+ENDTIME=$3
+STARTTIME=$4
+CHANNELID=$5
 
 
 NAME=`basename $0 .sh`
 
 source $SCRIPT_PATH/env.sh
 
-APPDIR="$YOUSEE_COMPONENTS/${yousee.doms.ingester}"
+APPDIR="$YOUSEE_COMPONENTS/${yousee.doms.metadata.packager}"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname $CONFIGFILE` \
-  dk.statsbiblioteket.doms.radiotv.RadioTVIngesterCLI \
- --filename=$ENTITY \
- --url=$REMOTEURL \
- --ffprobe=$FFPROBEPROFILE_LOCATION \
- --ffprobeErrorLog=$FFPROBEERROR_LOCATION \
- --crosscheck=$CROSSCHECKPROFILE_LOCATION \
- --metadata=$YOUSEEMETADATA_LOCATION \
- --config=$CONFIGFILE "
+ dk.statsbiblioteket.doms.radiotv.PackageForDoms \
+ -channelID $CHANNELID \
+ -format mpegts \
+ -startTime $STARTTIME \
+ -endTime $ENDTIME \
+ -recorder yousee \
+ -filename $ENTITY \
+ -checksum $CHECKSUM \
+ -muxChannelNR 3"
+ #TODO channelNR not hardcoded, get from ffprobe
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
