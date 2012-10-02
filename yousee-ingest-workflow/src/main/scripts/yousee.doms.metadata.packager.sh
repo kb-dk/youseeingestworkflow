@@ -26,14 +26,14 @@ APPDIR="$YOUSEE_COMPONENTS/${yousee.doms.metadata.packager}"
 
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname $CONFIGFILE` \
  dk.statsbiblioteket.doms.radiotv.PackageForDoms \
- -channelID $CHANNELID \
- -format mpegts \
- -startTime $STARTTIME \
- -endTime $ENDTIME \
- -recorder yousee \
- -filename $ENTITY \
- -checksum $CHECKSUM \
- -muxChannelNR 3"
+ --channelID=$CHANNELID \
+ --format=mpegts \
+ --startTime=$STARTTIME \
+ --endTime=$ENDTIME \
+ --recorder=yousee \
+ --filename=$ENTITY \
+ --checksum=$CHECKSUM \
+ --muxChannelNR=3"
  #TODO channelNR not hardcoded, get from ffprobe
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
