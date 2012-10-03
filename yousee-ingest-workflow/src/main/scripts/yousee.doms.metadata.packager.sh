@@ -32,9 +32,7 @@ CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname 
  --endTime=$ENDTIME \
  --recorder=yousee \
  --filename=$ENTITY \
- --checksum=$CHECKSUM \
- --muxChannelNR=3"
- #TODO channelNR not hardcoded, get from ffprobe
+ --checksum=$CHECKSUM"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
