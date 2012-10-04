@@ -21,7 +21,9 @@ if [ "$RETURNCODE" -ne "0" ]; then
     exit $RETURNCODE
 fi
 
-COUNT=`ls -1 "$YOUSEE_LOGS/$INPUT_DATE/Ingest_Workflow_Result/" | grep -v \.error | wc -l`
+RESULTDIR=`cd $YOUSEE_LOGS && ls -1rtd $INPUT_DATE* | tail -1`
+
+COUNT=`ls -1 "$YOUSEE_LOGS/$RESULTDIR/Ingest_Workflow_Result/" | grep -v \.error | wc -l`
 #echo $COUNT;
 if [ "$COUNT" -gt "0" ]; then
     exit 0

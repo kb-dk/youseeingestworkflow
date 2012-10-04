@@ -33,11 +33,13 @@ fi
 mkdir -p $YOUSEE_LOGS
 mkdir -p $YOUSEE_LOCKS
 
+TAVERNA_OUT_DIR=`mktemp -d -u --tmpdir=$YOUSEE_LOGS $1-runNr-XXX`
+
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
 -inputvalue Ingest_workflow_startDate "$1"  \
 "$YOUSEE_WORKFLOWS/Yousee_ingest_workflow.t2flow" \
--outputdir "$YOUSEE_LOGS/$1"
+-outputdir $TAVERNA_OUT_DIR
 
 exit 0
 
