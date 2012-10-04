@@ -1,13 +1,7 @@
 #!/bin/bash
 
-pushd . > /dev/null
-SCRIPT_PATH="${BASH_SOURCE[0]}";
-if ([ -h "${SCRIPT_PATH}" ]) then
-  while([ -h "${SCRIPT_PATH}" ]) do cd `dirname "$SCRIPT_PATH"`; SCRIPT_PATH=`readlink "${SCRIPT_PATH}"`; done
-fi
-cd `dirname ${SCRIPT_PATH}` > /dev/null
-SCRIPT_PATH=`pwd`;
-popd  > /dev/null
+SCRIPT_PATH=$(dirname $(readlink -f $0))
+
 
 echo "Running the first integration test."
 echo "This tests just ensures that at least one file makes it through the workflow"

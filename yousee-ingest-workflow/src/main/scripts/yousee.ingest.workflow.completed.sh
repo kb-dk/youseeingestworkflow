@@ -30,6 +30,7 @@ echo $DIGITVPID
 echo $REMOTEURL
 echo $LOCALURL
 rm $FILENAME
+rm $FILENAME.*
 report "$NAME" "Completed" "$ENTITY" "$NAME succeeded for $ENTITY"
 reportWorkflowCompleted "$ENTITY" "$WORKFLOW succeeded for $ENTITY"
 inf "$ENTITY" "$NAME succeeded for $ENTITY"

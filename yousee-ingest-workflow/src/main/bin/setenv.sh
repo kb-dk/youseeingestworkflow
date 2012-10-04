@@ -1,3 +1,4 @@
+#!/bin/sh
 [ -z "$TAVERNA_HOME" ] && TAVERNA_HOME="$HOME/taverna/taverna-workbench-2.4.0"
 export TAVERNA_HOME
 
@@ -34,3 +35,6 @@ export YOUSEE_DEPENDENCIES
 
 [ -z "$YOUSEE_BIN" ] && YOUSEE_BIN="$YOUSEE_HOME/${yousee.bin}"
 export YOUSEE_BIN
+
+
+
