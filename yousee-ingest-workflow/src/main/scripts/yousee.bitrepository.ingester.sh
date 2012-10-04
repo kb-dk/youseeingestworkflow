@@ -3,6 +3,7 @@
 SCRIPT_PATH=$(dirname $(readlink -f $0))
 
 
+NAME="${yousee.bitrepository.ingester}"
 
 
 ENTITY=$1
