@@ -15,7 +15,7 @@ source $SCRIPT_PATH/env.sh
 
 reportWorkflowStarted "$ENTITY"
 
-CMD="$YOUSEE_COMPONENTS/${yousee.downloader}/bin/yousee-downloader.sh $CONFIGFILE $YOUSEENAME $LOCALNAME"
+CMD="$COMPONENT_DOWNLOADER/bin/yousee-downloader.sh $CONFIGFILE $YOUSEENAME $LOCALNAME"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?
