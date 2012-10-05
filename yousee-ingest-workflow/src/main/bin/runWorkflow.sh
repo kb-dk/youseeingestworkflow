@@ -35,11 +35,17 @@ mkdir -p $YOUSEE_LOCKS
 
 TAVERNA_OUT_DIR=`mktemp -d -u --tmpdir=$YOUSEE_LOGS $1-runNr-XXX`
 
+TAVERNA_TEMP_DIR=`mktemp -d --tmpdir=$YOUSEE_LOGS`
+
+export _JAVA_OPTIONS=-Djava.io.tmpdir=$TAVERNA_TEMP_DIR
+
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
 -inputvalue Ingest_workflow_startDate "$1"  \
 "$YOUSEE_WORKFLOWS/Yousee_ingest_workflow.t2flow" \
 -outputdir $TAVERNA_OUT_DIR
+
+rm -rf $TAVERNA_TEMP_DIR
 
 exit 0
 
