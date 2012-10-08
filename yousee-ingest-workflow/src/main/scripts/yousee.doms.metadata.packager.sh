@@ -10,6 +10,7 @@ CHECKSUM=$2
 ENDTIME=$3
 STARTTIME=$4
 CHANNELID=$5
+FORMATNAME=$6
 
 
 NAME=`basename $0 .sh`
@@ -21,7 +22,7 @@ APPDIR="$YOUSEE_COMPONENTS/${yousee.doms.metadata.packager}"
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname $CONFIGFILE` \
  dk.statsbiblioteket.doms.radiotv.PackageForDoms \
  --channelID=$CHANNELID \
- --format=mpegts \
+ --format=$FORMATNAME \
  --startTime=$STARTTIME \
  --endTime=$ENDTIME \
  --recorder=yousee \
