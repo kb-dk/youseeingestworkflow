@@ -6,6 +6,9 @@ if [ -r $SCRIPT_PATH/setenv.sh ]; then
     source $SCRIPT_PATH/setenv.sh
 fi
 
+if [ -r $SCRIPT_PATH/logRotater.sh ]; then
+    source $SCRIPT_PATH/logRotater.sh
+fi
 
 if [ -z "$YOUSEE_HOME" ]; then
    echo "YOUSEE_HOME is not set. Must be set before execution. Exiting"
@@ -32,6 +35,7 @@ fi
 
 mkdir -p $YOUSEE_LOGS
 mkdir -p $YOUSEE_LOCKS
+rotate_logs
 
 TAVERNA_OUT_DIR=`mktemp -d -u --tmpdir=$YOUSEE_LOGS $1-runNr-XXX`
 
