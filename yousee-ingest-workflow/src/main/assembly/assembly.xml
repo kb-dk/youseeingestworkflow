@@ -35,6 +35,40 @@
 
         <dependencySet>
             <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${yousee.bibliographic.metadata.validator}/external-products</outputDirectory>
+            <directoryMode>0755</directoryMode>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>${yousee.bibliographic.metadata.validator}-*</exclude>
+                </excludes>
+            </unpackOptions>
+            <includes>
+                <include>${medieplatform}:${yousee.bibliographic.metadata.validator}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>${yousee.components.dir}/${yousee.bibliographic.metadata.validator}/bin</outputDirectory>
+            <directoryMode>0755</directoryMode>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <unpack>true</unpack>
+            <unpackOptions>
+                <includes>
+                    <include>${yousee.bibliographic.metadata.validator}-*</include>
+                </includes>
+            </unpackOptions>
+            <includes>
+                <include>${medieplatform}:${yousee.bibliographic.metadata.validator}</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+
+
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
             <outputDirectory>${yousee.components.dir}/${yousee.bitrepository.ingester}/external-products</outputDirectory>
             <directoryMode>0755</directoryMode>
             <useTransitiveDependencies>false</useTransitiveDependencies>

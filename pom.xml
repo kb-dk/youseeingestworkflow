@@ -26,7 +26,6 @@
         <medieplatform>dk.statsbiblioteket.medieplatform</medieplatform>
 
         <yousee.bitrepository.ingester>yousee-bitrepository-ingester</yousee.bitrepository.ingester>
-
         <yousee.digitv.ingester>yousee-digitv-ingester</yousee.digitv.ingester>
         <ffprobe.profile.validator>ffprobe-profile-validator</ffprobe.profile.validator>
         <crosscheck.profile.validator>crosscheck-profile-validator</crosscheck.profile.validator>

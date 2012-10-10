@@ -69,6 +69,15 @@
             <type>zip</type>
         </dependency>
 
+        <!--Bibliographic metadata validator-->
+        <dependency>
+            <groupId>dk.statsbiblioteket.medieplatform</groupId>
+            <artifactId>${yousee.bibliographic.metadata.validator}</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>zip</type>
+            <classifier>bundle</classifier>
+        </dependency>
+
 
 
         <!--Yousee Digitv Ingester-->
