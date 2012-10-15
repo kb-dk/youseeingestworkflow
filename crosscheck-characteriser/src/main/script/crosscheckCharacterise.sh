@@ -27,6 +27,8 @@ FILENAME="${FILEURL#"file://"}"
 OUTPUT="`ssh $HOST crosscheck  -a 0 -f x $FILENAME 2> "$tempfile"`"
 RETURNCODE="$?"
 
+echo "$OUTPUT" >> $HOME/crossCheckOutput.log
+
 #echo $OUTPUT
 #cat $tempfile
 
