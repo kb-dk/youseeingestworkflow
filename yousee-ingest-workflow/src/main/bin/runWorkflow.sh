@@ -33,26 +33,28 @@ if [ ! -r "$SCRIPT_PATH"/logRotater.sh ]; then
 fi
 source "$SCRIPT_PATH"/logRotater.sh
 
-VERSION=`head -1 $TAVERNA_HOME/release-notes.txt | sed 's/.$//' | cut -d' ' -f4`
-LIB="$HOME/.taverna-$VERSION/lib"
-if [ ! -d $LIB ] ; then
-    mkdir -p $(dirname $LIB)
-    ln -sf  $YOUSEE_HOME/workflowDependencies $LIB
-fi
+
+#VERSION=`head -1 $TAVERNA_HOME/release-notes.txt | sed 's/.$//' | cut -d' ' -f4`
+#LIB="$HOME/.taverna-$VERSION/lib"
+#if [ ! -d $LIB ] ; then
+#    mkdir -p $(dirname $LIB)
+#    ln -sf  $YOUSEE_HOME/workflowDependencies $LIB
+#fi
 
 mkdir -p "$YOUSEE_LOGS"
 mkdir -p "$YOUSEE_LOCKS"
 rotate_logs
 
 
-TAVERNA_OUT_DIR=`mktemp -d -u --tmpdir="$YOUSEE_LOGS" "$1"-runNr-XXX`
+TAVERNA_OUT_DIR=`mktemp -d -u --tmpdir="$YOUSEE_LOGS" "$1-runNr-XXX"`
 
 TAVERNA_TEMP_DIR=`mktemp -d --tmpdir="$YOUSEE_LOGS"`
 
-export _JAVA_OPTIONS=-Djava.io.tmpdir="$TAVERNA_TEMP_DIR"
-
-# place tarverna logs the right place
-cd $YOUSEE_LOGS
+export TMPDIR="$TAVERNA_TEMP_DIR"
+export TEMPDIR="$TAVERNA_TEMP_DIR"
+export TMP="$TAVERNA_TEMP_DIR"
+export TEMP="$TAVERNA_TEMP_DIR"
+export _JAVA_OPTIONS="-Djava.io.tmpdir=$TAVERNA_TEMP_DIR"
 
 $TAVERNA_HOME/executeworkflow.sh \
 -inmemory \
