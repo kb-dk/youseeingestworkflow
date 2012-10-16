@@ -16,6 +16,17 @@ source $SCRIPT_PATH/env.sh
 
 APPDIR="$YOUSEE_COMPONENTS/$NAME"
 
+
+#FILEPATH="${LOCALFILEURL#"file://"}"
+#cat $FILEPATH > /dev/null &
+#PID1=$!
+#cat $FILEPATH > /dev/null &
+#PID2=$!
+#cat $FILEPATH > /dev/null &
+#PID3=$!
+#wait $PID1 $PID2 $PID3
+
+#dk.statsbiblioteket.medieplatform.bitrepository.ingester.TheMockClient \
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
 dk.statsbiblioteket.medieplatform.bitrepository.ingester.Ingester \
 $CONFIGFILE $LOCALFILEURL $REMOTEFILEID $CHECKSUM $FILESIZE"
