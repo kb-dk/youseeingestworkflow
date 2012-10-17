@@ -27,7 +27,15 @@ FILENAME="${FILEURL#"file://"}"
 OUTPUT="`ssh $HOST crosscheck  -a 0 -f x $FILENAME 2> "$tempfile"`"
 RETURNCODE="$?"
 
-echo "$OUTPUT" >> $HOME/crossCheckOutput.log
+echo $OUTPUT | xmllint --schema $SCRIPT_PATH/crosscheck.xsd --noout -
+SCHEMAVALID=$?
+
+if [ $SCHEMAVALID -gt 0 ]; then
+    logDir=$(dirname $logFile)
+    mkdir -p  $logDir/crosscheckLogs/ > /dev/null
+    echo "$OUTPUT" > $logDir/crosscheckLogs/$(basename $FILENAME).log
+fi
+
 
 #echo $OUTPUT
 #cat $tempfile
