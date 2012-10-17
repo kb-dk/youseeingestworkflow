@@ -25,7 +25,7 @@ CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname 
  --channelID=$CHANNELID \
  --startTime=$STARTTIME \
  --endTime=$ENDTIME \
- --fluff=1000 \
+ --fluff=2000 \
  --ffprobe=$FFPROBE "
 
 
