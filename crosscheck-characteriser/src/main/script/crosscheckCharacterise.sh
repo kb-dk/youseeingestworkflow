@@ -23,19 +23,15 @@ tempfile="`mktemp`"
 #echo $tempfile
 
 FILENAME="${FILEURL#"file://"}"
-
-OUTPUT="`ssh $HOST crosscheck  -a 0 -f x $FILENAME 2> "$tempfile"`"
-RETURNCODE="$?"
-
-echo $OUTPUT | xmllint --schema $SCRIPT_PATH/crosscheck.xsd --noout -
-SCHEMAVALID=$?
-
-if [ $SCHEMAVALID -gt 0 ]; then
-    logDir=$(dirname $logFile)
-    mkdir -p  $logDir/crosscheckLogs/ > /dev/null
-    echo "$OUTPUT" > $logDir/crosscheckLogs/$(basename $FILENAME).log
-fi
-
+myStatus=0
+OUTPUT="`ssh $HOST crosscheck  -a 0 -f x $FILENAME 2>> "$tempfile" | xmllint --recover - 2>> "$tempfile"`"
+for i in ${PIPESTATUS[@]}; do
+    if [ $i -ne 0 ]; then
+        myStatus=$i;
+        break;
+    fi;
+done;
+RETURNCODE=$myStatus
 
 #echo $OUTPUT
 #cat $tempfile
