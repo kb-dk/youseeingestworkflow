@@ -23,8 +23,8 @@ echo $REMOTEURL
 echo $LOCALURL
 rm $FILENAME
 rm $FILENAME.*
-report "$NAME" "Completed" "$ENTITY" "$NAME succeeded for $ENTITY"
-reportWorkflowCompleted "$ENTITY" "$WORKFLOW succeeded for $ENTITY"
+report "$NAME" $STATE_COMPLETED "$ENTITY" "$NAME succeeded for $ENTITY"
+reportWorkflowCompleted "$ENTITY" "$WORKFLOW $STATE_COMPLETED for $ENTITY"
 inf "$ENTITY" "$NAME succeeded for $ENTITY"
 exit 0
 

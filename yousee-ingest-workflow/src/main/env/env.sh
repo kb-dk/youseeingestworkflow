@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT_PATH=$(dirname $(readlink -f $0))
+SCRIPT_PATH=$(dirname $(readlink -f $BASH_SOURCE[0]))
 
 source $YOUSEE_WORKFLOW_CONFIG/combinedProperties.sh
 source $YOUSEE_WORKFLOW_CONFIG/statemonitorClientConfig.sh
@@ -17,6 +17,15 @@ CONFIGFILE="${!CONFIGNAME}"
 if [ -z "$CONFIGFILE" ]; then
    CONFIGFILE="NOT_SET"
 fi
+
+STATE_FAILED="Failed"
+STATE_COMPLETED="Completed"
+STATE_STARTED="Started"
+STATE_DONE="Done"
+STATE_STOPPED="Stopped"
+STATE_RESTARTED="Restarted"
+STATE_QUEUED="Queued"
+
 
 
 function report(){
@@ -38,18 +47,20 @@ function report(){
     local RESULT
     local RETURNCODE
 
+    local PRESERVEDSTATES="preservedStates=$STATE_STOPPED&preservedStates=$STATE_RESTARTED&preservedStates=$STATE_FAILED"
+
     RESULT=`echo "$STATEBLOB" \
        | curl -s -i -H 'Content-Type: text/xml' -H 'Accept: application/json' -d@- \
-          "$STATEMONTITORSERVER/states/$ENTITY?preservedStates=Stopped&preservedStates=Restarted"`
+          "$STATEMONTITORSERVER/states/$ENTITY?$PRESERVEDSTATES"`
     RETURNCODE="$?"
     if [ "$RETURNCODE" -ne 0 ]; then
         error "$ENTITY" "Failed to communicate with state monitor" "$RESULT"
         exit $RETURNCODE
     fi
-    echo "$RESULT" | grep '"stateName":"\(Stopped\|Restarted\)"'
+    echo "$RESULT" | grep "\"stateName\":\"\($STATE_STOPPED\|$STATE_RESTARTED\)\""
     RETURNCODE="$?"
     if [ "$RETURNCODE" -eq 0 ]; then
-        inf "$ENTITY" "Stopped processing due to file having been marked as stopped or restarted"
+        inf "$ENTITY" "Stopped processing due to file having been marked as $STATE_STOPPED, $STATE_RESTARTED or $STATE_FAILED"
         exit 127
     fi
 
@@ -57,30 +68,32 @@ function report(){
 }
 
 function reportWorkflowCompleted(){
-    report "${yousee.ingest.workflow}" "Done" $*
+    report "${yousee.ingest.workflow}" $STATE_DONE $*
 }
 
 #Mainly because when we start, we should overwrite restarted states.
 function reportWorkflowStarted(){
     local ENTITY=$1
 
-    local STATEBLOB="<state><component>${yousee.ingest.workflow}</component><stateName>Started</stateName></state>"
+    local STATEBLOB="<state><component>${yousee.ingest.workflow}</component><stateName>$STATE_STARTED</stateName></state>"
 
     local RESULT
     local RETURNCODE
 
+    local PRESERVEDSTATES="preservedStates=$STATE_STOPPED"
+
     RESULT=`echo "$STATEBLOB" \
        | curl -s -i -H 'Content-Type: text/xml' -H 'Accept: application/json' -d@- \
-          "$STATEMONTITORSERVER/states/$ENTITY?preservedStates=Stopped"`
+          "$STATEMONTITORSERVER/states/$ENTITY?$PRESERVEDSTATES"`
     RETURNCODE="$?"
     if [ "$RETURNCODE" -ne 0 ]; then
         error "$ENTITY" "Failed to communicate with state monitor" "$RESULT"
         exit $RETURNCODE
     fi
-    echo "$RESULT" | grep '"stateName":"\(Stopped\)"'
+    echo "$RESULT" | grep "\"stateName\":\"\($STATE_STOPPED\)\""
     RETURNCODE="$?"
     if [ "$RETURNCODE" -eq 0 ]; then
-        inf "$ENTITY" "Stopped processing due to file having been marked as stopped"
+        inf "$ENTITY" "Stopped processing due to file having been marked as $STATE_STOPPED"
         exit 127
     fi
     return 0
@@ -94,7 +107,7 @@ function execute() {
     local ENTITY="$4"
 
     if [ -n "$ENTITY" ]; then
-        report "$NAME" "Started" "$ENTITY" "$CMD"
+        report "$NAME" "$STATE_STARTED" "$ENTITY" "$CMD"
         debug "$ENTITY" "$NAME started:  $CMD"
     fi
     pushd "$WORKINGDIR" > /dev/null
@@ -116,11 +129,11 @@ function execute() {
 
     if [ -n "$ENTITY" ]; then
         if [ "$RETURNCODE" -eq "0" ]; then
-            debug "$ENTITY" "$NAME succeeded for $ENTITY: \n $MESSAGE"
-            report "$NAME" "Completed" "$ENTITY" "`echo "$OUTPUT"| head -q -n10`"
+            debug "$ENTITY" "$NAME $STATE_COMPLETED for $ENTITY: \n $MESSAGE"
+            report "$NAME" $STATE_COMPLETED "$ENTITY" "`echo "$OUTPUT"| head -q -n10`"
         else
-            error "$ENTITY" "$NAME failed for $ENTITY: \n $MESSAGE"
-            report "$NAME" "Failed" "$ENTITY" "$OUTPUT" "$MESSAGE"
+            error "$ENTITY" "$NAME $STATE_FAILED for $ENTITY: \n $MESSAGE"
+            report "$NAME" $STATE_FAILED "$ENTITY" "$OUTPUT" "$MESSAGE"
         fi
     fi
     return "$RETURNCODE"
