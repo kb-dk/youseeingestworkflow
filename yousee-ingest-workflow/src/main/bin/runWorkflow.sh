@@ -46,9 +46,16 @@ mkdir -p "$YOUSEE_LOCKS"
 rotate_logs
 
 
-TAVERNA_OUT_DIR=`mktemp -d -u --tmpdir="$YOUSEE_LOGS" "$1-runNr-XXX"`
+#TODO probably remove this, as it does not actually do anything after the logrotater was added
+TAVERNA_OUT_DIR=$(mktemp -d -u --tmpdir="$YOUSEE_LOGS" "$1-runNr-XXX")
 
-TAVERNA_TEMP_DIR=`mktemp -d --tmpdir="$YOUSEE_LOGS"`
+
+mkdir -p $HOME/tmp/taverna
+#TODO where should this be
+TAVERNA_TEMP_DIR=$(mktemp -d --tmpdir="$HOME/tmp/taverna")
+
+# place damn tarverna logs the right place
+cd $YOUSEE_LOGS
 
 export TMPDIR="$TAVERNA_TEMP_DIR"
 export TEMPDIR="$TAVERNA_TEMP_DIR"
