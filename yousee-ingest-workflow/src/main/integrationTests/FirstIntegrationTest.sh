@@ -9,7 +9,7 @@ echo "This tests just ensures that at least one file makes it through the workfl
 
 cd $SCRIPT_PATH/..
 
-INPUT_DATE="2012-10-15"
+INPUT_DATE=$(date --date="yesterday" --rfc-3339=date)
 
 if [ -d "$YOUSEE_LOGS/$INPUT_DATE" ]; then
   rm -r "$YOUSEE_LOGS/$INPUT_DATE"
@@ -21,9 +21,9 @@ if [ "$RETURNCODE" -ne "0" ]; then
     exit $RETURNCODE
 fi
 
-RESULTDIR=`cd $YOUSEE_LOGS && ls -1rtd $INPUT_DATE* | tail -1`
+RESULTDIR=$(cd $YOUSEE_LOGS && ls -1rtd $INPUT_DATE* | tail -1)
 
-COUNT=`ls -1 "$YOUSEE_LOGS/$RESULTDIR/Ingest_Workflow_Result/" | grep -v \.error | wc -l`
+COUNT=$(ls -1 "$YOUSEE_LOGS/$RESULTDIR/Ingest_Workflow_Result/" | grep -v \.error | wc -l)
 #echo $COUNT;
 if [ "$COUNT" -gt "0" ]; then
     exit 0
