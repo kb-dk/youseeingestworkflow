@@ -9,7 +9,7 @@ echo "This tests just ensures that at least one file makes it through the workfl
 
 cd $SCRIPT_PATH/..
 
-INPUT_DATE=$(date --date="yesterday" --rfc-3339=date)
+INPUT_DATE=$(date --date="today" --rfc-3339=date)
 
 if [ -d "$YOUSEE_LOGS/$INPUT_DATE" ]; then
   rm -r "$YOUSEE_LOGS/$INPUT_DATE"
