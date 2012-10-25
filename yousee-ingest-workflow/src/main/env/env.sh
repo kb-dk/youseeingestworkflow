@@ -18,6 +18,9 @@ if [ -z "$CONFIGFILE" ]; then
    CONFIGFILE="NOT_SET"
 fi
 
+PERFORMANCELOG=$LOGDIR/performaceLog.tsv
+
+
 STATE_FAILED="Failed"
 STATE_COMPLETED="Completed"
 STATE_STARTED="Started"
@@ -26,6 +29,13 @@ STATE_STOPPED="Stopped"
 STATE_RESTARTED="Restarted"
 STATE_QUEUED="Queued"
 
+
+function logPerformance(){
+    local COMPONENT=$1
+    local ENTITY=$2
+    local TIME=$3
+    echo -e "$COMPONENT\t$ENTITY\t$TIME">>$PERFORMANCELOG
+}
 
 
 function report(){
@@ -115,8 +125,10 @@ function execute() {
     local tempfile="`mktemp`"
     local OUTPUT
     local RETURNCODE
+    local TIMEBEFORE=$(date +%s)
     OUTPUT="`$CMD 2> $tempfile`"
     RETURNCODE="$?"
+    local TIMEAFTER=$(date +%s)
 
     popd > /dev/null
 
@@ -131,6 +143,7 @@ function execute() {
         if [ "$RETURNCODE" -eq "0" ]; then
             debug "$ENTITY" "$NAME $STATE_COMPLETED for $ENTITY: \n $MESSAGE"
             report "$NAME" $STATE_COMPLETED "$ENTITY" "`echo "$OUTPUT"| head -q -n10`"
+            logPerformance "$NAME" "$ENTITY" $(echo "$TIMEAFTER - $TIMEBEFORE" | bc)
         else
             error "$ENTITY" "$NAME $STATE_FAILED for $ENTITY: \n $MESSAGE"
             report "$NAME" $STATE_FAILED "$ENTITY" "$OUTPUT" "$MESSAGE"
