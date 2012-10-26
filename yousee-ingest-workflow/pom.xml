@@ -44,7 +44,7 @@
         <dependency>
             <groupId>${medieplatform}</groupId>
             <artifactId>${yousee.ingest.initiator}</artifactId>
-            <version>1.1.5-SNAPSHOT</version>
+            <version>1.1.5</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
@@ -84,7 +84,7 @@
         <dependency>
             <groupId>${medieplatform}</groupId>
             <artifactId>${yousee.digitv.ingester}</artifactId>
-            <version>0.3.3-SNAPSHOT</version>
+            <version>0.3.3</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
@@ -112,7 +112,7 @@
         <dependency>
             <groupId>${medieplatform}</groupId>
             <artifactId>${yousee.downloader}</artifactId>
-            <version>2.2-SNAPSHOT</version>
+            <version>2.2</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
