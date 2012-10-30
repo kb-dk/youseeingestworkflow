@@ -20,12 +20,14 @@ source $SCRIPT_PATH/env.sh
 
 APPDIR="$YOUSEE_COMPONENTS/${yousee.bibliographic.metadata.validator}"
 
+source $CONFIGFILE
+
 CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname $CONFIGFILE` \
   dk.statsbiblioteket.medieplatform.bibliographicValidator.BibliographicCLI \
  --channelID=$CHANNELID \
  --startTime=$STARTTIME \
  --endTime=$ENDTIME \
- --fluff=2000 \
+ --fluff=$FLUFF \
  --ffprobe=$FFPROBE "
 
 
