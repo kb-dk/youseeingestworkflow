@@ -123,10 +123,11 @@ function execute() {
     pushd "$WORKINGDIR" > /dev/null
 
     local tempfile="`mktemp`"
+    chmod +r "$tempfile"
     local OUTPUT
     local RETURNCODE
     local TIMEBEFORE=$(date +%s)
-    OUTPUT="`$CMD 2> $tempfile`"
+    OUTPUT=$($CMD 2> "$tempfile")
     RETURNCODE="$?"
     local TIMEAFTER=$(date +%s)
 
@@ -134,7 +135,7 @@ function execute() {
 
     local MESSAGE=""
     MESSAGE="std out: \n '$OUTPUT' \n std err: \n '"`cat "$tempfile"`"'"
-    cat "$tempfile" >2&
+    cat "$tempfile" >&2
     rm "$tempfile"
     echo "$OUTPUT"
 

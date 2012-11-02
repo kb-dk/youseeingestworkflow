@@ -27,23 +27,13 @@ if [ -z "$YOUSEE_CONFIG" ]; then
    exit 1
 fi
 
-if [ ! -r "$SCRIPT_PATH"/logRotater.sh ]; then
-    echo "Failed to read $SCRIPT_PATH/logRotater.sh"
-    exit 1 
-fi
-source "$SCRIPT_PATH"/logRotater.sh
-
-
-#VERSION=`head -1 $TAVERNA_HOME/release-notes.txt | sed 's/.$//' | cut -d' ' -f4`
-#LIB="$HOME/.taverna-$VERSION/lib"
-#if [ ! -d $LIB ] ; then
-#    mkdir -p $(dirname $LIB)
-#    ln -sf  $YOUSEE_HOME/workflowDependencies $LIB
-#fi
-
 mkdir -p "$YOUSEE_LOGS"
 mkdir -p "$YOUSEE_LOCKS"
-rotate_logs
+
+if [ "$(ps -ef | grep [\ ]$YOUSEE_HOME/taverna/Yousee_ingest_workflow.t2flow)" != "" ] ; then
+    echo "executeworkflow.sh was running, exiting!"
+    exit 1 
+fi
 
 
 #TODO probably remove this, as it does not actually do anything after the logrotater was added
@@ -52,7 +42,12 @@ TAVERNA_OUT_DIR=$(mktemp -d -u --tmpdir="$YOUSEE_LOGS" "$1-runNr-XXX")
 
 mkdir -p $HOME/tmp/taverna
 #TODO where should this be
+cleanup () {
+   rm -rf "$TAVERNA_TEMP_DIR"
+}
+trap cleanup 0 3 15
 TAVERNA_TEMP_DIR=$(mktemp -d --tmpdir="$HOME/tmp/taverna")
+chmod a+r "$TAVERNA_TEMP_DIR"
 
 # place damn tarverna logs the right place
 cd $YOUSEE_LOGS
@@ -68,10 +63,3 @@ $TAVERNA_HOME/executeworkflow.sh \
 -inputvalue Ingest_workflow_startDate "$1"  \
 "$YOUSEE_HOME/taverna/Yousee_ingest_workflow.t2flow" \
 -outputdir "$TAVERNA_OUT_DIR"
-
-rm -rf "$TAVERNA_TEMP_DIR"
-
-exit 0
-
-
-

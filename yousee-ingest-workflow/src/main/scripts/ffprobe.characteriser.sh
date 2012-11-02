@@ -9,7 +9,7 @@ LOCALFILE=$2
 
 NAME=`basename $0 .sh`
 
-source $SCRIPT_PATH/env.sh
+source $SCRIPT_PATH/common.sh
 
 CMD="$YOUSEE_COMPONENTS/${ffprobe.characteriser}/bin/ffprobeCharacterise.sh $LOCALFILE $CONFIGFILE"
 

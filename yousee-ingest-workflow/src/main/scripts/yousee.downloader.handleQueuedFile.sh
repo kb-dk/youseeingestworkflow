@@ -10,7 +10,7 @@ DOWNLOADER_JSON_OUTPUT="$PWD/$2"
 
 NAME=`basename "$0" ".sh" | cut -d'_' -f-2`
 
-source $SCRIPT_PATH/env.sh
+source $SCRIPT_PATH/common.sh
 
 CMD="grep \"queued\": $DOWNLOADER_JSON_OUTPUT "
 FOUND=`$CMD | wc -l`

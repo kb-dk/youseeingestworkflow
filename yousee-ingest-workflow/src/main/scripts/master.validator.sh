@@ -12,7 +12,7 @@ VALIDATIONRESULT=$2
 
 NAME=`basename $0 .sh`
 
-source $SCRIPT_PATH/env.sh
+source $SCRIPT_PATH/common.sh
 
 report "$NAME" "Started" "$ENTITY"
 if [ "$VALIDATIONRESULT" == "true" ]; then

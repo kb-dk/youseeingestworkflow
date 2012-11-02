@@ -15,7 +15,7 @@ FORMATNAME=$6
 
 NAME=`basename $0 .sh`
 
-source $SCRIPT_PATH/env.sh
+source $SCRIPT_PATH/common.sh
 
 APPDIR="$YOUSEE_COMPONENTS/${yousee.doms.metadata.packager}"
 

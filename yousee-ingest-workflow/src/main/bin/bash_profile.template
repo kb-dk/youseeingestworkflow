@@ -1,0 +1,14 @@
+
+# User specific environment and startup programs
+
+export YOUSEE_CONFIG=$HOME/services/conf/
+export YOUSEE_LOGS=$HOME/logs/$(date +%Y-%m-%d)
+mkdir -p $YOUSEE_LOGS
+export YOUSEE_LOCKS=$HOME/var/locks
+export YOUSEE_HOME=$HOME/services/workflow
+export JAVA_HOME=/usr/java/jre-1.6.0-sun-1.6.0.32.x86_64
+export TAVERNA_HOME=$HOME/taverna-workbench-2.4.0
+
+PATH=$JAVA_HOME/bin:$PATH:$HOME/bin
+
+export PATH
