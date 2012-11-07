@@ -2,17 +2,13 @@
 
 SCRIPT_PATH=$(dirname $(readlink -f $0))
 
-
-
-
 ENTITY=$1
 LOCALFILEURL=$2
 CHANNELID=$3
 STARTTIME=$4
 ENDTIME=$5
 FFPROBE=$6
-
-
+CROSSCHECK=$7
 
 NAME=`basename $0 .sh`
 
@@ -28,7 +24,8 @@ CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname 
  --startTime=$STARTTIME \
  --endTime=$ENDTIME \
  --fluff=$FLUFF \
- --ffprobe=$FFPROBE "
+ --ffprobe=$FFPROBE \
+ --crosscheck=$CROSSCHECK "
 
 
 #CMD="cat $YOUSEE_HOME/examples/bibliograpthic_validator_output.json"
