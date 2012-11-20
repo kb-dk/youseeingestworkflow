@@ -111,7 +111,7 @@ ID==$(echo $DIGITVID | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 echo "Complete and cleanup" 
 $WORKFLOW_SCRIPTS"/yousee-ingest-workflow-completed.sh" "$FILENAME" "$PID" "$ID" "$URL" "$FILEURL"
 
-rm $METADATA $CROSSCHECKOUT $FFPROBEOUT $FFPROBEERR $FFPROBEERRXML
+rm "$METADATA" "$CROSSCHECKOUT" "$FFPROBEOUT" "$FFPROBEERR" "$FFPROBEERRXML"
 exit 0
 
 
