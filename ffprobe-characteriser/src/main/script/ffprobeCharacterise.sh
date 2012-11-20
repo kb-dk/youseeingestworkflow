@@ -28,7 +28,7 @@ OUTPUT="`ffprobe -noprivate -show_format -show_streams -print_format xml=x=1 -i 
 RETURNCODE="$?"
 
 #echo $OUTPUT
-#cat $tempfile
+cat $tempfile >&2 
 
 if [ "$RETURNCODE" -eq "0" ]; then
     debug "Characterised file $FILENAME \n `cat $tempfile`"
