@@ -15,6 +15,7 @@ source $YOUSEE_CONFIG/youseedownloader/youseeDownloaderConfig.sh
 FILEPATH=$LOCALPATH$FILENAME
 FILEURL="file://"$FILEPATH
 
+echo "Verify file"
 if [ ! -r $FILEPATH ]; then
 	echo "File $FILEPATH does not exist or cannot be read."
 	exit 2
@@ -30,7 +31,7 @@ else
 	exit 3
 fi
 
-#Run crosscheck characterisation
+echo "Run crosscheck characterisation"
 CROSSCHECKOUT=$FILEPATH".crosscheck"
 $WORKFLOW_SCRIPTS"/crosscheck-characteriser.sh" "$FILENAME" "$FILEURL" > $CROSSCHECKOUT
 if [ ! $? -eq 0 ]; then
@@ -39,7 +40,7 @@ if [ ! $? -eq 0 ]; then
 	exit 4
 fi
 
-#Run ffprobe
+echo "Run ffprobe"
 FFPROBEOUT=$FILEPATH".ffprobe"
 FFPROBEERR=$FILEPATH".ffprobe.err"
 $WORKFLOW_SCRIPTS"/ffprobe-characteriser.sh" "$FILENAME" "$FILEURL" > "$FFPROBEOUT" 2>"$FFPROBEERR"
@@ -54,21 +55,21 @@ echo "<ffprobe:ffprobeStdErrorOutput xmlns:xsi='http://www.w3.org/2001/XMLSchema
 cat $FFPROBEERR >> $FFPROBEERRXML
 echo "</ffprobe:ffprobeStdErrorOutput>" >> $FFPROBEERRXML
 
-#Check Crosscheck output validity
+echo "Check Crosscheck output validity"
 xmllint --noout --schema $YOUSEE_CONFIG/crosscheckprofilevalidator/crosscheck.xsd "$CROSSCHECKOUT"
 if [ ! $? -eq 0 ]; then 
 	echo "Crosscheck schema validation failed."
 	exit 6
 fi
 
-#Check FFprobe output validity
+echo "Check FFprobe output validity"
 xmllint --noout --schema $YOUSEE_CONFIG/ffprobeprofilevalidator/ffprobe.xsd "$FFPROBEOUT"
 if [ ! $? -eq 0 ]; then
         echo "FFprobe schema validation failed."
         exit 7
 fi
 
-#Ingest file in bitrepository
+echo "Ingest file in bitrepository"
 BITREPOURL=$($WORKFLOW_SCRIPTS"/yousee-bitrepository-ingester.sh" "$FILENAME" "$FILEURL" "$FILENAME" "$STREAMCHECKSUM" "$FILESIZE")
 if [ ! $? -eq 0 ]; then
 	echo "Bitrepository ingest failed"
@@ -76,7 +77,7 @@ if [ ! $? -eq 0 ]; then
 fi
 URL=$(echo $BITREPOURL | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 
-#Package metadata
+echo "Package metadata"
 CHANNELID=$(echo $FILENAME | cut -d'_' -f1)
 UNIXSTARTTIME=$(echo $FILE | cut -d'.' -f2 | cut -d'-' -f1)
 STARTTIME=$(date -d @$UNIXSTARTTIME +%Y%m%d'T'%H%M%S%z)
@@ -91,7 +92,7 @@ if [ ! $? -eq 0 ]; then
 	exit 9
 fi
 
-#Ingest metadata into doms
+echo "Ingest metadata into doms"
 DOMSPID=$($WORKFLOW_SCRIPTS"/yousee-doms-ingester.sh" "$FILENAME" "$URL" "$STREAMCHECKSUM" "$FFPROBEOUT" "$FFPROBEERRXML" "$CROSSCHECKOUT" "$METADATA")
 if [ ! $? -eq 0 ]; then
 	echo "Doms ingester failed"
@@ -99,7 +100,7 @@ if [ ! $? -eq 0 ]; then
 fi
 PID=$(echo $DOMSPID | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 
-#Ingest metadata into digitv
+echo "Ingest metadata into digitv"
 DIGITVID=$($WORKFLOW_SCRIPTS"/yousee-digitv-ingester.sh" "$FILENAME" "$URL" "$CHANNELID" "$STARTTIME" "$STOPTIME")
 if [ ! $? -eq 0 ]; then
 	echo "Digitv ingester failed"
@@ -107,7 +108,7 @@ if [ ! $? -eq 0 ]; then
 fi
 ID==$(echo $DIGITVID | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 
-#Complete file
+echo "Complete and cleanup" 
 $WORKFLOW_SCRIPTS"/yousee-ingest-workflow-completed.sh" "$FILENAME" "$PID" "$ID" "$URL" "$FILEURL"
 
 rm $METADATA $CROSSCHECKOUT $FFPROBEOUT $FFPROBEERR $FFPROBEERRXML
