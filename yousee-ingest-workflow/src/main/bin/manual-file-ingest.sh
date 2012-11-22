@@ -12,7 +12,7 @@ fi
 
 source "${YOUSEE_CONFIG}/youseedownloader/youseeDownloaderConfig.sh"
 
-FILEPATH="${LOCALPATH}${FILENAME}"
+FILEPATH="${LOCALPATH}/${FILENAME}"
 FILEURL="file://${FILEPATH}"
 
 echo "Verify file"
