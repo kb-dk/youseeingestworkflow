@@ -10,7 +10,15 @@ if [ -z $YOUSEE_CONFIG ]; then
 	exit 1
 fi
 
+if [ -z $YOUSEE_WORKFLOW_CONFIG ]; then
+	echo "YOUSEE_WORKFLOW_CONFIG has not been set!"
+	exit 1
+fi
+
 source "${YOUSEE_CONFIG}/youseedownloader/youseeDownloaderConfig.sh"
+source "${WORKFLOW_SCRIPTS}/common.sh"
+
+reportWorkflowStarted $FILENAME
 
 FILEPATH="${LOCALPATH}/${FILENAME}"
 FILEURL="file://${FILEPATH}"
@@ -25,7 +33,7 @@ FILESIZE=$(stat -c%s "$FILEPATH")
 STREAMCHECKSUM=$(cat $FILEPATH".md5" | cut -d' ' -f1) 2>/dev/null
 THEIRCHECKSUM=$(cat $FILEPATH".headers"  | grep -i "content-md5:" | cut -d' ' -f2 |  sed 's/\s*$//g') 2>/dev/null
 if [ -n "$STREAMCHECKSUM" -a "$STREAMCHECKSUM" == "$THEIRCHECKSUM" ]; then
-	# NO OP
+	echo -n	# NO OP
 else
 	echo "The checksum from stream and the reported checksum does not match"
 	exit 3
@@ -56,14 +64,14 @@ cat "$FFPROBEERR" >> "$FFPROBEERRXML"
 echo "</ffprobe:ffprobeStdErrorOutput>" >> "$FFPROBEERRXML"
 
 echo "Check Crosscheck output validity"
-xmllint --noout --schema "${YOUSEE_CONFIG}/crosscheckprofilevalidator/crosscheck.xsd" "$CROSSCHECKOUT"
+xmllint --noout --schema "${YOUSEE_CONFIG}/crosscheckprofilevalidator/crosscheck.xsd" "$CROSSCHECKOUT" &2>/dev/null
 if [ ! $? -eq 0 ]; then 
 	echo "Crosscheck schema validation failed."
 	exit 6
 fi
 
 echo "Check FFprobe output validity"
-xmllint --noout --schema "${YOUSEE_CONFIG}/ffprobeprofilevalidator/ffprobe.xsd" "$FFPROBEOUT"
+xmllint --noout --schema "${YOUSEE_CONFIG}/ffprobeprofilevalidator/ffprobe.xsd" "$FFPROBEOUT" &2>/dev/null
 if [ ! $? -eq 0 ]; then
         echo "FFprobe schema validation failed."
         exit 7
@@ -79,9 +87,9 @@ URL=$(echo "$BITREPOURL" | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 
 echo "Package metadata"
 CHANNELID=$(echo $FILENAME | cut -d'_' -f1)
-UNIXSTARTTIME=$(echo $FILE | cut -d'.' -f2 | cut -d'-' -f1)
+UNIXSTARTTIME=$(echo $FILENAME | cut -d'.' -f2 | cut -d'-' -f1)
 STARTTIME=$(date -d @$UNIXSTARTTIME +%Y%m%d'T'%H%M%S%z)
-UNIXSTOPTIME=$(echo $FILE | cut -d'_' -f3 | cut -d'-' -f1)
+UNIXSTOPTIME=$(echo $FILENAME | cut -d'_' -f3 | cut -d'-' -f1)
 STOPTIME=$(date -d @$UNIXSTOPTIME +%Y%m%d'T'%H%M%S%z)
 FORMAT=$(grep "$CHANNELID" format-mapping | cut -d' ' -f2)
 METADATA="${FILEPATH}.metadata"
@@ -111,7 +119,6 @@ ID==$(echo $DIGITVID | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 echo "Complete and cleanup" 
 "${WORKFLOW_SCRIPTS}/yousee-ingest-workflow-completed.sh" "$FILENAME" "$PID" "$ID" "$URL" "$FILEURL"
 
-rm "$METADATA" "$CROSSCHECKOUT" "$FFPROBEOUT" "$FFPROBEERR" "$FFPROBEERRXML"
 exit 0
 
 
