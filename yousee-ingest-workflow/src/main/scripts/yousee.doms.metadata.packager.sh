@@ -11,7 +11,11 @@ ENDTIME=$3
 STARTTIME=$4
 CHANNELID=$5
 FORMATNAME=$6
+ANNOTATION="$7"
 
+if [ -n "$ANNOTATION" ]; then
+    ANNOTATION_SWITCH="--annotation=$ANNOTATION"
+fi
 
 NAME=`basename $0 .sh`
 
@@ -27,7 +31,8 @@ CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/*:`dirname 
  --endTime=$ENDTIME \
  --recorder=yousee \
  --filename=$ENTITY \
- --checksum=$CHECKSUM"
+ --checksum=$CHECKSUM \
+ $ANNOTATION_SWITCH"
 
 OUTPUT="`execute "$PWD" "$CMD" "$NAME" "$ENTITY"`"
 RETURNCODE=$?

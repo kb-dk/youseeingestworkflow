@@ -64,14 +64,14 @@ cat "$FFPROBEERR" >> "$FFPROBEERRXML"
 echo "</ffprobe:ffprobeStdErrorOutput>" >> "$FFPROBEERRXML"
 
 echo "Check Crosscheck output validity"
-xmllint --noout --schema "${YOUSEE_CONFIG}/crosscheckprofilevalidator/crosscheck.xsd" "$CROSSCHECKOUT" &2>/dev/null
+xmllint --noout --schema "${YOUSEE_CONFIG}/crosscheckprofilevalidator/crosscheck.xsd" "$CROSSCHECKOUT" >/dev/null 2>&1
 if [ ! $? -eq 0 ]; then 
 	echo "Crosscheck schema validation failed."
 	exit 6
 fi
 
 echo "Check FFprobe output validity"
-xmllint --noout --schema "${YOUSEE_CONFIG}/ffprobeprofilevalidator/ffprobe.xsd" "$FFPROBEOUT" &2>/dev/null
+xmllint --noout --schema "${YOUSEE_CONFIG}/ffprobeprofilevalidator/ffprobe.xsd" "$FFPROBEOUT" >/dev/null 2>&1
 if [ ! $? -eq 0 ]; then
         echo "FFprobe schema validation failed."
         exit 7
@@ -93,7 +93,7 @@ UNIXSTOPTIME=$(echo $FILENAME | cut -d'_' -f3 | cut -d'-' -f1)
 STOPTIME=$(date -d @$UNIXSTOPTIME +%Y%m%d'T'%H%M%S%z)
 FORMAT=$(grep "$CHANNELID" format-mapping | cut -d' ' -f2)
 METADATA="${FILEPATH}.metadata"
-"${WORKFLOW_SCRIPTS}/broadcastMetadata-packager.sh" "$FILENAME" "$STREAMCHECKSUM"  "$STOPTIME" "$STARTTIME" "$CHANNELID" "$FORMAT" > "$METADATA"
+"${WORKFLOW_SCRIPTS}/broadcastMetadata-packager.sh" "$FILENAME" "$STREAMCHECKSUM"  "$STOPTIME" "$STARTTIME" "$CHANNELID" "$FORMAT" "Manual-ingest" > "$METADATA"
 if [ ! $? -eq 0 ]; then
 	echo "Metadata packager failed"
 	rm "$METADATA"
@@ -114,7 +114,7 @@ if [ ! $? -eq 0 ]; then
 	echo "Digitv ingester failed"
 	exit 11
 fi
-ID==$(echo $DIGITVID | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
+ID=$(echo $DIGITVID | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 
 echo "Complete and cleanup" 
 "${WORKFLOW_SCRIPTS}/yousee-ingest-workflow-completed.sh" "$FILENAME" "$PID" "$ID" "$URL" "$FILEURL"
