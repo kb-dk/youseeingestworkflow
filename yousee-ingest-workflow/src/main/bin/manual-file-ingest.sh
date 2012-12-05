@@ -5,6 +5,8 @@ WORKFLOW_SCRIPTS="${BIN_PATH}/../scripts"
 
 FILENAME="$1"
 
+source $BIN_PATH/setenv.sh
+
 if [ -z $YOUSEE_CONFIG ]; then
 	echo "YOUSEE_CONFIG has not been set!"
 	exit 1
