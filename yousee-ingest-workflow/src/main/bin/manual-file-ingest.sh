@@ -1,11 +1,11 @@
 #!/bin/bash
 
-set -e
-
-SCRIPT_PATH=$(dirname $(readlink -f $0))
-WORKFLOW_SCRIPTS="${SCRIPT_PATH}/../scripts"
+BIN_PATH=$(dirname $(readlink -f $0))
+WORKFLOW_SCRIPTS="${BIN_PATH}/../scripts"
 
 FILENAME="$1"
+
+source $BIN_PATH/setenv.sh
 
 if [ -z $YOUSEE_CONFIG ]; then
 	echo "YOUSEE_CONFIG has not been set!"
@@ -43,7 +43,7 @@ fi
 
 echo "Run crosscheck characterisation"
 CROSSCHECKOUT="${FILEPATH}.crosscheck"
-! "${WORKFLOW_SCRIPTS}/crosscheck-characteriser.sh" "$FILENAME" "$FILEURL" > $CROSSCHECKOUT
+"${WORKFLOW_SCRIPTS}/crosscheck-characteriser.sh" "$FILENAME" "$FILEURL" > $CROSSCHECKOUT
 if [ ! $? -eq 0 ]; then
 	echo "Crosscheck failed"
 	rm "$CROSSCHECKOUT"
@@ -53,7 +53,7 @@ fi
 echo "Run ffprobe"
 FFPROBEOUT="${FILEPATH}.ffprobe"
 FFPROBEERR="${FILEPATH}.ffprobe.err"
-! "${WORKFLOW_SCRIPTS}/ffprobe-characteriser.sh" "$FILENAME" "$FILEURL" > "$FFPROBEOUT" 2>"$FFPROBEERR"
+"${WORKFLOW_SCRIPTS}/ffprobe-characteriser.sh" "$FILENAME" "$FILEURL" > "$FFPROBEOUT" 2>"$FFPROBEERR"
 if [ ! $? -eq 0 ]; then
 	echo "FFprobe failed"
 	rm "$FFPROBEOUT"
@@ -66,21 +66,21 @@ cat "$FFPROBEERR" >> "$FFPROBEERRXML"
 echo "</ffprobe:ffprobeStdErrorOutput>" >> "$FFPROBEERRXML"
 
 echo "Check Crosscheck output validity"
-! xmllint --noout --schema "${YOUSEE_CONFIG}/crosscheckprofilevalidator/crosscheck.xsd" "$CROSSCHECKOUT" >/dev/null 2>&1
+xmllint --noout --schema "${YOUSEE_CONFIG}/crosscheckprofilevalidator/crosscheck.xsd" "$CROSSCHECKOUT" >/dev/null 2>&1
 if [ ! $? -eq 0 ]; then 
 	echo "Crosscheck schema validation failed."
 	exit 6
 fi
 
 echo "Check FFprobe output validity"
-! xmllint --noout --schema "${YOUSEE_CONFIG}/ffprobeprofilevalidator/ffprobe.xsd" "$FFPROBEOUT" >/dev/null 2>&1
+xmllint --noout --schema "${YOUSEE_CONFIG}/ffprobeprofilevalidator/ffprobe.xsd" "$FFPROBEOUT" >/dev/null 2>&1
 if [ ! $? -eq 0 ]; then
         echo "FFprobe schema validation failed."
         exit 7
 fi
 
 echo "Ingest file in bitrepository"
-! BITREPOURL=$("${WORKFLOW_SCRIPTS}/yousee-bitrepository-ingester.sh" "$FILENAME" "$FILEURL" "$FILENAME" "$STREAMCHECKSUM" "$FILESIZE")
+BITREPOURL=$("${WORKFLOW_SCRIPTS}/yousee-bitrepository-ingester.sh" "$FILENAME" "$FILEURL" "$FILENAME" "$STREAMCHECKSUM" "$FILESIZE")
 if [ ! $? -eq 0 ]; then
 	echo "Bitrepository ingest failed"
 	exit 8
@@ -93,9 +93,9 @@ UNIXSTARTTIME=$(echo $FILENAME | cut -d'.' -f2 | cut -d'-' -f1)
 STARTTIME=$(date -d @$UNIXSTARTTIME +%Y%m%d'T'%H%M%S%z)
 UNIXSTOPTIME=$(echo $FILENAME | cut -d'_' -f3 | cut -d'-' -f1)
 STOPTIME=$(date -d @$UNIXSTOPTIME +%Y%m%d'T'%H%M%S%z)
-FORMAT=$(grep "$CHANNELID" "${SCRIPT_PATH}/format-mapping" | cut -d' ' -f2)
+FORMAT=$(grep "$CHANNELID" "${BIN_PATH}/format-mapping" | cut -d' ' -f2)
 METADATA="${FILEPATH}.metadata"
-! "${WORKFLOW_SCRIPTS}/broadcastMetadata-packager.sh" "$FILENAME" "$STREAMCHECKSUM"  "$STOPTIME" "$STARTTIME" "$CHANNELID" "$FORMAT" "Manual-ingest" > "$METADATA"
+"${WORKFLOW_SCRIPTS}/broadcastMetadata-packager.sh" "$FILENAME" "$STREAMCHECKSUM"  "$STOPTIME" "$STARTTIME" "$CHANNELID" "$FORMAT" "Manual-ingest" > "$METADATA"
 if [ ! $? -eq 0 ]; then
 	echo "Metadata packager failed"
 	rm "$METADATA"
@@ -103,7 +103,7 @@ if [ ! $? -eq 0 ]; then
 fi
 
 echo "Ingest metadata into doms"
-! DOMSPID=$("${WORKFLOW_SCRIPTS}/yousee-doms-ingester.sh" "$FILENAME" "$URL" "$STREAMCHECKSUM" "$FFPROBEOUT" "$FFPROBEERRXML" "$CROSSCHECKOUT" "$METADATA")
+DOMSPID=$("${WORKFLOW_SCRIPTS}/yousee-doms-ingester.sh" "$FILENAME" "$URL" "$STREAMCHECKSUM" "$FFPROBEOUT" "$FFPROBEERRXML" "$CROSSCHECKOUT" "$METADATA")
 if [ ! $? -eq 0 ]; then
 	echo "Doms ingester failed"
 	exit 10
@@ -111,7 +111,7 @@ fi
 PID=$(echo $DOMSPID | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 
 echo "Ingest metadata into digitv"
-! DIGITVID=$("${WORKFLOW_SCRIPTS}/yousee-digitv-ingester.sh" "$FILENAME" "$URL" "$CHANNELID" "$STARTTIME" "$STOPTIME")
+DIGITVID=$("${WORKFLOW_SCRIPTS}/yousee-digitv-ingester.sh" "$FILENAME" "$URL" "$CHANNELID" "$STARTTIME" "$STOPTIME")
 if [ ! $? -eq 0 ]; then
 	echo "Digitv ingester failed"
 	exit 11
