@@ -23,10 +23,14 @@ fi
 
 RESULTDIR=$(cd $YOUSEE_LOGS && ls -1rtd $INPUT_DATE* | tail -1)
 
-COUNT=$(ls -1 "$YOUSEE_LOGS/$RESULTDIR/Ingest_Workflow_Result/" | grep -v \.error | wc -l)
+COUNT_ALL=$(ls -1 "$YOUSEE_LOGS/$RESULTDIR/Ingest_Workflow_Result/"  | wc -l)
+COUNT_NOT_ERRORS=$(ls -1 "$YOUSEE_LOGS/$RESULTDIR/Ingest_Workflow_Result/" | grep -v \.error | wc -l)
 #echo $COUNT;
-if [ "$COUNT" -gt "0" ]; then
-    exit 0
-else
-    exit 1;
+if [ $COUNT_ALL -gt 0 ]; then
+    if [ $COUNT_NOT_ERRORS -gt 0 ]; then
+        exit 0
+    else
+        exit 1;
+    fi
 fi
+exit 0
