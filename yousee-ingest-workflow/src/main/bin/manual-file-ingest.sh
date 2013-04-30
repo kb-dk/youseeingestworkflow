@@ -41,6 +41,14 @@ else
 	exit 3
 fi
 
+echo "Ingest file in bitrepository"
+BITREPOURL=$("${WORKFLOW_SCRIPTS}/yousee-bitrepository-ingester.sh" "$FILENAME" "$FILEURL" "$FILENAME" "$STREAMCHECKSUM" "$FILESIZE")
+if [ ! $? -eq 0 ]; then
+	echo "Bitrepository ingest failed"
+	exit 8
+fi
+URL=$(echo "$BITREPOURL" | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
+
 echo "Run crosscheck characterisation"
 CROSSCHECKOUT="${FILEPATH}.crosscheck"
 "${WORKFLOW_SCRIPTS}/crosscheck-characteriser.sh" "$FILENAME" "$FILEURL" > $CROSSCHECKOUT
@@ -78,14 +86,6 @@ if [ ! $? -eq 0 ]; then
         echo "FFprobe schema validation failed."
         exit 7
 fi
-
-echo "Ingest file in bitrepository"
-BITREPOURL=$("${WORKFLOW_SCRIPTS}/yousee-bitrepository-ingester.sh" "$FILENAME" "$FILEURL" "$FILENAME" "$STREAMCHECKSUM" "$FILESIZE")
-if [ ! $? -eq 0 ]; then
-	echo "Bitrepository ingest failed"
-	exit 8
-fi
-URL=$(echo "$BITREPOURL" | cut -d":" -f2,3 | sed s/\"//g | sed s/\}//g)
 
 echo "Package metadata"
 CHANNELID=$(echo $FILENAME | cut -d'_' -f1)
