@@ -3,6 +3,8 @@
 FILEURL="$1"
 CONFIG="$2"
 
+set -o pipefail
+
 SCRIPT_PATH=$(dirname $(readlink -f $0))
 
 if [ -z $YOUSEE_HOME ]; then
@@ -23,24 +25,12 @@ tempfile="`mktemp`"
 #echo $tempfile
 
 FILENAME="${FILEURL#"file://"}"
-myStatus=0
 OUTPUT="`ssh $HOST crosscheck  -a 0 -f x $FILENAME 2>> "$tempfile" | xmllint --recover - 2>> "$tempfile"`"
-for i in ${PIPESTATUS[@]}; do
-    if [ $i -ne 0 ]; then
-        myStatus=$i;
-        break;
-    fi;
-done;
+myStatus=$?
 
-if [ $myStatus -nq 0 ]; then
-    myStatus=0
+if [ $myStatus -ne 0 ]; then
     OUTPUT="`ssh $HOST crosscheck  -a 0 -f x -r c $FILENAME 2>> "$tempfile" | xmllint --recover - 2>> "$tempfile"`"
-    for i in ${PIPESTATUS[@]}; do
-        if [ $i -ne 0 ]; then
-            myStatus=$i;
-            break;
-        fi;
-    done;
+    myStatus=$?
 fi
 
 RETURNCODE=$myStatus
