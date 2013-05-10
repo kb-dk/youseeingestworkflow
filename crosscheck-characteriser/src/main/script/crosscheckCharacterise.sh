@@ -31,6 +31,18 @@ for i in ${PIPESTATUS[@]}; do
         break;
     fi;
 done;
+
+if [ $myStatus -nq 0 ]; then
+    myStatus=0
+    OUTPUT="`ssh $HOST crosscheck  -a 0 -f x -r c $FILENAME 2>> "$tempfile" | xmllint --recover - 2>> "$tempfile"`"
+    for i in ${PIPESTATUS[@]}; do
+        if [ $i -ne 0 ]; then
+            myStatus=$i;
+            break;
+        fi;
+    done;
+fi
+
 RETURNCODE=$myStatus
 
 #echo $OUTPUT
