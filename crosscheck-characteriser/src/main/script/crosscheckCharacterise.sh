@@ -28,7 +28,7 @@ FILENAME="${FILEURL#"file://"}"
 OUTPUT="`ssh $HOST crosscheck  -a 0 -f x $FILENAME 2>> "$tempfile" | xmllint --recover - 2>> "$tempfile"`"
 myStatus=$?
 
-if [ $myStatus -ne 0 ]; then
+if [ $myStatus -ge 3 ]; then
     OUTPUT="`ssh $HOST crosscheck  -a 0 -f x -r c $FILENAME 2>> "$tempfile" | xmllint --recover - 2>> "$tempfile"`"
     myStatus=$?
 fi
