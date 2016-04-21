@@ -1,10 +1,12 @@
 #!/bin/sh
-[ -z "$TAVERNA_HOME" ] && TAVERNA_HOME="$HOME/taverna/taverna-workbench-2.4.0"
+[ -z "$TAVERNA_HOME" ] && TAVERNA_HOME="$HOME/taverna/"
 export TAVERNA_HOME
 
 [ -z "$JAVA_HOME" ] && JAVA_HOME="/usr/java/jdk1.6.0_32"
 export JAVA_HOME
 
+[ -z "$JAVA8_HOME" ] && JAVA8_HOME="/usr/java/java-1.8.0-oracle-1.8.0.65.x86_64/jre/"
+export JAVA8_HOME
 
 [ -z "$YOUSEE_HOME" ] && YOUSEE_HOME="$HOME/yousee-workflow/services/workflow"
 export YOUSEE_HOME

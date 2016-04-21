@@ -27,7 +27,7 @@ APPDIR="$YOUSEE_COMPONENTS/$NAME"
 #wait $PID1 $PID2 $PID3
 
 #dk.statsbiblioteket.medieplatform.bitrepository.ingester.TheMockClient \
-CMD="$JAVA_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
+CMD="$JAVA8_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
 dk.statsbiblioteket.medieplatform.bitrepository.ingester.Ingester \
 $CONFIGFILE $LOCALFILEURL $REMOTEFILEID $CHECKSUM $FILESIZE"
 
