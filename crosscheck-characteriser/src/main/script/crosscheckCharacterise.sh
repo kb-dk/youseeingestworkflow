@@ -33,7 +33,7 @@ if [ $myStatus -ge 3 ]; then
     myStatus=$?
 fi
 
-OUTPUT="`echo $OUTPUT | xmllint --recover - 2>> "$tempfile"`"
+OUTPUT="`echo "$OUTPUT" | xmllint --recover - 2>> "$tempfile"`"
 
 RETURNCODE=$myStatus
 
