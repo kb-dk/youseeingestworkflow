@@ -24,7 +24,7 @@
         <yousee.components.dir>components</yousee.components.dir>
         <yousee.bin>bin</yousee.bin>
 
-        <integrationtest.basedir>yousee-workflow</integrationtest.basedir>
+        <integrationtest.basedir>$HOME/yousee-workflow</integrationtest.basedir>
         <integrationtest.workflowdir>${integrationtest.basedir}/services/workflow</integrationtest.workflowdir>
         <yousee.config>${integrationtest.basedir}/services/conf</yousee.config>
 
