@@ -31,7 +31,14 @@ CMD="$JAVA8_HOME/bin/java -cp $APPDIR/bin/*:$APPDIR/external-products/* \
 dk.statsbiblioteket.medieplatform.bitrepository.ingester.Ingester \
 $CONFIGFILE $LOCALFILEURL $REMOTEFILEID $CHECKSUM $FILESIZE"
 
-OUTPUT="`execute "$APPDIR" "$CMD" "$NAME" "$ENTITY"`"
-RETURNCODE=$?
+for i in $(seq 1 3);
+do
+	OUTPUT="`execute "$APPDIR" "$CMD" "$NAME" "$ENTITY"`"
+	RETURNCODE=$?
+        if [ $RETURNCODE -eq 0 ]; then
+                break;
+        fi
+done
+
 echo "$OUTPUT"
 exit "$RETURNCODE"
