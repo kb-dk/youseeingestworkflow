@@ -24,7 +24,7 @@
         <yousee.components.dir>components</yousee.components.dir>
         <yousee.bin>bin</yousee.bin>
 
-        <integrationtest.basedir>$HOME/yousee-workflow</integrationtest.basedir>
+        <integrationtest.basedir>yousee-workflow</integrationtest.basedir>
         <integrationtest.workflowdir>${integrationtest.basedir}/services/workflow</integrationtest.workflowdir>
         <yousee.config>${integrationtest.basedir}/services/conf</yousee.config>
 
@@ -112,7 +112,7 @@
         <dependency>
             <groupId>${medieplatform}</groupId>
             <artifactId>${yousee.downloader}</artifactId>
-            <version>2.4</version>
+            <version>2.4-SNAPSHOT</version>
             <classifier>bundle</classifier>
             <type>zip</type>
         </dependency>
